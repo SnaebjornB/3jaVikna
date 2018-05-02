@@ -5,14 +5,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
+using BookCave.Services;
 
 namespace BookCave.Controllers
 {
     public class BookController : Controller
     {
+        private BookServices _bookService;
+
+        public BookController()
+        {
+            _bookService = new BookServices();
+        }
+
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Top10()
+        {
+            var top10BookList = _bookService.GetTop10HighestRated();
+            return View(top10BookList);
         }
 
         public IActionResult About()

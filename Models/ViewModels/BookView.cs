@@ -1,6 +1,6 @@
-namespace BookCave.Models.EntityModels
+namespace BookCave.Models.ViewModels
 {
-    public class BookEntity{
+    public class BookView{
         public int ID { get; set; }
         public string author { get; set; }
         public int ISBN { get; set; }
