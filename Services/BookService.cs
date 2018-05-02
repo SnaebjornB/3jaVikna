@@ -1,15 +1,21 @@
 using System.Collections.Generic;
 using BookCave.Models.ViewModels;
+using BookCave.Repositories;
 
 namespace BookCave.Services
 {
     public class BookServices
     {
+        private BookRepo _bookRepo;
         
-        /*List<BookView> GetTop10HighestRated()
+        public BookServices()
         {
-            var top10Books = Book
+            _bookRepo = new BookRepo();
+        }
+        public List<BookView> GetTop10HighestRated()
+        {
+            var top10Books = _bookRepo.GetTop10BooksFromDB();
             return top10Books;
-        }*/
+        }
     }
 }

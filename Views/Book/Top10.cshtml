@@ -1,0 +1,10 @@
+@model List<BookCave.Models.ViewModels.BookView>
+<!-- RÉTT GÖGN ERU AÐ KOMA INN. SÍÐAN LÝTUR BARA HRÆÐILEGA ÚT -->
+<div>
+    @foreach(var book in Model)
+    {
+        <p>Title: @book.title</p> <!-- GERA TITILINN SMELLANLEGAN -->
+        <p>Author: @book.author</p>
+        <br>
+    }
+</div>
