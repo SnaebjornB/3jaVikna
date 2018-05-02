@@ -1,14 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using BookCave.Models.ViewModels;
 
 namespace BookCave.Repositories
 {
     public class BookRepo
     {
-        public List<BookView> GetTop10BooksFromDB()
-        {
-           // LINQ sem nær í BookEntity úr DB og breytir í BookView. Þangað til nota ég hér fake database.
-           var books = new List<BookView> 
+
+        public List<BookView> books = new List<BookView> 
            {
                new BookView
                { 
@@ -56,7 +55,7 @@ namespace BookCave.Repositories
                     category = "Action", 
                     noOfSoldUnits = 1, 
                     noOfCopiesAvailable = 1, 
-                    discount = 1
+                    discount = 0.85
                },
                new BookView
                { 
@@ -75,7 +74,18 @@ namespace BookCave.Repositories
                     discount = 1
                },
            };
+        public List<BookView> GetTop10BooksFromDB()
+        {
+           // LINQ sem nær í BookEntity úr DB og breytir í BookView. Þangað til nota ég hér fake database.
+           
            return books;
+        }
+
+        public List<BookView> GetAllDiscountedBooks(){
+            var discountedBooks = (from b in books 
+                                    where b.discount != 1   //Finnur bara allar bækur með afslætti, þarf líklega að fínpússa.
+                                    select b).ToList();
+            return discountedBooks;
         }
     }
 }

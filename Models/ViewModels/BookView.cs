@@ -16,6 +16,6 @@ namespace BookCave.Models.ViewModels
         public string category { get; set; }
         public int noOfSoldUnits { get; set; }
         public int noOfCopiesAvailable { get; set; }
-        public int discount { get; set; }
+        public double discount { get; set; }
     }
 }
