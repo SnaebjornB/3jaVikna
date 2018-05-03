@@ -1,7 +1,27 @@
-@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+@model BookCave.Models.ViewModels.OrderBasketView
 
-<p>Use this area to provide additional information.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basket</title>
+</head>
+<body>
+    <div>
+        <form action='Basket' method="post">
+        <input type="number" name="BookID" id="BookID">
+        <input type="number" name="quantity" id="quantity">
+        <input type="submit" value="buy books">
+        </form>
+    </div>
+
+    @foreach(var book in Model.books)
+    {
+        <p>@book.bookName</p>
+        <p>@book.bookAuthor</p>
+    }
+    @Model.totalPrice
+</body>
+</html>
