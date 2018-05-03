@@ -8,6 +8,7 @@ namespace BookCave.Models.ViewModels
         public int year { get; set; }
         public int numberOfPages { get; set; }
         public double rating { get; set; }
+        public int noOfRatings { get; set; }
         public string description { get; set; }
         public string country { get; set; }
         public string language { get; set; }
@@ -17,5 +18,6 @@ namespace BookCave.Models.ViewModels
         public int noOfSoldUnits { get; set; }
         public int noOfCopiesAvailable { get; set; }
         public double discount { get; set; }
+        public string image { get; set; }
     }
 }
