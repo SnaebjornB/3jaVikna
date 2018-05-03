@@ -1,7 +1,5 @@
 using BookCave.Models.EntityModels;
-using BookCave.Models.ViewModels;
 using BookCave.Data;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace BookCave.Repositories
