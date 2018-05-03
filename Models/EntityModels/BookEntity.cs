@@ -3,7 +3,7 @@ namespace BookCave.Models.EntityModels
     public class BookEntity{
         public int ID { get; set; }
         public string author { get; set; }
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
         public string title { get; set; }
         public int year { get; set; }
         public int numberOfPages { get; set; }
