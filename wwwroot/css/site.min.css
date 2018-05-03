@@ -1,1 +1,41 @@
 body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;padding-right:15px}.carousel-caption p{font-size:20px;line-height:1.4}.carousel-inner .item img[src$=".svg"]{width:100%}#qrCode{margin:15px}@media screen and (max-width:767px){.carousel-caption{display:none}}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.book-item img {
+    display: block;
+    margin: 0 auto;
+}
+
+.book-item p{
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+
+
+.book-item {
+    float: left;
+    margin: 1.6%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
+}
+
+#main {
+    margin-top: 50px;
+}
