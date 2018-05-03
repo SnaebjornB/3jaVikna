@@ -6,6 +6,7 @@ namespace BookCave.Data
     public class DataContext : DbContext
     {
         public DbSet<BookEntity> Books { get; set; }
+        public DbSet<OrderItemEntity> OrderItems { get; set; }
         //Hér kemur allt sem fer í gagnagrunninn.
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
