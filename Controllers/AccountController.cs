@@ -78,5 +78,24 @@ namespace BookCave.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult forgottenPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> forgottenPassword(string email)
+        {
+            var userExists = await _userManager.FindByNameAsync(email);
+            if(userExists == null)
+            {
+                return Json("EmailDoesNotExist");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
     }
 }
