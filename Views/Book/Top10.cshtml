@@ -1,12 +1,16 @@
 @model List<BookCave.Models.ViewModels.BookView>
 <!-- RÉTT GÖGN ERU AÐ KOMA INN. SÍÐAN LÝTUR BARA HRÆÐILEGA ÚT -->
-<div>
-    @foreach(var book in Model)
-    {
-        <img src="@book.image" alt="@book.title">
-        <p>ID: @book.ID</p>
-        <p>Title: @book.title</p> <!-- GERA TITILINN SMELLANLEGAN -->
-        <p>Author: @book.author</p>
-        <br>
-    }
+<div class="siteBody">
+    
+        @foreach(var book in Model)
+        {
+            <div class="movieTopList">
+                <img src="@book.image" alt="@book.title">
+                <p>ID: @book.ID</p>
+                <p>Title: @book.title</p> <!-- GERA TITILINN SMELLANLEGAN -->
+                <p>Author: @book.author</p>
+                <br>
+            </div>
+        }
+    
 </div>
