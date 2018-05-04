@@ -28,7 +28,11 @@
     <div id="siteContainer">
         <div id="siteHeader">
             <div>
-                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline">
+                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline" class="nav navbar-nav navbar-left">
+                <form asp-controller="Book" asp-action="Search" method="POST">
+                    <input type="text">
+                    <input type="submit" value="Search">
+                </form>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
             <div>
@@ -45,9 +49,9 @@
                     </ul>
                     -->
                     <ul class="siteNav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Top 10</a></li>
-                        <li><a href="#">Search by category</a></li>
+                        <li><a asp-controller="Book" asp-action="Top10">Top 10</a></li>
+                        <li><a href="#">Special Offers</a></li>
+                        <li><a href="#">Shop By Category</a></li>
                     </ul>
                 </div>
     </div>
@@ -92,6 +96,9 @@
             </div>
         </footer>
     </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 
 </body>
 </html>

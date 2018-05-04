@@ -29,6 +29,7 @@ namespace BookCave.Controllers
         {
             if(!ModelState.IsValid)
             {
+                ViewData["ErrorMessage"] = "Something is wrong with the RegisterViewModel";
                 return View();
             }
             var user = new ApplicationUser
@@ -37,7 +38,7 @@ namespace BookCave.Controllers
                 Email = model.Email
             };
             var result = await _userManager.CreateAsync(user, model.Password);
-            if(result.Succeeded) //Fer ekki hér inn
+            if(result.Succeeded) 
             {
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
@@ -58,6 +59,7 @@ namespace BookCave.Controllers
         {
             if(!ModelState.IsValid)
             {
+                ViewData["ErrorMessage"] = "Something is wrong with the LoginViewModel";
                 return View();
             }
 
