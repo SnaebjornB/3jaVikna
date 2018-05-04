@@ -18,125 +18,56 @@ namespace BookCave.Repositories
 
         public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
         {
+            var searchResult = (from b in _db.Books
+                                where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
+                                        && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
+                                        && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
+                                        && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
+                                select new BookView{
+                                    ID = b.ID,
+                                    author = b.author,
+                                    ISBN = b.ISBN,
+                                    title = b.title,
+                                    year = b.year,
+                                    numberOfPages = b.numberOfPages,
+                                    rating = b.rating,
+                                    description = b.description,
+                                    country = b.country,
+                                    language = b.language,
+                                    publisher = b.publisher,
+                                    price = b.price,
+                                    category = b.category,
+                                    noOfSoldUnits = b.noOfSoldUnits,
+                                    noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    discount = b.discount
+                                }).ToList();
+            
             if(orderBy == "ascendingPrice")
             {
-                var searchResult = (from b in _db.Books
-                                    where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
-                                            && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
-                                            && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
-                                            && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
-                                    orderby b.price ascending
-                                    select new BookView{
-                                        ID = b.ID,
-                                        author = b.author,
-                                        ISBN = b.ISBN,
-                                        title = b.title,
-                                        year = b.year,
-                                        numberOfPages = b.numberOfPages,
-                                        rating = b.rating,
-                                        description = b.description,
-                                        country = b.country,
-                                        language = b.language,
-                                        publisher = b.publisher,
-                                        price = b.price,
-                                        category = b.category,
-                                        noOfSoldUnits = b.noOfSoldUnits,
-                                        noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount
-                                    }).ToList();
-                return searchResult;
+                searchResult = (from b in searchResult
+                                orderby b.price ascending
+                                select b).ToList();
             }
-            else if(orderBy == "descendingPrice")
+            if(orderBy == "descendingPrice")
             {
-                var searchResult = (from b in _db.Books
-                                    where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
-                                            && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
-                                            && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
-                                            && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
-                                    orderby b.price descending
-                                    select new BookView{
-                                        ID = b.ID,
-                                        author = b.author,
-                                        ISBN = b.ISBN,
-                                        title = b.title,
-                                        year = b.year,
-                                        numberOfPages = b.numberOfPages,
-                                        rating = b.rating,
-                                        description = b.description,
-                                        country = b.country,
-                                        language = b.language,
-                                        publisher = b.publisher,
-                                        price = b.price,
-                                        category = b.category,
-                                        noOfSoldUnits = b.noOfSoldUnits,
-                                        noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount
-                                    }).ToList();
-                return searchResult;
+                searchResult = (from b in searchResult
+                                orderby b.price descending
+                                select b).ToList();
             }
-            else if(orderBy == "descendingTitle")
+            if(orderBy == "descendingTitle")
             {
-                var searchResult = (from b in _db.Books
-                                    where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
-                                            && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
-                                            && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
-                                            && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
-                                    orderby b.title descending
-                                    select new BookView{
-                                        ID = b.ID,
-                                        author = b.author,
-                                        ISBN = b.ISBN,
-                                        title = b.title,
-                                        year = b.year,
-                                        numberOfPages = b.numberOfPages,
-                                        rating = b.rating,
-                                        description = b.description,
-                                        country = b.country,
-                                        language = b.language,
-                                        publisher = b.publisher,
-                                        price = b.price,
-                                        category = b.category,
-                                        noOfSoldUnits = b.noOfSoldUnits,
-                                        noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount
-                                    }).ToList();
-            
-                return searchResult;
+                searchResult = (from b in searchResult
+                                orderby b.title descending
+                                select b).ToList();
             }
-            else
+            if(orderBy == "ascendingTitle")
             {
-                var searchResult = (from b in _db.Books
-                                    where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
-                                            && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
-                                            && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
-                                            && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
-                                    orderby b.title ascending
-                                    select new BookView{
-                                        ID = b.ID,
-                                        author = b.author,
-                                        ISBN = b.ISBN,
-                                        title = b.title,
-                                        year = b.year,
-                                        numberOfPages = b.numberOfPages,
-                                        rating = b.rating,
-                                        description = b.description,
-                                        country = b.country,
-                                        language = b.language,
-                                        publisher = b.publisher,
-                                        price = b.price,
-                                        category = b.category,
-                                        noOfSoldUnits = b.noOfSoldUnits,
-                                        noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount
-                                    }).ToList();
-            
-                return searchResult;
+                searchResult = (from b in searchResult
+                                orderby b.title ascending
+                                select b).ToList();
             }
-            
-            //Virkar ekki!
-            //searchResult.OrderByDescending(b=>b.title);
-            
-            
+
+            return searchResult;
         }
 
         public List<BookView> GetTop10BooksFromDB()
