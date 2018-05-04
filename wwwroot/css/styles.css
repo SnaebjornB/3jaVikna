@@ -1,0 +1,141 @@
+body {
+     margin: 0;
+     padding: 0;
+     width: 100%;
+     /*background-color: rgb(59, 59, 59);*/
+     background-color: lightblue;
+ }
+ #siteContainer{
+     text-align: center;
+     width: auto;
+ }
+ #siteBody{
+     margin: auto;
+     padding: auto;
+     float: both;
+     background-color: lightgreen;
+     overflow: hidden;
+     
+ }
+ 
+ #siteHeader{
+     height: 145px;
+     background-color: rgb(124, 148, 253);
+ }
+ #siteFooter{
+     clear: both;
+     margin: auto;
+     padding: auto;
+     overflow: hidden;
+     color: white;
+     background-color:rgb(59, 59, 59);
+     ;
+ }
+ 
+ .siteNav {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-color: rgb(59, 59, 59);
+ }
+ 
+ .siteNav li {
+     float: left;
+ }
+ 
+ .siteNav li a {
+     display: block;
+     color: white;
+     padding: 14px 16px;
+     text-decoration: none;
+ }
+ 
+ .siteNav li a:hover:not(.active) {
+     background-color: #111;
+ }
+ 
+ #siteSearch{
+     float: left;
+     margin-top: 45px;
+     margin-left: 45px
+ }
+ .footerNav {
+     margin-left: 25%;
+     float: left;
+     border-collapse: collapse;
+     clear: both;
+ }
+ 
+ th, td {
+     color: white;
+     width: 200px;
+     text-align: left;
+     padding: 8px;
+ }
+ 
+ th {
+     border-bottom: 2px solid white;
+ }
+ 
+ /***/
+ 
+ .footerNav {
+     
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     width: auto;
+     height: auto;
+ }
+ 
+ .footerNav td a {
+     display: block;
+     color: white;
+     padding: 8px 0px;
+     text-decoration: none;
+ }
+ .footerNav td a:hover:not(.active) {
+     background-color: #111;
+ }
+ 
+ .footerText{
+ 
+     text-align: center;
+     margin-top: 150px;
+ }
+ 
+ /*Implement similair class*/
+ .book-item{
+ 
+     border-style: solid;
+     text-align: left;
+     width: auto;
+     float: left;
+     margin: 1.6%;
+     padding: 10px;
+     background-color: #f4f4f4;
+     border-radius: 6px;
+ }
+ .bookDisp{
+     border-style: solid;
+     border-radius: 6px;
+     padding: 10px;
+     text-align: left;
+ }
+ .movieSmallPoster{
+     float: left;
+     height: 115px;
+     display: block;
+ }
+ .movieTopList{
+     border-style: solid;
+     text-align: left;
+     width: auto;
+     float: left;
+     margin: 1.6%;
+     padding: 10px;
+     background-color: #f4f4f4;
+     border-radius: 6px;
+ }
+ 

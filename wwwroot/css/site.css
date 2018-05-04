@@ -49,8 +49,6 @@
     padding: auto;
     float: both;
     background-color: lightgreen;
-    width: auto;
-    height: auto;
 }
 
 #siteHeader{
@@ -98,7 +96,8 @@
     margin-left: 45px
 }
 .footerNav {
-    margin-left: 250px;
+    margin-left: 25%;
+    float: left;
     border-collapse: collapse;
     clear: both;
 }
@@ -153,10 +152,16 @@ th {
     background-color: #f4f4f4;
     border-radius: 6px;
 }
+
+.movieSmallPoster{
+    float: left;
+    height: 115px;
+    display: block;
+}
 .movieTopList{
     border-style: solid;
     text-align: left;
-    width: 800px;
+    width: auto;
     float: left;
     margin: 1.6%;
     padding: 10px;
