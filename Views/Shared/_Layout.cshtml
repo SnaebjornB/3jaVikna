@@ -4,9 +4,7 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - BookCave</title>
 
-        <!--
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        -->
         <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -31,6 +29,7 @@
         <div id="siteHeader">
             <div>
                 <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline">
+                @await Html.PartialAsync("_LoginPartial")
             </div>
             <div>
                 
