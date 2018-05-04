@@ -36,5 +36,10 @@ namespace BookCave.Services
             return discountedBooks;
         }
 
+        public BookView GetBookDetail(int? id)
+        {
+            var bookDetail = _bookRepo.GetBookDetail(id);
+            return bookDetail;
+        }
     }
 }

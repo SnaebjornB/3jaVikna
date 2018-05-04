@@ -1,0 +1,30 @@
+@model BookCave.Models.ViewModels.BookView
+
+
+<div class="siteBody">
+    <img src="@Model.image" alt="@Model.title">  <br>
+    <p>Title: @Model.title </p>
+    <p>Category: @Model.category </p> 
+    <p>Author: @Model.author </p> 
+    <p>Language: @Model.language</p> <br> 
+
+    <p>Lýsing á bók</p>
+    <p>@Model.description</p> <br>
+
+    <p>Upplýsingar um útgáfu</p>
+    <p>Publication country: @Model.country</p> 
+    <p>Publisher: @Model.publisher</p> 
+    <p>Publication year: @Model.year</p> 
+    <p>Number of pages: @Model.numberOfPages</p>
+    <p>ISBN number: @Model.ISBN </p> <br>
+    
+    <p>Notað til að reikna rating average</p> 
+    <p>Rating total: @Model.rating</p> 
+    <p>Number of ratings: @Model.noOfRatings</p> <br>
+    
+    <p>Notað til að reikna út verð</p>
+    <p>Price: @Model.price</p> 
+    <p>Discount: @Model.discount</p> 
+
+
+</div>

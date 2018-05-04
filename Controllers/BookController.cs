@@ -35,6 +35,22 @@ namespace BookCave.Controllers
             return View(top10BookList);
         }
 
+        public IActionResult Detail(int? id)
+        {
+            if(id == null){
+                return View("Error");
+            }
+
+            var bookDetail = _bookService.GetBookDetail(id);
+
+            
+            if(bookDetail == null){
+                return View("Error");
+            }
+
+            return View(bookDetail);
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

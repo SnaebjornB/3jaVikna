@@ -70,6 +70,37 @@ namespace BookCave.Repositories
             return searchResult;
         }
 
+public BookView GetBookDetail(int? id)
+        {
+            var bookDetail =(from b in _db.Books
+                            where b.ID == id
+                            select new BookView
+                            {
+                                ID = b.ID,
+                                image = b.image,
+                                author = b.author,
+                                ISBN = b.ISBN,
+                                title = b.title,
+                                year = b.year,
+                                numberOfPages = b.numberOfPages,
+                                description = b.description,
+                                country = b.country,
+                                language = b.language,
+                                publisher = b.publisher,
+                                category = b.category,
+                                noOfSoldUnits = b.noOfSoldUnits,
+                                noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                //Þarf að margfalda saman til að fá verðið
+                                price = b.price,
+                                discount = b.discount,
+                                //Þarf að margfalda saman til að fá average rating
+                                rating = b.rating,
+                                noOfRatings = b.noOfRatings
+                            }).SingleOrDefault();
+
+            return bookDetail;
+        }
+
         public List<BookView> GetTop10BooksFromDB()
         {
            var top10 = (from b in _db.Books
