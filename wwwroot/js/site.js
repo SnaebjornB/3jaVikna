@@ -6,4 +6,4 @@ function check(input) {
         // input is valid -- reset the error message
         input.setCustomValidity('');
     }
-}
+} 
