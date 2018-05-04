@@ -1,7 +1,8 @@
 ﻿body {
-    margin: auto;
-    padding: auto;
-    background-color: rgb(59, 59, 59);
+    margin: 0;
+    padding: 0;
+    /*background-color: rgb(59, 59, 59);*/
+    background-color: lightblue;
 }
 
 /* Wrapping element */
@@ -39,25 +40,30 @@
 /*******************/
 
 #siteContainer{
-    margin: auto;
-    padding: auto;
-}
-
-#siteHeader{
-    width: 100%;
-    height: 150px;
-    background-color: lightblue;
-}
-#siteFooter{
-    margin: auto;
-    padding: auto;
-    color: white;
-    background-color:rgb(59, 59, 59);
+    text-align: center;
+    width: auto;
+    height: auto;
 }
 #siteBody{
     margin: auto;
     padding: auto;
-    background-color: white;
+    float: both;
+    background-color: lightgreen;
+    width: auto;
+    height: auto;
+}
+
+#siteHeader{
+    height: 145px;
+    background-color: rgb(124, 148, 253);
+}
+#siteFooter{
+    clear: both;
+    margin: auto;
+    padding: auto;
+    overflow: hidden;
+    color: white;
+    background-color:rgb(59, 59, 59);
 }
 
 .siteNav {
@@ -75,7 +81,6 @@
 .siteNav li a {
     display: block;
     color: white;
-    text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
@@ -87,11 +92,15 @@
 .active {
     background-color: #4CAF50;
 }
-
+#siteSearch{
+    float: left;
+    margin-top: 45px;
+    margin-left: 45px
+}
 .footerNav {
     margin-left: 250px;
     border-collapse: collapse;
-    width: 100%;
+    clear: both;
 }
 
 th, td {
@@ -107,33 +116,50 @@ th {
 
 /***/
 
-.footerNav ul {
+.footerNav {
+    
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 25%;
+    width: auto;
     height: auto;
 }
 
-.footerNav li a {
+.footerNav td a {
     display: block;
     color: white;
     padding: 8px 0px;
     text-decoration: none;
 }
-
-.footerNav li a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.footerNav li a:hover:not(.active) {
+.footerNav td a:hover:not(.active) {
     background-color: #111;
-    color: white;
 }
 
 .footerText{
 
     text-align: center;
-    margin-top: 200px;
+    margin-top: 150px;
+}
+
+/*Implement similair class*/
+.book-item{
+
+    border-style: solid;
+    text-align: left;
+    width: auto;
+    float: left;
+    margin: 1.6%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
+}
+.movieTopList{
+    border-style: solid;
+    text-align: left;
+    width: 800px;
+    float: left;
+    margin: 1.6%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
 }

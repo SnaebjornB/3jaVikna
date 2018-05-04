@@ -3,63 +3,41 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - BookCave</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
-        <!--
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        -->
-        <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
-    <!--
-    <nav class="navbar-fixed-top navbar-collapse">
-        <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline">
-        
-        <div class="container">
-            <div class="navbar-header">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Home">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Top10">Top Ten</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Category">Category</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    -->
     <div id="siteContainer">
         <div id="siteHeader">
             <div>
-                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline">
+                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="float:left">
+            </div>
+            <div id="siteSearch">
+                <form>
+                    <input type="text" id="searchBar" name="searchBar">
+                    <input type="submit" value="Search">
+                </form>
             </div>
             <div>
                 
-                
-                
             </div>
                 <div style="clear:both">
-                    <!--
-                    <ul>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Home">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Top10">Top Ten</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Category">Category</a></li>
-                    </ul>
-                    -->
                     <ul class="siteNav">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Top 10</a></li>
-                        <li><a href="#">Search by category</a></li>
+                        <li><a href="#">Category</a></li>
                     </ul>
                 </div>
-    </div>
-    <div id="siteBody">
-        @RenderBody()
-    </div>
-    <div id="siteFooter">
-       
-        <footer>
-            <br>
-            <table class="footerNav">
+        </div>
+
+        <div id="siteBody">
+            @RenderBody()
+        </div>
+
+        <div id="siteFooter">
+            <table class="footerNav" align="right">
                 <tr>
                     <th>Support</th>
                     <th>Jobs</th>
@@ -67,32 +45,34 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <td>
-                        <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Login/Sign up</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li><a href="#">Apply</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Where do we deliver?</a></li>
-                        </ul>
-                    </td>
+                    <td><a href="#">About us</a></td>
+                    <td><a href="#">Apply</a></td>
+                    <td><a href="#">Terms & Conditions</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#">Contact us</a></td>
+                    <td></td>
+                    <td><a href="#">Where do we deliver?</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#">Login/Sign up</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
                     <td></td>
                 </tr>
             </table>
-            <div>
+            <div style="clear:both">
                 <p class="footerText">theBookCave.com</p>
             </div>
-        </footer>
-    </div>
+        </div>
 
+
+
+    </div>
 </body>
 </html>
