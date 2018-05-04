@@ -7,18 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
 
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <div id="siteContainer">
         <div id="siteHeader">
             <div>
-                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="float:left">
-            </div>
-            <div id="siteSearch">
-                <form>
-                    <input type="text" id="searchBar" name="searchBar">
-                    <input type="submit" value="Search">
-                </form>
+                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline">
+                @await Html.PartialAsync("_LoginPartial")
             </div>
             <div>
                 

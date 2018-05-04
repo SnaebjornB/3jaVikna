@@ -1,0 +1,41 @@
+ @model BookCave.Models.ViewModels.RegisterViewModel
+<head>
+    <script type="text/javascript" src="~/js/site.js"></script>
+</head>
+ <h1>Sign up</h1>
+    <form asp-action="Register" asp-controller="Account" class="form-horizontal">
+        <div class="form-group">
+            <label>
+                Email <br><input type="email" asp-for="Email" class="form-control" placeholder="Enter your email"/><br>
+                <br>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                First Name <br><input type="text" asp-for="FirstName" class="form-control" placeholder="Enter your first name"/><br>
+            </label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>
+                Last Name <br><input type="text" asp-for="LastName" class="form-control" placeholder="Enter your last name"/><br>
+            </label>
+            <br>
+        </div>
+        <div class="form-group">  
+            <label>          
+                Password <br><input type="password" asp-for="Password" class="form-control" placeholder="Enter your password" id="password"/><br>
+            </label>
+            <br>
+        </div>
+        <div class="form-group">   
+            <label>         
+                Confirm your password <br><input type="password" class="form-control" placeholder="Confirm your password" oninput="check(this)"/><br>
+            </label>
+            <span id="responseSpan"></span>
+            <br>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Register"/>
+        </div>
+    </form>
