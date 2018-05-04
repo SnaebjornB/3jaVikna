@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 using System.Linq;
+using System;
 
 namespace BookCave.Services
 {
@@ -13,6 +14,13 @@ namespace BookCave.Services
         {
             _bookRepo = new BookRepo();
         }
+
+       public List<BookView> GetSearchResult(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
+        {
+            var searchResult = _bookRepo.GetSearchResultFromDB(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy);
+            return searchResult;
+        }
+
         public List<BookView> GetTop10HighestRated()
         {
             var top10Books = _bookRepo.GetTop10BooksFromDB();
@@ -27,5 +35,6 @@ namespace BookCave.Services
                                 select b).ToList();
             return discountedBooks;
         }
+
     }
 }
