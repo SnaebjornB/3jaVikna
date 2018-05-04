@@ -8,13 +8,13 @@
 
 
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/site.css" /> 
 </head>
 <body>
     <div id="siteContainer">
         <div id="siteHeader">
             <div>
-                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline" class="nav navbar-nav navbar-left">
+                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline; float:left" class="nav navbar-nav navbar-left">
                 <form asp-controller="Book" asp-action="Search" method="POST">
                     <input type="text">
                     <input type="submit" value="Search">
