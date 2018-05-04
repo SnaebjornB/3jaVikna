@@ -12,7 +12,16 @@ namespace BookCave.Services
             orderRepo = new OrderRepo();
         }
         
-        public OrderItemEntity getItem(int bookID, int quantity)
+        public void addToBasket(int bookID, int quantity, int customerID)
+        {
+            orderRepo.addToBasket(bookID, quantity, customerID);
+        }
+
+        public OrderBasketView getBasket(int customerID)
+        {
+            return orderRepo.getBasket(customerID);
+        }
+        /*public OrderItemEntity getItem(int bookID, int quantity)
         {
             var book = new BookEntity();
             book = orderRepo.getItem(bookID);
@@ -24,6 +33,6 @@ namespace BookCave.Services
             newItem.bookAuthor = book.author;
 
             return newItem;
-        }
+        }*/
     }
 }

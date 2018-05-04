@@ -2,7 +2,10 @@ namespace BookCave.Models.EntityModels
 {
     public class OrderItemEntity
     {
-        private static int IDcounter = 0;
+        public OrderItemEntity()
+        {
+            customerID = 4;
+        }
         public int ID { get; set; }
         public int bookID { get; set; }
         public double price { get; set; }
