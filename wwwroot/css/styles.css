@@ -117,12 +117,15 @@ body {
      
      border-style: solid;
      text-align: left;
-     width: fit-content;
+     width: 150px;
      margin: 15px auto;
      padding: 5px;
      border-radius: 6px;
      background-color: #f4f4f4;
      display: inline-block;
+ }
+ .book-item img{
+     max-width: 100%;
  }
  .bookDisp{
      border-style: solid;
