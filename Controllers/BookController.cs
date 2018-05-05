@@ -52,6 +52,23 @@ namespace BookCave.Controllers
             return View(bookDetail);
         }
 
+        [HttpGet]
+        public IActionResult Review(int? id)
+        {
+            if(id == null){
+                return View("Error");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Review()
+        {
+            //Útfæra Post request
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

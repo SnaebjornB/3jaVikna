@@ -1,7 +1,7 @@
 @model BookCave.Models.ViewModels.BookView
 
-
-<div class="siteBody">
+<br>
+<div id="siteBody">
     <img src="@Model.image" alt="@Model.title">  <br>
     <h3>Title: @Model.title </h3>
     <p>Author: @Model.author </p>
@@ -40,7 +40,7 @@
     <br>
 
     <h4>Write a review</h4>
-    <!-- Útfærsla er til í notepad -->
+    <a asp-controller="Book" asp-action="Review" class="btn btn-primary" asp-route-id="@Model.ID">Review this book</a>
     <br>
 
     <h4>Aðrar upplýsingar sem voru ekki á frumgerðinni</h4>
