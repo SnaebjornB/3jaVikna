@@ -2,25 +2,30 @@ body {
      margin: 0;
      padding: 0;
      width: 100%;
-     /*background-color: rgb(59, 59, 59);*/
-     background-color: lightblue;
+     background-color: rgb(59, 59, 59);
  }
  #siteContainer{
      text-align: center;
-     width: auto;
+     width: 100%;
+     margin: 0 auto;
  }
  #siteBody{
-     margin: auto;
-     padding: auto;
-     float: both;
-     background-color: lightgreen;
+     
+     margin: 0px auto;
+     width: 100%;
+     /*text-align: center;*/
+     height: auto;
+     background-color: #ececea;
      overflow: hidden;
+     
      
  }
  
  #siteHeader{
      height: 145px;
-     background-color: rgb(124, 148, 253);
+     background-color: maroon;
+     position:fixed;
+     width: 100%;
  }
  #siteFooter{
      clear: both;
@@ -61,17 +66,17 @@ body {
      margin-left: 45px
  }
  .footerNav {
-     margin-left: 25%;
-     float: left;
+     
+     
      border-collapse: collapse;
      clear: both;
  }
  
  th, td {
      color: white;
-     width: 200px;
      text-align: left;
      padding: 8px;
+     width: 20%;
  }
  
  th {
@@ -102,26 +107,33 @@ body {
  .footerText{
  
      text-align: center;
-     margin-top: 150px;
+     margin-top: 50px;
+     padding-bottom: 15px;
+     color: white;
  }
  
  /*Implement similair class*/
  .book-item{
- 
+     
      border-style: solid;
      text-align: left;
-     width: auto;
-     float: left;
-     margin: 1.6%;
-     padding: 10px;
-     background-color: #f4f4f4;
+     width: fit-content;
+     margin: 15px auto;
+     padding: 5px;
      border-radius: 6px;
+     background-color: #f4f4f4;
+     display: inline-block;
  }
  .bookDisp{
      border-style: solid;
      border-radius: 6px;
      padding: 10px;
-     text-align: left;
+     margin: 10px auto;
+     text-align: right;
+     width: 500px;
+     clear:both; 
+     display: block;
+     background: white;
  }
  .movieSmallPoster{
      float: left;
@@ -131,11 +143,48 @@ body {
  .movieTopList{
      border-style: solid;
      text-align: left;
-     width: auto;
-     float: left;
+     width: 150px;
      margin: 1.6%;
      padding: 10px;
      background-color: #f4f4f4;
      border-radius: 6px;
  }
- 
+ #content{
+     border-style: solid;
+     margin: 50px 5%;
+     width: 800px;
+     text-align: center;
+ }
+
+ .marginPush
+{
+  margin-left: 30px;
+}
+.bottomPadding{
+     padding-bottom: 95px;
+     display: hidden;
+}
+#indexContainer{
+     display: inline;
+}
+#siteFooter{
+     float: right;
+     
+}
+#siteTable{
+     width: auto;
+     background-color: rgb(59, 59, 59);
+     display: inline-block;
+     position: absolute;
+}
+#footerFill{
+     float:left;
+     width:30%;
+     height:100px;
+}
+.footerNavBox{
+     width: 70%;
+     float: right;
+}
+
+/*Carousel styles*/

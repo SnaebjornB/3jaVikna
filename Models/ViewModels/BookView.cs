@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using BookCave.Models.EntityModels;
+
 namespace BookCave.Models.ViewModels
 {
     public class BookView{
@@ -17,7 +20,11 @@ namespace BookCave.Models.ViewModels
         public string category { get; set; }
         public int noOfSoldUnits { get; set; }
         public int noOfCopiesAvailable { get; set; }
+
         public double discount { get; set; }
+        
         public string image { get; set; }
+
+        public List<ReviewEntity> Reviews {get; set; }
     }
 }

@@ -1,16 +1,22 @@
 @model List<BookCave.Models.ViewModels.BookView>
-<!-- RÉTT GÖGN ERU AÐ KOMA INN. SÍÐAN LÝTUR BARA HRÆÐILEGA ÚT -->
-<div class="siteBody">
+<br>
+<div id="siteBody">
     
+        @{int counter = 1;}
         @foreach(var book in Model)
         {
-            <div class="bookDisp">
-                <img src="@book.image" alt="@book.title">
-                <p>ID: @book.ID</p>
-                <p>Title: @book.title</p> <!-- GERA TITILINN SMELLANLEGAN -->
-                <p>Author: @book.author</p>
-                <br>
-            </div>
+                <div class="bookDisp">
+                        <h3 style="float:left">@counter</h3>
+                        <img src="@book.image" alt="@book.title">
+                        
+                        <p>ID: @book.ID</p>
+                        <p>Title: @book.title</p> <!-- GERA TITILINN SMELLANLEGAN -->
+                        <p>Author: @book.author</p>
+                        <br>
+                </div>
+
+                counter++;
         }
     
 </div>
+    

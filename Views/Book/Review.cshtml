@@ -1,0 +1,17 @@
+@model BookCave.Models.InputModels.ReviewInput
+<br>
+<div id="siteBody">
+    <div class="Review post form">
+        <form method="post">
+            <label asp-for="rating">Rating: </label><br/>
+            <input type="double" asp-for="rating"><br/>
+            <span asp-validation-for="rating"></span><br/>
+        
+            <label asp-for="review"></label><br/>
+            <input type="text" asp-for="review"><br/>
+            <span asp-validation-for="review"></span><br/>
+        
+            <input type="submit" value="Submit review">
+        </form>
+    </div>
+</div>
