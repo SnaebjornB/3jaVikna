@@ -18,8 +18,8 @@
                 </div>
                 <div style="padding-top:25px; padding-right:90px">
                     <form asp-controller="Book" asp-action="Search" method="POST">
-                        <input type="text">
-                        <input type="submit" value="Search">
+                        <input type="text" class="from-control"/>
+                        <input type="submit" value="Search" class="btn btn-primary"/>
                     </form>
                 </div>
                 <div style="padding-right:100px">
@@ -65,7 +65,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><a href="#">Login/Sign up</a></td>
+                        <td><a asp-controller="Account" asp-action="Login">Login/Sign up</a></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -82,7 +82,6 @@
             
             
         
-    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 

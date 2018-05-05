@@ -56,7 +56,15 @@ namespace BookCave.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            ClaimsPrincipal currentUser = this.User;
+            if(_signInManager.IsSignedIn(currentUser))
+            {
+                return RedirectToAction("Profile");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]

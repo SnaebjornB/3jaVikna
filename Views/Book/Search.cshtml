@@ -41,10 +41,16 @@
         
         @foreach(var book in Model)
         {
-            <div>
-                <li>Title: @book.title Author: @book.author ISBN number: @book.ISBN Category: @book.category </li>
-            </div>
-            <br>
+            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">
+                <div class="book-item marginPush">
+                    <img src ="@book.image" alt="@book.title" width="170" height="170">
+                    <p>@book.title</p>
+                    <p>@book.author</p>
+                    <p>@book.category</p>
+                    <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
+                </div>
+                <br>
+            </a>
         }
     </div>
 </div>
