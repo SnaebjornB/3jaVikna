@@ -35,6 +35,7 @@ namespace BookCave.Controllers
             return View(top10BookList);
         }
 
+        [HttpGet]
         public IActionResult Detail(int? id)
         {
             if(id == null){

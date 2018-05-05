@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using BookCave.Models.EntityModels;
+
 namespace BookCave.Models.ViewModels
 {
     public class BookView{
@@ -21,5 +24,7 @@ namespace BookCave.Models.ViewModels
         public double discount { get; set; }
         
         public string image { get; set; }
+
+        public List<ReviewEntity> Reviews {get; set; }
     }
 }

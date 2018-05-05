@@ -90,12 +90,13 @@ public BookView GetBookDetail(int? id)
                                 category = b.category,
                                 noOfSoldUnits = b.noOfSoldUnits,
                                 noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                //Þarf að margfalda saman til að fá verðið
-                                price = b.price,
+                                //price og discount margfaldað saman til að fá raunverðið
+                                price = b.price * b.discount,
                                 discount = b.discount,
-                                //Þarf að margfalda saman til að fá average rating
-                                rating = b.rating,
-                                noOfRatings = b.noOfRatings
+                                //Þarf að deila rating með noOfRatings til að fá average rating
+                                rating = b.rating / b.noOfRatings,
+                                noOfRatings = b.noOfRatings,
+                                Reviews = b.Reviews
                             }).SingleOrDefault();
 
             return bookDetail;
