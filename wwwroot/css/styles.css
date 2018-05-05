@@ -2,7 +2,7 @@ body {
      margin: 0;
      padding: 0;
      width: 100%;
-     /*background-color: rgb(59, 59, 59);*/
+     background-color: rgb(59, 59, 59);
  }
  #siteContainer{
      text-align: center;
@@ -11,9 +11,8 @@ body {
  }
  #siteBody{
      
-     margin: 0 auto;
+     margin: 0px auto;
      width: 100%;
-
      /*text-align: center;*/
      height: auto;
      background-color: #ececea;
@@ -150,13 +149,19 @@ body {
      background-color: #f4f4f4;
      border-radius: 6px;
  }
+ #content{
+     border-style: solid;
+     margin: 50px 5%;
+     width: 800px;
+     text-align: center;
+ }
 
  .marginPush
 {
   margin-left: 30px;
 }
 .bottomPadding{
-     padding-bottom: 100px;
+     padding-bottom: 95px;
      display: hidden;
 }
 #indexContainer{
@@ -169,6 +174,8 @@ body {
 #siteTable{
      width: auto;
      background-color: rgb(59, 59, 59);
+     display: inline-block;
+     position: absolute;
 }
 #footerFill{
      float:left;
@@ -180,4 +187,40 @@ body {
      float: right;
 }
 
- 
+/*Carousel styles*/
+.multi-item-carousel{
+    .carousel-inner{
+      > .item{
+        transition: 500ms ease-in-out left;
+      }
+      .active{
+        &.left{
+          left:-33%;
+        }
+        &.right{
+          left:33%;
+        }
+      }
+      .next{
+        left: 33%;
+      }
+      .prev{
+        left: -33%;
+      }
+      @media all and (transform-3d), (-webkit-transform-3d) {
+        > .item{
+          // use your favourite prefixer here
+          transition: 500ms ease-in-out left;
+          transition: 500ms ease-in-out all;
+          backface-visibility: visible;
+          transform: none!important;
+        }
+      }
+    }
+    .carouse-control{
+      &.left, &.right{
+        background-image: none;
+      }
+    }
+  }
+  

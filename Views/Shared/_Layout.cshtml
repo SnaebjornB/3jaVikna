@@ -13,7 +13,7 @@
         <div id="siteHeader">
             <div>
                 <div>
-                    <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline; float:left" class="nav navbar-nav navbar-left">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline; float:left" class="nav navbar-nav navbar-left"></a>
                 </div>
                 <div style="padding-top:25px; padding-right:90px">
                     <form asp-controller="Book" asp-action="Search" method="POST">
@@ -52,15 +52,15 @@
                         <th></th>
                     </tr>
                     <tr>
-                        <td><a href="#">About us</a></td>
+                        <td><a asp-controller="Home" asp-action="About">About us</a></td>
                         <td><a href="#">Apply</a></td>
-                        <td><a href="#">Terms & Conditions</a></td>
+                        <td><a asp-controller="Home" asp-action="TermsAndConditions">Terms & Conditions</a></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><a href="#">Contact us</a></td>
+                        <td><a asp-controller="Home" asp-action="Contact">Contact us</a></td>
                         <td></td>
-                        <td><a href="#">Where do we deliver?</a></td>
+                        <td><a asp-controller="Home" asp-action="WeDeliver">Where do we deliver?</a></td>
                         <td></td>
                     </tr>
                     <tr>
