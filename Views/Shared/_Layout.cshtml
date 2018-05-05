@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <title>@ViewData["Title"] - BookCave</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -14,9 +15,11 @@
     <div id="siteContainer">
         <div id="siteHeader">
             <div>
-                <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline; float:left" class="nav navbar-nav navbar-left">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline; float:left" class="nav navbar-nav navbar-left">
+                </a>
                 <form asp-controller="Book" asp-action="Search" method="POST">
-                    <input type="text">
+                    <input type="text" name="searchTitle">
                     <input type="submit" value="Search">
                 </form>
                 @await Html.PartialAsync("_LoginPartial")
@@ -46,19 +49,19 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <td><a href="#">About us</a></td>
+                    <td><a asp-controller="Home" asp-action="About">About us</a></td>
                     <td><a href="#">Apply</a></td>
-                    <td><a href="#">Terms & Conditions</a></td>
+                    <td><a asp-controller="Home" asp-action="TermsAndConditions">Terms & Conditions</a></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="#">Contact us</a></td>
+                    <td><a asp-controller="Home" asp-action="Contact">Contact us</a></td>
                     <td></td>
-                    <td><a href="#">Where do we deliver?</a></td>
+                    <td><a asp-controller="Home" asp-action="WeDeliver">Where do we deliver?</a></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="#">Login/Sign up</a></td>
+                    <td><a asp-controller="Account" asp-action="Login">Login/Sign up</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -72,7 +75,6 @@
             </div>
         </footer>
     </div>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 
