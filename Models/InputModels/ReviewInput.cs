@@ -4,10 +4,9 @@ namespace BookCave.Models.InputModels
 {
     public class ReviewInput
     {
-        [Required(ErrorMessage = "Please write a review")]
         public string review { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Don't forget to rate the book")]
         public double rating { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace BookCave.Services
             return bookDetail;
         }
 
-        internal void AddReview(int id, ReviewInput newReview)
+        public void AddReview(int? id, ReviewInput newReview)
         {
             _bookRepo.AddReview(id, newReview);
         }

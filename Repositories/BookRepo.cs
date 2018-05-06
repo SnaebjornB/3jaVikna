@@ -12,10 +12,12 @@ namespace BookCave.Repositories
     {
         
         private DataContext _db;
+        private ReviewEntity reviewEntity;
 
         public BookRepo()
         {
             _db = new DataContext();
+            reviewEntity = new ReviewEntity();
         }
 
         public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
@@ -72,9 +74,15 @@ namespace BookCave.Repositories
             return searchResult;
         }
 
-        internal void AddReview(int id, ReviewInput newReview)
+        public void AddReview(int? id, ReviewInput newReview)
         {
-
+            reviewEntity.review = newReview.review;
+            reviewEntity.rating = newReview.rating;
+            reviewEntity.username = "Implement username here";
+            reviewEntity.BookID = id.GetValueOrDefault(); //int? breytt í int
+            
+            _db.Reviews.Add(reviewEntity);
+            _db.SaveChanges();
         }
 
         public BookView GetBookDetail(int? id)
@@ -104,6 +112,10 @@ namespace BookCave.Repositories
                                 rating = b.rating / b.noOfRatings,
                                 noOfRatings = b.noOfRatings,
                                 //Reviews = b.Reviews
+                                Reviews = (from book in _db.Books
+                                            join reviews in _db.Reviews on book.ID equals reviews.BookID
+                                            where reviews.BookID == id.GetValueOrDefault()
+                                            select reviews).ToList()
                             }).SingleOrDefault();
 
             return bookDetail;
