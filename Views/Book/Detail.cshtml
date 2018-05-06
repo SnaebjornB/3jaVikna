@@ -1,12 +1,16 @@
 @model BookCave.Models.ViewModels.BookView
 
-<br>
+
 <div id="siteBody">
+    <br>
+    <br>
+    <br>
+
     <img src="@Model.image" alt="@Model.title">  <br>
     <h3>Title: @Model.title </h3>
     <p>Author: @Model.author </p>
     <p>Price: @Model.price $</p> <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
-    <p>Rating: @Model.rating</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
+    <p>Rating: @Model.rating</p> <p>(no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
     <br> 
 
     <h4>Description</h4>
@@ -45,7 +49,6 @@
     <h4>Aðrar upplýsingar sem voru ekki á frumgerðinni</h4>
     <p>Category: @Model.category </p>
     <p>Discount: @Model.discount</p>
-    <p>Number of ratings: @Model.noOfRatings</p>
     <br>
 
 </div>

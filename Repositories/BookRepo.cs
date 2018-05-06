@@ -13,11 +13,13 @@ namespace BookCave.Repositories
         
         private DataContext _db;
         private ReviewEntity reviewEntity;
+        private BookEntity bookEntity;
 
         public BookRepo()
         {
             _db = new DataContext();
             reviewEntity = new ReviewEntity();
+            bookEntity = new BookEntity();
         }
 
         public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
@@ -45,37 +47,17 @@ namespace BookCave.Repositories
                                     noOfCopiesAvailable = b.noOfCopiesAvailable,
                                     discount = b.discount
                                 }).ToList();
-            
-            if(orderBy == "ascendingPrice")
-            {
-                searchResult = (from b in searchResult
-                                orderby b.price ascending
-                                select b).ToList();
-            }
-            if(orderBy == "descendingPrice")
-            {
-                searchResult = (from b in searchResult
-                                orderby b.price descending
-                                select b).ToList();
-            }
-            if(orderBy == "descendingTitle")
-            {
-                searchResult = (from b in searchResult
-                                orderby b.title descending
-                                select b).ToList();
-            }
-            if(orderBy == "ascendingTitle")
-            {
-                searchResult = (from b in searchResult
-                                orderby b.title ascending
-                                select b).ToList();
-            }
 
             return searchResult;
         }
 
         public void AddReview(int? id, ReviewInput newReview)
         {
+            //Gildunum í Review-inu bætt við viðeigandi bók
+                //newReview.rating bætt við bookEntity.rating[id]
+                //bookEntity total number of ratings hækkað um 1
+
+            //Review-id vistað í gagnagrunninn
             reviewEntity.review = newReview.review;
             reviewEntity.rating = newReview.rating;
             reviewEntity.username = "Implement username here";
