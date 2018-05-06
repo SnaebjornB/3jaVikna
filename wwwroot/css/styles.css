@@ -2,7 +2,7 @@ body {
      margin: 0;
      padding: 0;
      width: 100%;
-     background-color: rgb(59, 59, 59);
+     background-color: #ececea;
  }
  #siteContainer{
      text-align: center;
@@ -22,7 +22,7 @@ body {
  }
  
  #siteHeader{
-     height: 145px;
+     height: 135px;
      background-color: maroon;
      position:fixed;
      width: 100%;
@@ -34,13 +34,10 @@ body {
      overflow: hidden;
      color: white;
      background-color:rgb(59, 59, 59);
-     ;
  }
  
  .siteNav {
      list-style-type: none;
-     margin: 0;
-     padding: 0;
      overflow: hidden;
      background-color: rgb(59, 59, 59);
  }
@@ -95,7 +92,7 @@ body {
  }
  
  .footerNav td a {
-     display: block;
+     display: inline-block;
      color: white;
      padding: 8px 0px;
      text-decoration: none;

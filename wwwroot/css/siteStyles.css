@@ -1,0 +1,153 @@
+* {
+     margin: 0;
+     padding: 0;
+ }
+ body{
+    width: 100%;
+    /*background-color: #ececea;*/
+    background-color: rgb(59, 59, 59);
+ }
+ #siteContainer{
+    margin: 0px auto;
+}
+#siteHeader{
+    height: 125px;
+    background: maroon;
+    position:fixed;
+    width: 100%;
+}
+#siteHeaderTop{
+    display: inline;
+}
+#siteHeaderBottom{
+    clear: both;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(59, 59, 59);
+}
+#siteHeaderBottom li {
+    float: left;
+}
+
+#siteHeaderBottom li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#siteHeaderBottom li a:hover:not(.active) {
+    background-color: #111;
+}
+#siteBody{  
+    padding: 150px 0px 100px;  
+    margin: 0px auto;
+    width: 100%;
+    background-color: #ececea;
+    overflow: hidden;
+}
+#siteContent{
+    margin-left: 20%;
+    float: left;
+    width: 80%;
+    text-align:center;
+}
+#siteQuickNav{
+    
+    margin: 0px 0px;
+    float: left;
+    width:20%;
+    height: 300px;
+    background-color: red;
+    position: fixed;
+    top: 165px;
+}
+#siteFooter{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    color: white;
+    /*position: absolute;*/
+    background:rgb(59, 59, 59);
+}
+#siteFooterEmpty{
+    width: 30%;
+    height: 100px;
+    float: left;
+}
+#siteFooterNav{
+    width: 70%;
+    float: left;
+}
+
+.siteFooterNavHeading{
+    border-bottom: solid white 2px;
+    color: white;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.siteFooterNavLinks{
+    color: white;
+    width: 25%;
+    height: auto;
+    float: left;
+    list-style-type: none;
+}
+.siteFooterNavLinks ul {
+    margin-top: 50px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.siteFooterNavLinks li a {
+    display: block;
+    color: white;
+    padding: 15px 10px;
+    text-decoration: none;
+}
+
+.siteFooterNavLinks li a:hover{
+    background-color: #111;
+}
+
+.searchAlign{
+
+    padding-top: 35px;
+    padding-left: 40%;
+}
+.loginAlign{
+    padding-right: 150px;
+    margin-top:-40px;
+}
+.loginAlign a:hover{
+    color: black;
+}
+.book-item{
+     
+    border-style: solid;
+    text-align: left;
+    width: 150px;
+    margin: 15px auto;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #f4f4f4;
+    display: inline-block;
+}
+.book-item img{
+    max-width: 100%;
+}
+.movieTopList{
+    border-style: solid;
+    text-align: left;
+    width: 150px;
+    margin: 1.6%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
+}
+
