@@ -6,14 +6,18 @@
     </div>
     <div>
         <h1>@Model.name</h1>
-        <h2>Address 1: @Model.address1</h2>
-        @if(@Model.address2 != null)
-        {
-            <h2>Address 2: @Model.address2</h2>
-        }
         <h2>My favorite book: @Model.favBook</h2>
         <form asp-action="EditProfile" method="GET">
             <input type="submit" value="Edit Profile">
+        </form>
+
+        <h2>Addresses </h2>
+        @foreach(var address in Model.addresses)
+        {
+            <h3>@address</h3>
+        }
+        <form asp-action="EditAddresses" method="GET">
+            <input type="submit" value="Edit Addresses">
         </form>
     </div>
 </div>

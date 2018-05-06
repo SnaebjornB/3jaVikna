@@ -1,4 +1,4 @@
-using BookCave.Models;
+using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

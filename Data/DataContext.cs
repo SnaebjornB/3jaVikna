@@ -6,6 +6,7 @@ namespace BookCave.Data
     public class DataContext : DbContext
     {
         public DbSet<BookEntity> Books { get; set; }
+        public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
 
         public DbSet<ReviewEntity> Reviews { get; set; }
