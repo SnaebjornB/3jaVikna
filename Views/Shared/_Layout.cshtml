@@ -7,10 +7,86 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
 
-        <link rel="stylesheet" href="~/css/styles.css" /> 
-        
+        <link rel="stylesheet" href="~/css/siteStyles.css" />
+        <!--
+            <link rel="stylesheet" href="~/css/styles.css" /> 
+        -->
 </head>
 <body>
+    
+    <div id="siteContainer">
+        <div id="siteHeader">
+            <div id="siteHeaderTop">
+                <div>
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" class="nav navbar-nav navbar-left"></a>
+                </div>
+                <div class="searchAlign">
+                    <form asp-controller="Book" asp-action="Search" method="POST">
+                        <input type="text" class="from-control"/>
+                        <input type="submit" value="Search" class="btn btn-primary"/>
+                    </form>
+                </div>
+                <div class="loginAlign">
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
+            </div>
+            <div id="siteHeaderBottom">
+                <ul>
+                    <li><a asp-controller="Book" asp-action="Top10">Top 10</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Shop By Category</a></li>
+                </ul>
+            </div>
+        </div>
+            
+        <div id="siteBody">
+            <div id="siteQuickNav">
+
+            </div>
+            <div id="siteContent">
+                @RenderBody()
+            </div>
+            
+        </div>
+        <div id="siteFooter">
+            <div id="siteFooterEmpty"></div>
+            <div id="siteFooterNav">
+                <div class="siteFooterNavLinks">
+                    <div class="siteFooterNavHeading"><h3>Support</h3></div>
+                    <br><br><br>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Login/Sign up</a></li>
+                    </ul>
+                </div>
+                <div class="siteFooterNavLinks">
+                    <div class="siteFooterNavHeading"><h3>Jobs</h3></div>
+                    <br><br><br>
+                    <ul>
+                        <li><a href="#">Apply</a></li>
+                    </ul>
+                </div>
+                <div class="siteFooterNavLinks">
+                    <div class="siteFooterNavHeading"><h3>Other</h3></div>
+                    <br><br><br>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Where do we deliver?</a></li>
+                    </ul>
+                </div>
+                <div class="siteFooterNavLinks">
+                    <div class="siteFooterNavHeading"><h3 style="visibility:hidden">Empty space</h3></div>
+                    <br>
+                    
+                </div>
+            </div>
+            <div style="text-align:center; margin:200px auto 50px">
+                <p>&copy;theBookCave.com</p>
+            </div>
+        </div>
+    </div>
+    <!--
     <div id="siteContainer">
         <div id="siteHeader">
             <div>
@@ -88,5 +164,6 @@
 
 
     </div>
+    -->
 </body>
 </html>

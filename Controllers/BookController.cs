@@ -40,30 +40,45 @@ namespace BookCave.Controllers
         public IActionResult Detail(int? id)
         {
             if(id == null){
-                return View("Error");
+                return View("NotFound");
             }
 
             var bookDetail = _bookService.GetBookDetail(id);
 
             
             if(bookDetail == null){
-                return View("Error");
+                return View("NotFound");
             }
 
             return View(bookDetail);
         }
 
         [HttpGet]
-        public IActionResult Review(int id)
+        public IActionResult Review(int? id)
         {
+            if (id == null)
+            {
+                return View("NotFound");
+            }
 
             return View();
         }
 
         [HttpPost]
-        public IActionResult Review(int id, ReviewInput newReview)
+        public IActionResult Review(int? id, ReviewInput newReview)
         {
-            _bookService.AddReview(id, newReview);
+            if (id == null)
+            {
+                return View("NotFound");
+            }
+
+            //Athuga hvort að bók með ID == id sé til
+
+            if (ModelState.IsValid)
+            {
+                _bookService.AddReview(id, newReview);
+                return RedirectToAction("Search");
+            }
             
             return View();
         }
