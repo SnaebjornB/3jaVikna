@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180506002815_addingListOfReviews")]
+    partial class addingListOfReviews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,6 +92,8 @@ namespace BookCave.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("BookEntityID");
+
                     b.Property<int>("BookID");
 
                     b.Property<double>("rating");
@@ -101,7 +104,16 @@ namespace BookCave.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("BookEntityID");
+
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.ReviewEntity", b =>
+                {
+                    b.HasOne("BookCave.Models.EntityModels.BookEntity")
+                        .WithMany("Reviews")
+                        .HasForeignKey("BookEntityID");
                 });
 #pragma warning restore 612, 618
         }

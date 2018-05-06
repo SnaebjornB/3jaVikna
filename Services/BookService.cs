@@ -3,6 +3,7 @@ using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 using System.Linq;
 using System;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Services
 {
@@ -40,6 +41,11 @@ namespace BookCave.Services
         {
             var bookDetail = _bookRepo.GetBookDetail(id);
             return bookDetail;
+        }
+
+        internal void AddReview(int id, ReviewInput newReview)
+        {
+            _bookRepo.AddReview(id, newReview);
         }
     }
 }

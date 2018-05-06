@@ -21,6 +21,5 @@ namespace BookCave.Models.EntityModels
         public int noOfCopiesAvailable { get; set; }
         public double discount { get; set; }
         public string image { get; set; }
-        public List<ReviewEntity> Reviews {get; set; }
     }
 }

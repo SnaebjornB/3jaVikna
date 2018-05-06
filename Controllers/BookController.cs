@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Controllers
 {
@@ -53,19 +54,17 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        public IActionResult Review(int? id)
+        public IActionResult Review(int id)
         {
-            if(id == null){
-                return View("Error");
-            }
 
             return View();
         }
 
         [HttpPost]
-        public IActionResult Review()
+        public IActionResult Review(int id, ReviewInput newReview)
         {
-            //Útfæra Post request
+            _bookService.AddReview(id, newReview);
+            
             return View();
         }
 

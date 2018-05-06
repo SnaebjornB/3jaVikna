@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
+using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 
 namespace BookCave.Repositories
@@ -70,7 +72,12 @@ namespace BookCave.Repositories
             return searchResult;
         }
 
-public BookView GetBookDetail(int? id)
+        internal void AddReview(int id, ReviewInput newReview)
+        {
+
+        }
+
+        public BookView GetBookDetail(int? id)
         {
             var bookDetail =(from b in _db.Books
                             where b.ID == id
@@ -96,7 +103,7 @@ public BookView GetBookDetail(int? id)
                                 //Þarf að deila rating með noOfRatings til að fá average rating
                                 rating = b.rating / b.noOfRatings,
                                 noOfRatings = b.noOfRatings,
-                                Reviews = b.Reviews
+                                //Reviews = b.Reviews
                             }).SingleOrDefault();
 
             return bookDetail;
