@@ -53,17 +53,29 @@ namespace BookCave.Repositories
 
         public void AddReview(int? id, ReviewInput newReview)
         {
-            //Gildunum í Review-inu bætt við viðeigandi bók
-                //newReview.rating bætt við bookEntity.rating[id]
-                //bookEntity total number of ratings hækkað um 1
+            //Bókin fundin í Database?
+            _db.Books.Attach(bookEntity);
 
-            //Review-id vistað í gagnagrunninn
+            //Gildunum í Review-inu bætt við viðeigandi bók
+            bookEntity = (from b in _db.Books
+                                where b.ID == id.GetValueOrDefault()
+                                select b).SingleOrDefault();
+            //Búið að finna bókina sem verið er að review-a. Breytum henni.
+            //Nýja rating-inu bætt við reviewedBook.rating
+            bookEntity.rating = bookEntity.rating + newReview.rating;
+            //Total number of ratings hækkað um 1
+            bookEntity.noOfRatings = bookEntity.noOfRatings + 1;
+            
+            
+
+            //Review-ið vistað í gagnagrunninn
             reviewEntity.review = newReview.review;
             reviewEntity.rating = newReview.rating;
             reviewEntity.username = "Implement username here";
             reviewEntity.BookID = id.GetValueOrDefault(); //int? breytt í int
-            
             _db.Reviews.Add(reviewEntity);
+
+            //Allar breytingar save-aðar í gagnagrunninum
             _db.SaveChanges();
         }
 

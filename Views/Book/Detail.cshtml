@@ -10,14 +10,13 @@
     <h3>Title: @Model.title </h3>
     <p>Author: @Model.author </p>
     <p>Price: @Model.price $</p> <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
-    <p>Rating: @Model.rating</p> <p>(no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
+    <p>Rating: @Model.rating (no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
     <br> 
 
     <h4>Description</h4>
     <p>@Model.description</p> 
     <br>
 
-    <h2>Er eftir að útfæra virknina fyrir "Add to basket" takkann</h2>
     <a asp-controller="Order" asp-action="Basket" class="btn btn-primary">Add to basket</a>
     <br>
 
@@ -27,6 +26,7 @@
     <p>Publisher: @Model.publisher</p>
     <p>Publication country: @Model.country</p> 
     <p>Language: @Model.language</p>
+    <p>Category: @Model.category </p>
     <p>ISBN number: @Model.ISBN </p>
     <br>
 
@@ -47,7 +47,6 @@
     <br>
 
     <h4>Aðrar upplýsingar sem voru ekki á frumgerðinni</h4>
-    <p>Category: @Model.category </p>
     <p>Discount: @Model.discount</p>
     <br>
 
