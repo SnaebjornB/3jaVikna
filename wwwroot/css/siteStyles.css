@@ -16,7 +16,7 @@ body{
 #siteHeader{
     height: 125px;
     background: maroon;
-    position:fixed;
+    position: fixed;
     width: 100%;
 }
 #siteHeaderTop{
@@ -117,12 +117,15 @@ body{
     float: left;
     width: 100%;
     text-align:center;
+    overflow-y:hidden;
     
 }
 /*Main index*/
 .bookItemSlider{
     min-height: 5%;
-    max-height: 10%;
+    max-height: 155px;
+    overflow-x: scroll;
+    display: inline;
 }
 .book-item{   
     border-style: solid;
@@ -239,4 +242,3 @@ body{
     top:2px;
     left:2px;
 }
-  /*end radio*/
