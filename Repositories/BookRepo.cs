@@ -169,16 +169,16 @@ namespace BookCave.Repositories
                                         title = b.title,
                                         year = b.year,
                                         numberOfPages = b.numberOfPages,
-                                        rating = b.rating,
+                                        rating = b.rating * b.noOfRatings,
                                         description = b.description,
                                         country = b.country,
                                         language = b.language,
                                         publisher = b.publisher,
-                                        price = b.price,
+                                        price = b.price * b.discount,
                                         category = b.category,
                                         noOfSoldUnits = b.noOfSoldUnits,
                                         noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount,
+                                        discount = (1 - b.discount) * 100,
                                         image = b.image
                                     }).ToList();
             return discountedBooks;

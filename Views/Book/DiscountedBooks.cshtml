@@ -1,0 +1,16 @@
+@model List<BookCave.Models.ViewModels.BookView>
+
+<h1>Discounted books</h1>
+@foreach(var book in Model)
+{
+    <div class="book-item marginPush">
+        <img src ="@book.image" alt="@book.title" width="170" height="200">
+        <h3>@book.discount% off</h3>
+        <p style="text-align: center; font-size: 16px; font-weight: bold;">@book.title</p>
+        <p>Author: @book.author</p>
+        <p>Genre: @book.category</p>
+        <p>Rating: @book.rating</p>
+        <p>Price: $@book.price</p>
+        <button type="button" class="btn btn-success btn-sm">Add to basket</button>
+    </div>
+}
