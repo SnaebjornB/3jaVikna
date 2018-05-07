@@ -107,7 +107,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public async Task<bool> DoesEmailExist(string email)
         {
             var userExists = await _userManager.FindByNameAsync(email);
@@ -135,8 +135,7 @@ namespace BookCave.Controllers
         [Authorize]
         public async Task<IActionResult> EditProfile()
         {
-            ClaimsPrincipal currentUser = this.User;
-            string id = _userManager.GetUserId(currentUser);
+            string id = GetCurrentUserId();
             EditUserViewModel model = new EditUserViewModel();
 
             if(!string.IsNullOrEmpty(id))
@@ -164,8 +163,7 @@ namespace BookCave.Controllers
         [Authorize]
         public async Task<IActionResult> EditProfile(EditUserViewModel model)
         {
-            ClaimsPrincipal currentUser = this.User;
-            string id = _userManager.GetUserId(currentUser);
+            string id = GetCurrentUserId();
             if(ModelState.IsValid)
             {
                 ApplicationUser user = await _userManager.FindByIdAsync(id);
@@ -186,8 +184,7 @@ namespace BookCave.Controllers
         }
         public IActionResult EditAddresses()
         {
-            ClaimsPrincipal currentUser = this.User;
-            string id = _userManager.GetUserId(currentUser);
+            string id = GetCurrentUserId();
             if(!string.IsNullOrEmpty(id))
             {
                 var addresses = _accountService.GetAddressesEdit(id);
@@ -236,8 +233,7 @@ namespace BookCave.Controllers
         [Authorize]
         public IActionResult AddAddress(EditAddressViewModel model)
         {
-            ClaimsPrincipal currentUser = this.User;
-            string id = _userManager.GetUserId(currentUser);
+            string id = GetCurrentUserId();
             if(!string.IsNullOrEmpty(id))
             {
                 if(ModelState.IsValid)
@@ -253,8 +249,7 @@ namespace BookCave.Controllers
         [Authorize]
         public IActionResult DeleteAddress(int id)
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userId = _userManager.GetUserId(currentUser);
+            string userId = GetCurrentUserId();
             _accountService.DeleteAddress(id, userId);
             return RedirectToAction("EditAddresses");
         }

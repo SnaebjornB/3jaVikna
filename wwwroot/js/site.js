@@ -6,32 +6,36 @@ function check(input) {
         input.setCustomValidity('');
     }
 } 
-$(document).ready(function (){
-    $('#DoesEmailExist').click(function() {
-        var email = $('#emailCheck').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
-        console.log(email); 
-
-        $.ajax({
-            url: 'DoesEmailExist',
-            method: 'POST',
-            data: {email},
-            dataType: 'bool',
-            succcess: function (data) {
-                console.log("stuff");
-
-                var emailStatusMessage = $('emailStatusMessage');
-                if(!data) {
-                    emailStatusMessage.text('There is no account associated with that email');
-                    emailStatusMessage.css('color','red');
+/*$(document).ready(function (){    Fuck this shit I'm out!
+    function doesEmailExist(event) {
+        event.PreventDefault();
+        var email = $('#email').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
+        console.log("stuff"); 
+        if(email != undefined) {
+            $.ajax({
+                url: 'DoesEmailExist',
+                method: 'POST',
+                async: false,
+                data: {email : email},
+                dataType: 'bool',
+                succcess: function (data) {
+                    var emailStatusMessage = $('emailStatusMessage');
+                    if(!data) {
+                        emailStatusMessage.text('There is no account associated with that email');
+                        emailStatusMessage.css('color','red');
+                    }
+                    else {
+                        emailStatusMessage.text('A new password has been sent to ' + email);
+                        emailStatusMessage.css('color','green');
+                    }
+                },
+                error : function(err) {
+                    alert("error");
                 }
-                else {
-                    emailStatusMessage.text('A new password has been sent to ' + email);
-                    emailStatusMessage.css('color','green');
-                }
-            },
-            error : function(err) {
-                alert(err);
-            }
-        })
-    })
-})
+            })
+        }
+        else {
+            console.log("shit");
+        }
+    }
+})*/
