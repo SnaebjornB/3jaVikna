@@ -55,6 +55,7 @@ namespace BookCave.Repositories
 
         public bool IsBookInDatabase(int? id)
         {
+            bool dbCheck = true;
             //Er bókin í database?
 
             try{
@@ -63,10 +64,10 @@ namespace BookCave.Repositories
                                 select b).Single();
             }
             catch (Exception){
-                return false;
+                dbCheck = false;
             }
 
-            return true;
+            return dbCheck;
         }
 
         public void AddReview(int? id, ReviewInput newReview)

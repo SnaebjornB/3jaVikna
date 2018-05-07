@@ -73,7 +73,7 @@ namespace BookCave.Controllers
             }
 
             //Athuga hvort að bók með ID == id sé til
-            if(_bookService.IsBookInDatabase(id)){
+            if(!_bookService.IsBookInDatabase(id)){
                 return View("NotFound");
             }
 
