@@ -14,7 +14,7 @@ namespace BookCave.Repositories
             _db = new DataContext();
             orderItemEntity = new OrderItemEntity();
         }
-        public void addToBasket(int bookID, int quantity, int customerID)
+        public void addToBasket(int bookID, string customerID)
         {
             var item = (from b in _db.Books
                         where b.ID == bookID
@@ -25,13 +25,12 @@ namespace BookCave.Repositories
             orderItemEntity.bookName = item.title;
             orderItemEntity.customerID = customerID;
             orderItemEntity.price = item.price;
-            orderItemEntity.quantity = quantity;
 
             _db.Add(orderItemEntity);
             _db.SaveChanges();
         }
 
-        public OrderBasketView getBasket(int customerID)
+        public OrderBasketView getBasket(string customerID)
         {
             var item = (from i in _db.OrderItems
                         where i.customerID == customerID

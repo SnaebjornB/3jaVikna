@@ -6,6 +6,23 @@ function check(input) {
         input.setCustomValidity('');
     }
 } 
+
+function addToBasket(BookID) {
+    console.log(BookID);
+    var data = {
+        bookID: BookID 
+    };
+    
+    $.ajax({
+            url: '../../Order/addToBasket',
+            data : data,
+            type: 'POST',
+            dataType: 'json',
+            success: function () {
+                 console.log('success');
+            }
+    });
+}
 /*$(document).ready(function (){    Fuck this shit I'm out!
     function doesEmailExist(event) {
         event.PreventDefault();

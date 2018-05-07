@@ -16,7 +16,7 @@ body{
 #siteHeader{
     height: 125px;
     background: maroon;
-    position:fixed;
+    position: fixed;
     width: 100%;
 }
 #siteHeaderTop{
@@ -117,12 +117,15 @@ body{
     float: left;
     width: 100%;
     text-align:center;
+    overflow-y:hidden;
     
 }
 /*Main index*/
 .bookItemSlider{
     min-height: 5%;
-    max-height: 10%;
+    max-height: 155px;
+    overflow-x: scroll;
+    display: inline;
 }
 .book-item{   
     border-style: solid;
@@ -192,6 +195,8 @@ body{
 .pushDown{
     margin-top: 50px;
 }
+/*Profile index*/
+
 
 /*star radio buttons*/
 .rating {
@@ -242,44 +247,6 @@ body{
     top:2px;
     left:2px;
 }
-  /*end radio*/
-
-  /* The sidebar menu
-.sidenav {
-    height: auto; 
-    width: 150px; /* Set the width of the sidebar 
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) 
-    top: 0; /* Stay at the top 
-    left: 0;
-    overflow: hidden;
-    padding-top: 20px;
-    margin-top: 200px;
-    border-style: solid;
-    border-radius: 6px;
-    background-color: #f4f4f4;
-}
-
-
-/* The navigation menu links 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 15px;
-    color: black;
-    display: block;
-}
-
-.sidenav h2{
-    font-size: 17px;
-    font-weight: bold;
-    margin-top: -8%;
-}
-
-/* When you mouse over the navigation links, change their color 
-.sidenav a:hover {
-    color: black;
-}
-*/
 
 
 /*Review*/
