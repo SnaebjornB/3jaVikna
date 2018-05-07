@@ -64,6 +64,11 @@ namespace BookCave.Services
             return discountedBooks;
         }
 
+        public bool IsBookInDatabase(int? id)
+        {
+            return _bookRepo.IsBookInDatabase(id);
+        }
+
         public BookView GetBookDetail(int? id)
         {
             var bookDetail = _bookRepo.GetBookDetail(id);

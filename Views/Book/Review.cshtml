@@ -1,9 +1,9 @@
 @model BookCave.Models.InputModels.ReviewInput
     
-<div class="Review post form">
+<div class="Review post form reviewalign">
     
     <form method="post">
-            <fieldset class="rating">
+            <fieldset class="rating" style="margin-left:auto">
                 <legend>Please rate:</legend>
                 <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Best book ever">5 stars</label>
                 <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
@@ -12,12 +12,15 @@
                 <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Worst book ever">1 star</label>
                 <span asp-validation-for="rating"></span>
             </fieldset> 
-
-            <label asp-for="review"></label><br/>
-            <input type="text" asp-for="review"><br/>
+            </br>
+            <div class="review-form">
+            <label asp-for="review">Write a Review</label><br/>
+            <textarea rows="4" cols="50" name="review" asp-for="review"></textarea>
             <span asp-validation-for="review"></span><br/>
-        
-            <input type="submit" value="Submit review">
+            </div>
+
+            <input type="submit" value="Submit review"  class="btn btn-success btn-sm">
+            
     </form>
     
 </div>
