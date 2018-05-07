@@ -1,5 +1,6 @@
 @model List<BookCave.Models.ViewModels.BookView>
 
+
 <div id="siteBody">
     <h2></h2>
     <form method="get" action="Search">
@@ -34,24 +35,20 @@
 
             
             <input type="submit" value="Search">
-    </form>
-
-    <div>
+        </form>
+    </div>
+    <div id="searchDiv">
         
-        
+        <br><br>
         @foreach(var book in Model)
         {
-            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">
-                <div class="book-item marginPush">
+                <div class="searchBook">
                     <img src ="@book.image" alt="@book.title" width="170" height="170">
-                    <p>@book.title</p>
+                    <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
                     <p>@book.author</p>
                     <p>@book.category</p>
                    <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
                 </div>
-                <br>
-            </a>
         }
         
     </div>
-</div>

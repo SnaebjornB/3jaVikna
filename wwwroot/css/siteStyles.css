@@ -195,8 +195,25 @@ body{
 .pushDown{
     margin-top: 50px;
 }
-/*Profile index*/
-
+/*Search index*/
+#searchDiv{
+    text-align:center;
+    padding: 20px;
+}
+.searchBook{
+    border: solid black 2px;
+    padding: 5px;
+    margin: 15px;
+    width: 185px;
+    height: 400px;
+    border-radius: 5px;
+    display: block;
+    float: left;
+}
+.searchBook img{
+    padding: 0% 10% 0%;
+    max-width: 100%;
+}
 
 /*star radio buttons*/
 .rating {
