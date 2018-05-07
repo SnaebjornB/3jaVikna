@@ -284,3 +284,9 @@ body{
 .profilePic{
     max-height: 200px;
 }
+.addressTable {
+    position: absolute;
+    left: 35%;
+    width: 40%;
+    text-align: left;
+}

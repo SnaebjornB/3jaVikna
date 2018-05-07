@@ -184,5 +184,23 @@ namespace BookCave.Repositories
                                     }).ToList();
             return discountedBooks;
         }
+
+        public List<BookView> GetBooksByAuthor(string author)
+        {
+            var books = (from b in _db.Books
+                        where author == b.author
+                        select new BookView{
+                                        ID = b.ID,
+                                        author = b.author,
+                                        title = b.title,
+                                        rating = b.rating * b.noOfRatings,
+                                        price = b.price * b.discount,
+                                        category = b.category,
+                                        noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                        discount = (1 - b.discount) * 100,
+                                        image = b.image
+                                    }).ToList();
+            return books;
+        }
     }
 }

@@ -161,6 +161,7 @@ namespace BookCave.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProfile(EditUserViewModel model)
         {
             string id = GetCurrentUserId();
@@ -206,6 +207,7 @@ namespace BookCave.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult EditAddress(EditAddressViewModel model)
         {
             if(ModelState.IsValid)
@@ -231,6 +233,7 @@ namespace BookCave.Controllers
         }
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public IActionResult AddAddress(EditAddressViewModel model)
         {
             string id = GetCurrentUserId();

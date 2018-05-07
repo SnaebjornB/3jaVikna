@@ -110,6 +110,23 @@ namespace BookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult AuthorDetail(string author)
+        {
+            if(string.IsNullOrEmpty(author)){
+                return View("NotFound");
+            }
+
+            var bookDetail = _bookService.GetBooksByAuthor(author);
+
+            
+            if(bookDetail == null){
+                return View("NotFound");
+            }
+
+            return View(bookDetail);
+        }
     }
 }
 
