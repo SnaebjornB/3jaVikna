@@ -6,6 +6,7 @@ using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 
+
 namespace BookCave.Repositories
 {
     public class BookRepo
@@ -51,31 +52,47 @@ namespace BookCave.Repositories
             return searchResult;
         }
 
+        public bool IsBookInDatabase(int? id)
+        {
+            //Er bókin í database?
+
+            try{
+                var bookCheck = (from b in _db.Books
+                                where b.ID == id.GetValueOrDefault()
+                                select b).Single();
+            }
+            catch (Exception){
+                return false;
+            }
+
+            return true;
+        }
+
         public void AddReview(int? id, ReviewInput newReview)
         {
-            //Bókin fundin í Database?
+            //Sér til þess að fylgst er með hvort bók sé breytt
             _db.Books.Attach(bookEntity);
 
-            //Gildunum í Review-inu bætt við viðeigandi bók
+            //Upplýsingar um bókina úr database vistaðar í bookEntity
             bookEntity = (from b in _db.Books
                                 where b.ID == id.GetValueOrDefault()
                                 select b).SingleOrDefault();
-            //Búið að finna bókina sem verið er að review-a. Breytum henni.
-            //Nýja rating-inu bætt við reviewedBook.rating
+
+            //Nýja rating-inu bætt við bookEntity
             bookEntity.rating = bookEntity.rating + newReview.rating;
-            //Total number of ratings hækkað um 1
+            //Total number of ratings í bookEntity hækkað um 1
             bookEntity.noOfRatings = bookEntity.noOfRatings + 1;
             
             
 
-            //Review-ið vistað í gagnagrunninn
+            //Review-ið vistað í reviewEntity
             reviewEntity.review = newReview.review;
             reviewEntity.rating = newReview.rating;
             reviewEntity.username = "Implement username here";
             reviewEntity.BookID = id.GetValueOrDefault(); //int? breytt í int
             _db.Reviews.Add(reviewEntity);
 
-            //Allar breytingar save-aðar í gagnagrunninum
+            //reviewEntity og bookEntity vistað í gagnagrunninum
             _db.SaveChanges();
         }
 
