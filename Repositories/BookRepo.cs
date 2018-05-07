@@ -46,7 +46,8 @@ namespace BookCave.Repositories
                                     category = b.category,
                                     noOfSoldUnits = b.noOfSoldUnits,
                                     noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                    discount = b.discount
+                                    discount = b.discount,
+                                    image = b.image
                                 }).ToList();
 
             return searchResult;
@@ -152,7 +153,8 @@ namespace BookCave.Repositories
                             category = b.category,
                             noOfSoldUnits = b.noOfSoldUnits,
                             noOfCopiesAvailable = b.noOfCopiesAvailable,
-                            discount = b.discount
+                            discount = b.discount,
+                            image = b.image
                         }).Take(10).ToList();
            return top10;
         }
@@ -176,7 +178,8 @@ namespace BookCave.Repositories
                                         category = b.category,
                                         noOfSoldUnits = b.noOfSoldUnits,
                                         noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount
+                                        discount = b.discount,
+                                        image = b.image
                                     }).ToList();
             return discountedBooks;
         }
