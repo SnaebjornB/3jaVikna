@@ -264,3 +264,6 @@ body{
 .rating{
     text-align: left;
 }
+.profilePic{
+    max-height: 200px;
+}
