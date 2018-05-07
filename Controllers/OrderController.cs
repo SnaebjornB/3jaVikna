@@ -1,29 +1,36 @@
+using System;
 using System.Net.Http;
+using System.Security.Claims;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Controllers
 {
+   // [Authorize]
     public class OrderController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         public OrderService orderService;
         public OrderBasketView orderBasketView = new OrderBasketView();
-        public OrderController()
+        public OrderController(UserManager<ApplicationUser> userManager)
         {
             orderService = new OrderService();
+            _userManager = userManager;
 
         }
         [HttpGet]
         public IActionResult Basket()
         {
-            Basket(4);
             return View(orderBasketView);
         }
 
         [HttpPost]
-        public IActionResult Basket(int customerID)
+        public IActionResult Basket(string customerID)
         {
             orderBasketView = orderService.getBasket(customerID);
 
@@ -31,9 +38,20 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public void addToBasket(int bookID, int quantity, int customerID)
+        public bool addToBasket(int bookID)
         {
-            orderService.addToBasket(bookID, quantity, customerID);
+            ClaimsPrincipal currentUser = this.User;
+            string userID = _userManager.GetUserId(currentUser);
+            if(userID != null)
+            {
+                orderService.addToBasket(bookID, userID);
+            }
+            else
+            {
+                RedirectToAction("~/Views/Login");
+            }
+
+            return true;
         }
     }
 }

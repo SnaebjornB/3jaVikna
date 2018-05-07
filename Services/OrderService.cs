@@ -12,12 +12,12 @@ namespace BookCave.Services
             orderRepo = new OrderRepo();
         }
         
-        public void addToBasket(int bookID, int quantity, int customerID)
+         public void addToBasket(int bookID, string customerID)
         {
-            orderRepo.addToBasket(bookID, quantity, customerID);
+            orderRepo.addToBasket(bookID, customerID);
         }
 
-        public OrderBasketView getBasket(int customerID)
+        public OrderBasketView getBasket(string customerID)
         {
             return orderRepo.getBasket(customerID);
         }
