@@ -1,5 +1,52 @@
 @model BookCave.Models.ViewModels.BookView
 
+<<<<<<< HEAD
+
+<div id="siteBody">
+    <br>
+    <br>
+    <br>
+
+    <img src="@Model.image" alt="@Model.title">  <br>
+    <h3>Title: @Model.title </h3>
+    <p>Author: @Model.author </p>
+    <p>Price: @Model.price $</p> <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
+    <p>Rating: @Model.rating (no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
+    <br> 
+
+    <h4>Description</h4>
+    <p>@Model.description</p> 
+    <br>
+
+    <a asp-controller="Order" asp-action="Basket" class="btn btn-primary">Add to basket</a>
+    <br>
+
+    <h4>Product Details</h4>
+    <p>Number of pages: @Model.numberOfPages</p>
+    <p>Publication year: @Model.year</p>
+    <p>Publisher: @Model.publisher</p>
+    <p>Publication country: @Model.country</p> 
+    <p>Language: @Model.language</p>
+    <p>Category: @Model.category </p>
+    <p>ISBN number: @Model.ISBN </p>
+    <br>
+
+    <h4>Reviews</h4>
+    @for(int i = 0; i < @Model.Reviews.Count; i++)
+    {
+        <div class="book-item marginPush">          <!--Tók kóðann af forsíðunni í þeirri von að css myndi endurnýtast -->
+            <p>Name of person: @Model.Reviews[i].username </p>
+            <p>Rating: @Model.Reviews[i].rating</p>
+            <div class="review text box">
+                <p>Review: @Model.Reviews[i].review</p>
+            </div>
+        </div>
+    }
+
+    <h4>Write a review</h4>
+    <a asp-controller="Book" asp-action="Review" class="btn btn-primary" asp-route-id="@Model.ID">Review this book</a>
+    <br>
+=======
 <div id="bookDetails">
     <div class="bookDetailsDesc">
         <img src="@Model.image" alt="@Model.title">
@@ -48,6 +95,7 @@
     </div>
     <!--
         Commented out, needs better placement
+>>>>>>> a6fa36711751ee5f4bb8ed2cf714fe26280e53dd
 
         <h4>Aðrar upplýsingar sem voru ekki á frumgerðinni</h4>
         <p>Discount: @Model.discount</p>

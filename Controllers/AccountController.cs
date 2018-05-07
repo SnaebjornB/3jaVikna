@@ -24,6 +24,13 @@ namespace BookCave.Controllers
             _accountService = new AccountService();
         }
 
+        public string GetCurrentUserId()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string id = _userManager.GetUserId(currentUser);
+            return id;
+        }
+
         public IActionResult Register()
         {
             return View();
