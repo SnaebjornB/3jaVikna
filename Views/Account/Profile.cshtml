@@ -2,9 +2,7 @@
 
 <div>
     <div>
-        <img src="@Model.image" alt="Profile Picture">
-    </div>
-    <div>
+        <img src="@Model.image" alt="Profile Picture" style="max-height: 10%">
         <h1>@Model.name</h1>
         <h2>My favorite book: @Model.favBook</h2>
         <form asp-action="EditProfile" method="GET">
