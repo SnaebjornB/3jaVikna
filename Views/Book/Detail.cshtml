@@ -1,5 +1,9 @@
 @model BookCave.Models.ViewModels.BookView
 
+<head>
+    <script type="text/javascript" src="~/js/site.js"></script>
+</head>
+
 <div id="bookDetails">
     <div class="bookDetailsDesc">
         <img src="@Model.image" alt="@Model.title">
@@ -14,7 +18,7 @@
         <p>@Model.description</p> 
         <br>
 
-        <a asp-controller="Order" asp-action="Basket" class="btn btn-primary">Add to basket</a>
+        <a class="btn btn-primary" id="detailsAddToBasketBtn" onclick="addToBasket(@Model.ID)" name="@Model.ID" >Add to basket</a>
         <br>
     </div>
     <div class="bookDetailsDesc pushDown">

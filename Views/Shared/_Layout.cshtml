@@ -8,6 +8,7 @@
 
 
         <link rel="stylesheet" href="~/css/siteStyles.css" />
+        <link rel="stylesheet" type="text/css" href="~/slick/slick.css"/>
         <!--
             <link rel="stylesheet" href="~/css/styles.css" /> 
         -->
@@ -81,84 +82,23 @@
             </div>
         </div>
     </div>
-    <!--
-    <div id="siteContainer">
-        <div id="siteHeader">
-            <div>
-                <div>
-                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" style="display:inline; float:left" class="nav navbar-nav navbar-left"></a>
-                </div>
-                <div style="padding-top:25px; padding-right:90px">
-                    <form asp-controller="Book" asp-action="Search" method="POST">
-                        <input type="text" class="from-control"/>
-                        <input type="submit" value="Search" class="btn btn-primary"/>
-                    </form>
-                </div>
-                <div style="padding-right:100px">
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
-            </div>
-        
-                <div style="clear:both">
-                    <ul class="siteNav">
-                        <li><a asp-controller="Book" asp-action="Top10">Top 10</a></li>
-                        <li><a href="#">Special Offers</a></li>
-                        <li><a href="#">Shop By Category</a></li>
-                    </ul>
-                </div>
-        </div>
-        <p class="bottomPadding">It's a secret to everybody</p>
-
-        
-        @RenderBody()
-        
-
-        
-        <div id="siteTable">    
-            <div class="footerFill"></div>
-            <div class="footerNavBox">
-                <table class="footerNav">
-                    <tr>
-                        <th>Support</th>
-                        <th>Jobs</th>
-                        <th>Other</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td><a asp-controller="Home" asp-action="About">About us</a></td>
-                        <td><a href="#">Apply</a></td>
-                        <td><a asp-controller="Home" asp-action="TermsAndConditions">Terms & Conditions</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><a asp-controller="Home" asp-action="Contact">Contact us</a></td>
-                        <td></td>
-                        <td><a asp-controller="Home" asp-action="WeDeliver">Where do we deliver?</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><a asp-controller="Account" asp-action="Login">Login/Sign up</a></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div style="clear:both">
-                <p class="footerText">theBookCave.com</p>
-            </div>
-        </div>
-            
-            
-        
+    
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-
-
-    </div>
-    -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.sliderBar').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                centerMode: true,
+                variableWidth: true
+            });
+        });
+    </script>
 </body>
 </html>

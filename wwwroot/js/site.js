@@ -8,13 +8,13 @@ function check(input) {
 } 
 $(document).ready(function (){
     $('#DoesEmailExist').click(function() {
-        var email = $('#checkEmail').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
-        //console.log(email); 
+        var email = $('#emailCheck').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
+        console.log(email); 
 
         $.ajax({
             url: 'DoesEmailExist',
             method: 'POST',
-            data: {email : email},
+            data: {email},
             dataType: 'bool',
             succcess: function (data) {
                 console.log("stuff");
