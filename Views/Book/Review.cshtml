@@ -1,32 +1,22 @@
 @model BookCave.Models.InputModels.ReviewInput
-<br>
-<div id="siteBody">
-    <br>
-
-    <div class="Review post form">
-        <form method="post">
-            <span class="starRating">
-                <input id="rating5" type="radio" name="rating" value="5">
-                <label for="rating5">5</label>
-                <input id="rating4" type="radio" name="rating" value="4">
-                <label for="rating4">4</label>
-                <input id="rating3" type="radio" name="rating" value="3">
-                <label for="rating3">3</label>
-                <input id="rating2" type="radio" name="rating" value="2">
-                <label for="rating2">2</label>
-                <input id="rating1" type="radio" name="rating" value="1">
-                <label for="rating1">1</label>
-            </span>
-            
-            <label asp-for="rating">Rating: </label><br/>
-            <input type="double" asp-for="rating"><br/>
-            <span asp-validation-for="rating"></span><br/>
-        
+    
+<div class="Review post form">
+    
+    <form method="post">
+            <fieldset class="rating">
+                <legend>Please rate:</legend>
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Best book ever">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Not good or bad">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Worst book ever">1 star</label>
+            </fieldset> 
             <label asp-for="review"></label><br/>
             <input type="text" asp-for="review"><br/>
             <span asp-validation-for="review"></span><br/>
         
             <input type="submit" value="Submit review">
-        </form>
-    </div>
+    </form>
+    
 </div>
+    

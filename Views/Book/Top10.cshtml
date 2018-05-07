@@ -1,20 +1,16 @@
 @model List<BookCave.Models.ViewModels.BookView>
-<br>
 <div id="siteBody">
-    
+        <h2 style="margin-top: -100px">Top 10 rated books</h2>
         @{int counter = 1;}
         @foreach(var book in Model)
         {
                 <div class="bookDisp">
-                        <h3 style="float:left">@counter</h3>
+                        <h3 style="float:left; margin-top:-4px">@counter</h3>
                         <img src="@book.image" alt="@book.title">
-                        
-                        <p>ID: @book.ID</p>
-                        <p>Title: @book.title</p> <!-- GERA TITILINN SMELLANLEGAN -->
+                        <p>Title: <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">@book.title</a></p>
                         <p>Author: @book.author</p>
                         <br>
                 </div>
-
                 counter++;
         }
     

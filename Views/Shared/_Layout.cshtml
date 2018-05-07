@@ -40,9 +40,6 @@
         </div>
             
         <div id="siteBody">
-            <div id="siteQuickNav">
-
-            </div>
             <div id="siteContent">
                 @RenderBody()
             </div>
@@ -55,10 +52,10 @@
                     <div class="siteFooterNavHeading"><h3>Support</h3></div>
                     <br><br><br>
                     <ul>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Login/Sign up</a></li>
-                    </ul>
+                        <li><a asp-controller="Home" asp-action="About">About us</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact us</a></li>
+                        <li><a asp-controller="Account" asp-action="Login">Login/Sign up</a></li>
+                    </ul> 
                 </div>
                 <div class="siteFooterNavLinks">
                     <div class="siteFooterNavHeading"><h3>Jobs</h3></div>
@@ -71,14 +68,12 @@
                     <div class="siteFooterNavHeading"><h3>Other</h3></div>
                     <br><br><br>
                     <ul>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Where do we deliver?</a></li>
+                        <li><a asp-controller="Home" asp-action="TermsAndConditions">Terms & Conditions</a></li>
+                        <li><a asp-controller="Home" asp-action="WeDeliver">Where do we deliver?</a></li>
                     </ul>
                 </div>
                 <div class="siteFooterNavLinks">
                     <div class="siteFooterNavHeading"><h3 style="visibility:hidden">Empty space</h3></div>
-                    <br>
-                    
                 </div>
             </div>
             <div style="text-align:center; margin:200px auto 50px">
