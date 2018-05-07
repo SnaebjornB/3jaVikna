@@ -23,16 +23,13 @@ namespace BookCave.Controllers
             _userManager = userManager;
 
         }
+        
         [HttpGet]
         public IActionResult Basket()
         {
-            return View(orderBasketView);
-        }
-
-        [HttpPost]
-        public IActionResult Basket(string customerID)
-        {
-            orderBasketView = orderService.getBasket(customerID);
+            ClaimsPrincipal currentUser = this.User;
+            string userID = _userManager.GetUserId(currentUser);
+            orderBasketView = orderService.getBasket(userID);
 
             return View(orderBasketView);
         }

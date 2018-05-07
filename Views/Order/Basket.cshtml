@@ -9,18 +9,11 @@
     <title>Basket</title>
 </head>
 <body>
-    <div>
-        <form action='Basket' method="post">
-        <input type="number" name="BookID" id="BookID">
-        <input type="number" name="quantity" id="quantity">
-        <input type="submit" value="buy books">
-        </form>
-    </div>
-
+    
     @foreach(var book in Model.books)
     {
         <p>@book.bookName</p>
-        <p>@book.bookAuthor</p>
+        <p>@book.quantity</p>
     }
     @Model.totalPrice
 </body>

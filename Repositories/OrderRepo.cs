@@ -39,9 +39,29 @@ namespace BookCave.Repositories
 
             foreach (var oneItem in item)
             {
-                orderbasketview.totalPrice += oneItem.price * oneItem.quantity;
-                orderbasketview.books.Add(oneItem);
+                if(orderbasketview.books.Count() == 0)
+                {
+                    orderbasketview.books.Add(oneItem);
+                }
+                else
+                {
+                    foreach (var alreadyIn in orderbasketview.books)
+                    {
+                        if(oneItem.bookID == alreadyIn.bookID)
+                        {
+                            alreadyIn.quantity++;
+                        }
+                        else
+                        {
+                            orderbasketview.books.Add(oneItem);
+                        }
+                    }
+                }
             }
+            foreach (var basketItem in orderbasketview.books)
+                {
+                    orderbasketview.totalPrice += basketItem.price * basketItem.quantity;
+                }
 
             return orderbasketview;
         }
