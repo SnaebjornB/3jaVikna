@@ -1,0 +1,31 @@
+@model List<BookCave.Models.ViewModels.EditAddressViewModel>
+
+<h1>Your Addresses</h1>
+<br>
+<a asp-action="AddAddress" asp-controller="Account">Add a new address</a>
+<table>
+    <thead>
+        <tr>
+            <th>Address</th>
+            <th>ZIP Code</th>
+            <th>City</th>
+            <th>Country</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.streetName @item.houseNumber</td>
+                <td>@item.zip</td>
+                <td>@item.city</td>
+                <td>@item.country</td>
+                <td>
+                    <a asp-action="EditAddress" asp-controller="Account" asp-route-id="@item.ID" class="btn-success">Edit</a>
+                    <a asp-action="DeleteAddress" asp-controller="Account" asp-route-id="@item.ID" class="btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

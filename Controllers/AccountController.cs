@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using BookCave.Models;
+using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
+using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +15,13 @@ namespace BookCave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly AccountService _accountService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _accountService = new AccountService();
         }
 
         public IActionResult Register()
@@ -38,9 +42,7 @@ namespace BookCave.Controllers
             {
                 UserName = model.Email,
                 Email = model.Email,
-                image = "",
-                address1 = "",
-                address2 = "",
+                image = "https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png", //Er undir Creative Commons
                 favBook = ""
             };
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -117,26 +119,11 @@ namespace BookCave.Controllers
             var model = new UserViewModel{
                 name = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name").ToString(),
                 image = user.image,
-                address1 = user.address1,
-                address2 = user.address2,
+                addresses = _accountService.GetAddressStrings(user.Id),
                 favBook = user.favBook
             };
             return View(model);
         }
-
-      /*  [Authorize]
-        public IActionResult GetEditProfile()
-        {
-            ClaimsPrincipal currentUser = this.User;
-            string id = _userManager.GetUserId(currentUser);
-            if(!string.IsNullOrEmpty(id)){
-                  
-            }
-            else
-            {
-                return RedirectToAction("Profile");
-            }
-        }*/
 
         [Authorize]
         public async Task<IActionResult> EditProfile()
@@ -152,8 +139,6 @@ namespace BookCave.Controllers
                 {
                     model.image = user.image;
                     model.favBook = user.favBook;
-                    model.address1 = user.address1;
-                    model.address2 = user.address2;
                     var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name").ToString();
                     var name = claim.Split(' ');
                     model.firstName = name[1];
@@ -181,8 +166,6 @@ namespace BookCave.Controllers
                 {
                     user.image = model.image;
                     user.favBook = model.favBook;
-                    user.address1 = model.address1;
-                    user.address2 = model.address2;
                 }
                 IdentityResult result = await _userManager.UpdateAsync(user);
                 Claim claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name");
@@ -193,6 +176,80 @@ namespace BookCave.Controllers
                 }
             }
             return View(model);
+        }
+        public IActionResult EditAddresses()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string id = _userManager.GetUserId(currentUser);
+            if(!string.IsNullOrEmpty(id))
+            {
+                var addresses = _accountService.GetAddressesEdit(id);
+                
+                return View(addresses);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+        [Authorize]
+        public IActionResult EditAddress(int id)
+        {
+            var address = _accountService.GetAddressById(id);
+            
+            return View(address);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult EditAddress(EditAddressViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    _accountService.UpdateAddress(model);
+                    return RedirectToAction("EditAddresses");
+                }
+                catch(System.Exception)
+                {
+                    return View("Error", "Home");
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public IActionResult AddAddress()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult AddAddress(EditAddressViewModel model)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string id = _userManager.GetUserId(currentUser);
+            if(!string.IsNullOrEmpty(id))
+            {
+                if(ModelState.IsValid)
+                {
+                    _accountService.AddAddress(model, id);
+                    return RedirectToAction("EditAddresses");
+                }
+            }
+            
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult DeleteAddress(int id)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string userId = _userManager.GetUserId(currentUser);
+            _accountService.DeleteAddress(id, userId);
+            return RedirectToAction("EditAddresses");
         }
     }
 }

@@ -1,4 +1,5 @@
 @model BookCave.Models.ViewModels.BookView
+
 <div id="bookDetails">
     <div class="bookDetailsDesc">
         <img src="@Model.image" alt="@Model.title">
@@ -27,17 +28,19 @@
         <p>ISBN number: @Model.ISBN </p>
         <br>
     </div>
-    <div class="bookDetailsReview pushDOwn">
+    <div class="bookDetailsReview pushDown">
         <h4>Reviews</h4>
         @for(int i = 0; i < @Model.Reviews.Count; i++)
         {
-            <div class="book-item marginPush">          <!--Tók kóðann af forsíðunni í þeirri von að css myndi endurnýtast -->
+            <div class="book-item marginPush">       <!--Tók kóðann af forsíðunni í þeirri von að css myndi endurnýtast -->
                 <p>Name of person: @Model.Reviews[i].username </p>
                 <p>Rating: @Model.Reviews[i].rating</p>
                 <div class="review text box">
                     <p>Review: @Model.Reviews[i].review</p>
                 </div>
-            </div>
+            </div> 
+             
+            
         }
         <h4>Write a review</h4>
         <a asp-controller="Book" asp-action="Review" class="btn btn-primary" asp-route-id="@Model.ID">Review this book</a>
@@ -51,3 +54,4 @@
     -->
     <br>
 </div>
+

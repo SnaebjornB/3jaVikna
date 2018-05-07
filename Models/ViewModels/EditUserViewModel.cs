@@ -10,8 +10,6 @@ namespace BookCave.Models.ViewModels
         [Required(ErrorMessage = "A last name is required")]
         public string lastName { get; set; }
         public string image { get; set; }
-        public string address1 { get; set; }
-        public string address2 { get; set; }
         public string favBook { get; set; }
     }
 }
