@@ -4,6 +4,7 @@ using BookCave.Repositories;
 using System.Linq;
 using System;
 using BookCave.Models.InputModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Services
 {
@@ -47,7 +48,23 @@ namespace BookCave.Services
 
             return searchResult;
         }
+        [Authorize(Roles="Employee")]
+        internal void UpdateBook(BookInputModel book)
+        {
+            _bookRepo.UpdateBook(book);
+        }
 
+        [Authorize(Roles="Employee")]
+        internal object GetBookToEdit(int id)
+        {
+            return _bookRepo.GetBookToEdit(id);
+        }
+
+        [Authorize(Roles="Employee")]
+        internal void AddNewBook(BookInputModel book)
+        {
+            _bookRepo.AddNewBook(book);
+        }
 
         public List<BookView> GetTop10HighestRated()
         {
@@ -62,6 +79,15 @@ namespace BookCave.Services
                                 orderby b.title
                                 select b).ToList();
             return discountedBooks;
+        }
+        [Authorize(Roles="Employee")]
+        internal void EditDiscount(List<BookView> books, double discount)
+        {   
+            if(discount >= 0 && discount <= 100)
+            {
+                discount = 1 - discount/100;
+                _bookRepo.EditDiscount(books, discount);
+            }
         }
 
         public bool IsBookInDatabase(int? id)
@@ -78,6 +104,9 @@ namespace BookCave.Services
         public void AddReview(int? id, ReviewInput newReview)
         {
             _bookRepo.AddReview(id, newReview);
+        }
+        public List<BookView> GetBooksByAuthor(string author){
+            return _bookRepo.GetBooksByAuthor(author);
         }
     }
 }

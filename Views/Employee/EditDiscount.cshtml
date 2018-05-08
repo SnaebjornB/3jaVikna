@@ -1,9 +1,12 @@
 @model List<BookCave.Models.ViewModels.BookView>
 
 
-
-    <h2></h2>
-    <form method="get" action="Search">
+<div id="siteBody">
+    <div>
+        <h2></h2>
+        <form method="get" action="EditDiscount">
+            <br>
+            <br>
             <label for="searchTitle">Title</label>
             <input type="text" name="searchTitle">
 
@@ -42,7 +45,6 @@
                 <option value="Thriller">Thriller</option>
                 <option value="Western">Wester</option>
             </select>
-
             <label for="orderBy">Filter by</label>
             <select name="orderBy">
                 <option value="ascendingTitle" selected>Title Ascending</option>
@@ -50,29 +52,33 @@
                 <option value="ascendingPrice">Price Ascending</option>
                 <option value="descendingPrice">Price Descending</option>
             </select>
-
-            
             <input type="submit" value="Search">
         </form>
-
-    <div id="searchDiv">
-        
-        <br><br>
-        @foreach(var book in Model)
-        {
-                <div class="searchBook">
-                    <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><img src ="@book.image" alt="@book.title" width="170" height="170"></a>
-                    <div class="link-title">
-                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p><b>@book.title</b></p></a>
-                    </div>
-                    <p>Author: @book.author</p>
-                    <p>Category: @book.category</p>
-                    <p>Rating: @book.rating</p>
-                    <p>Price: @book.price</p>
-                    <div class="button-holder">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
-                   </div>
-                </div>
-        }
-        
     </div>
+    <div>
+        <form asp-action="ApplyNewDiscount" asp-controller="Employee">
+            <div id="searchDiv">     
+                <br><br>
+                @{
+                    var counter = 0;
+                }
+                @foreach(var book in Model)
+                {
+                        <div class="searchBook">
+                        <input type="hidden" name="books[@counter].ID" value="@book.ID"/>
+                            <img src ="@book.image" alt="@book.title" width="170" height="170">
+                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
+                            <p>@book.author</p>
+                            <p>@book.category</p>
+                        <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
+                        </div>
+                        counter++;
+                }
+            </div>
+            <label for="discount">Discount to apply (%)</label>
+            <input type="number" name="discount">
+            <br>
+            <input type="submit" class="button" value="Apply discount to these books"/>
+        </form>
+    </div>
+</div>

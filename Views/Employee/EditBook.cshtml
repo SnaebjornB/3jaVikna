@@ -1,33 +1,69 @@
-@model BookCave.Models.ViewModels.EditAddressViewModel
+@model BookCave.Models.InputModels.BookInputModel
 
 <div class="siteBody">
-<h1>Edit Address: @Model.streetName @Model.houseNumber</h1>
-<form asp-action="EditAddress" asp-controller="Account" class="form-horizontal">
+<h1>Edit @Model.title</h1>
+<input type="hidden" autofocus="autofocus" asp-for="ID" class="form-control"/>
+<form asp-action="EditBook" asp-controller="Employee" class="form-horizontal">
     <div class="form-group">
         <label>
-            Street name <br><input type="text" autofocus="autofocus" asp-for="streetName" class="form-control"/>
+            Book title <br><input type="text" autofocus="autofocus" asp-for="title" class="form-control"/>
         </label>
-        <span asp-validation-for="streetName" class="text-danger"></span>
+        <span asp-validation-for="title" class="text-danger"></span>
         <br>
     </div>
     <div class="form-group">  
         <label>          
-            House number <br><input type="text" asp-for="houseNumber" class="form-control"/>
-        </label>            
+            Author <br><input type="text" asp-for="author" class="form-control"/>
+        </label>  
+        <span asp-validation-for="author" class="text-danger"></span>          
         <br>
     </div>
     <div class="form-group">  
         <label>          
-            ZIP code <br><input type="number" asp-for="zip" class="form-control"/>
-        </label> 
-        <span asp-validation-for="zip" class="text-danger"></span>           
-        <br>
-    </div>
-    <div class="form-group">  
-        <label>          
-            City <br><input type="text" asp-for="city" class="form-control"/>
+            Genre <br>
+            <select name="category">
+                <option value="Adventure">Adventure</option>
+                <option value="Children's literature">Children's literature</option>
+                <option value="Classic">Classics</option>
+                <option value="Comic">Comic</option>
+                <option value="Cosmology">Cosmology</option>
+                <option value="Crime">Crime</option>
+                <option value="Dystopian">Dystopian</option>
+                <option value="Education">Education</option>
+                <option value="Fable">Fable</option>
+                <option value="Fairy tale">Fairy tale</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Folklore">Folklore</option>
+                <option value="Historical fiction">Historical fiction</option>
+                <option value="Horror">Horror</option>
+                <option value="Humor">Humor</option>
+                <option value="Legend">Legend</option>
+                <option value="Magical realism">Magical realism</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Mythology">Mythology</option>
+                <option value="Romance">Romance</option>
+                <option value="Science fiction">Science fiction</option>
+                <option value="Short story">Short story</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Western">Wester</option>
+            </select>
         </label>   
-        <span asp-validation-for="city" class="text-danger"></span>         
+        <span asp-validation-for="category" class="text-danger"></span>         
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Publisher <br><input type="text" asp-for="publisher" class="form-control"/>
+        </label> 
+        <span asp-validation-for="publisher" class="text-danger"></span>           
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Language <br><input type="text" asp-for="language" class="form-control"/>
+        </label>   
+        <span asp-validation-for="language" class="text-danger"></span>         
         <br>
     </div>
     <div class="form-group">  
@@ -275,6 +311,55 @@
             </select>
         </label>   
         <span asp-validation-for="country" class="text-danger"></span>         
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Year <br><input type="number" asp-for="year" class="form-control"/>
+        </label>  
+        <span asp-validation-for="year" class="text-danger"></span>          
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Number of pages <br><input type="number" asp-for="numberOfPages" class="form-control"/>
+        </label>  
+        <span asp-validation-for="numberOfPages" class="text-danger"></span>          
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            ISBN <br><input type="text" asp-for="ISBN" class="form-control"/>
+        </label>  
+        <span asp-validation-for="ISBN" class="text-danger"></span>          
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Description <br><textarea asp-for="description" class="form-control"></textarea>
+        </label>  
+        <span asp-validation-for="description" class="text-danger"></span>          
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Price <br>$<input type="number" asp-for="price" class="form-control"/>
+        </label>  
+        <span asp-validation-for="price" class="text-danger"></span>          
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Cover Image URL <br><input type="text" asp-for="image" class="form-control"/>
+        </label>  
+        <span asp-validation-for="image" class="text-danger"></span>          
+        <br>
+    </div>
+    <div class="form-group">  
+        <label>          
+            Number of copies available <br><input type="number" asp-for="noOfCopiesAvailable" class="form-control"/>
+        </label>  
+        <span asp-validation-for="noOfCopiesAvailable" class="text-danger"></span>          
         <br>
     </div>
     <div>    

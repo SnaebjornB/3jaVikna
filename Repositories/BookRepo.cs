@@ -5,7 +5,7 @@ using BookCave.Data;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Repositories
 {
@@ -51,6 +51,100 @@ namespace BookCave.Repositories
                                 }).ToList();
 
             return searchResult;
+        }
+        [Authorize(Roles="Employee")]
+        internal void UpdateBook(BookInputModel book)
+        {
+            var existing = _db.Books.SingleOrDefault(a => a.ID == book.ID);
+            if(existing != null)
+            {
+                existing.ID = book.ID;
+                existing.author = book.author;
+                existing.ISBN = book.ISBN;
+                existing.title = book.title;
+                existing.year = book.year;
+                existing.numberOfPages = book.numberOfPages;
+                existing.description = book.description;
+                existing.country = book.country;
+                existing.language = book.language;
+                existing.publisher = book.publisher;
+                existing.price = book.price;
+                existing.category = book.category;
+                existing.noOfCopiesAvailable = book.noOfCopiesAvailable;
+                existing.image = book.image;
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("BookInputModel is empty");
+            }
+        }
+        [Authorize(Roles="Employee")]
+        internal void EditDiscount(List<BookView> books, double discount)
+        {
+            var dbBooks = new List<BookEntity>();
+            foreach(var book in books)
+            {
+                var temp = (from b in _db.Books
+                            where book.ID == b.ID
+                            select b).FirstOrDefault();
+                temp.discount = discount;
+                dbBooks.Add(temp);
+            }
+            if(dbBooks != null)
+            {
+                _db.SaveChanges();
+            }
+        }
+        [Authorize(Roles="Employee")]
+        internal object GetBookToEdit(int id)
+        {
+            var book = (from b in _db.Books
+                        where id == b.ID
+                        select new BookInputModel{
+                            ID = b.ID,
+                            title = b.title,
+                            author = b.author,
+                            category = b.category,
+                            country = b.country,
+                            description = b.description,
+                            noOfCopiesAvailable = b.noOfCopiesAvailable,
+                            numberOfPages = b.numberOfPages,
+                            ISBN = b.ISBN,
+                            year = b.year,
+                            language = b.language,
+                            publisher = b.publisher,
+                            price = b.price,
+                            image = b.image
+                        }).FirstOrDefault();
+            return book;
+        }
+
+        [Authorize(Roles="Employee")]
+        internal void AddNewBook(BookInputModel book)
+        {
+            var newBook = new BookEntity{
+                            title = book.title,
+                            author = book.author,
+                            category = book.category,
+                            country = book.country,
+                            description = book.description,
+                            noOfCopiesAvailable = book.noOfCopiesAvailable,
+                            numberOfPages = book.numberOfPages,
+                            ISBN = book.ISBN,
+                            year = book.year,
+                            language = book.language,
+                            publisher = book.publisher,
+                            price = book.price,
+                            image = book.image,
+                            rating = 0,
+                            noOfRatings = 1,
+                            noOfSoldUnits = 0,
+                            discount = 1
+                        };
+            
+            _db.Books.Add(newBook);
+            _db.SaveChanges();
         }
 
         public bool IsBookInDatabase(int? id)
@@ -170,19 +264,37 @@ namespace BookCave.Repositories
                                         title = b.title,
                                         year = b.year,
                                         numberOfPages = b.numberOfPages,
-                                        rating = b.rating,
+                                        rating = b.rating * b.noOfRatings,
                                         description = b.description,
                                         country = b.country,
                                         language = b.language,
                                         publisher = b.publisher,
-                                        price = b.price,
+                                        price = b.price * b.discount,
                                         category = b.category,
                                         noOfSoldUnits = b.noOfSoldUnits,
                                         noOfCopiesAvailable = b.noOfCopiesAvailable,
-                                        discount = b.discount,
+                                        discount = (1 - b.discount) * 100,
                                         image = b.image
                                     }).ToList();
             return discountedBooks;
+        }
+
+        public List<BookView> GetBooksByAuthor(string author)
+        {
+            var books = (from b in _db.Books
+                        where author == b.author
+                        select new BookView{
+                                        ID = b.ID,
+                                        author = b.author,
+                                        title = b.title,
+                                        rating = b.rating * b.noOfRatings,
+                                        price = b.price * b.discount,
+                                        category = b.category,
+                                        noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                        discount = (1 - b.discount) * 100,
+                                        image = b.image
+                                    }).ToList();
+            return books;
         }
     }
 }
