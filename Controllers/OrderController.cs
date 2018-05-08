@@ -11,7 +11,7 @@ using BookCave.Models.InputModels;
 
 namespace BookCave.Controllers
 {
-   // [Authorize]
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -48,6 +48,44 @@ namespace BookCave.Controllers
                 RedirectToAction("~/Views/Login");
             }
 
+            return true;
+        }
+
+        [HttpPost]
+        public bool deleteItemFromBasket(int bookID)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string userID = _userManager.GetUserId(currentUser);
+            if(userID != null)
+            {
+                orderService.deleteItemFromBasket(bookID, userID);
+            }
+            
+            return true;
+        }
+
+        [HttpPost]
+        public bool clearBasket()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string userID = _userManager.GetUserId(currentUser);
+            if(userID != null)
+            {
+                orderService.clearBasket(userID);
+            }
+
+            return true;
+        }
+        [HttpPost]
+        public bool clearBookCopies(int bookID)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string userID = _userManager.GetUserId(currentUser);
+            if(userID != null)
+            {
+                orderService.clearBookCopies(bookID, userID);
+            }
+            
             return true;
         }
     }

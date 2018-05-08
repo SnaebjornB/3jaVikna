@@ -17,9 +17,24 @@ namespace BookCave.Services
             orderRepo.addToBasket(bookID, customerID);
         }
 
+        public void deleteItemFromBasket(int bookID, string customerID)
+        {
+            orderRepo.deleteItemFromBasket(bookID, customerID);
+        }
+
         public OrderBasketView getBasket(string customerID)
         {
             return orderRepo.getBasket(customerID);
+        }
+
+        public void clearBasket(string customerID)
+        {
+            orderRepo.clearBasket(customerID);
+        }
+
+         public void clearBookCopies(int bookID, string customerID)
+        {
+            orderRepo.clearBookCopies(bookID, customerID);
         }
         /*public OrderItemEntity getItem(int bookID, int quantity)
         {
