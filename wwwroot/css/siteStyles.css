@@ -351,6 +351,30 @@ body{
     text-align: left;
 }
 
+.book-review {
+    width: 100%;
+    border: #111;
+    border: solid;
+    border-radius: 5%;
+    text-align: left;
+}
+
+span.stars, span.stars span {
+    display: block;
+    position: relative;
+    background: url("./../images/stars.png") 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.details-stars {
+    left: 24.5%;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
 .rating{
     text-align: left;
 }

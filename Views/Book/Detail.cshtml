@@ -4,10 +4,11 @@
     <div class="bookDetailsDesc">
         <img src="@Model.image" alt="@Model.title">
         <br>
-        <h3>Title: @Model.title </h3>
-        <p>Author: @Model.author </p>
-        <p>Price: @Model.price $</p> <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
-        <p>Rating: @Model.rating (no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
+        <div><h3>Title: @Model.title </h3>
+            <p>Author: @Model.author </p>
+            <p>Price: @Model.price $</p> <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
+            <span class="stars details-stars">@Model.rating</span><p> (no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
+        </div>
         <br> 
 
         <h4>Description</h4>
@@ -40,10 +41,10 @@
         <h4>Reviews</h4>
         @for(int i = 0; i < @Model.Reviews.Count; i++)
         {
-            <div class="book-item marginPush">       <!--Tók kóðann af forsíðunni í þeirri von að css myndi endurnýtast -->
-                <p>Name of person: @Model.Reviews[i].username </p>
-                <p>Rating: @Model.Reviews[i].rating</p>
-                <div class="review text box">
+            <div class="book-review">       <!--Tók kóðann af forsíðunni í þeirri von að css myndi endurnýtast -->
+                <p>@Model.Reviews[i].username </p>
+                <p>@Model.Reviews[i].rating</p>
+                <div class="review-text-box">
                     <p>Review: @Model.Reviews[i].review</p>
                 </div>
             </div> 

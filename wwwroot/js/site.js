@@ -98,6 +98,21 @@ function addToBasket(BookID) {
     });
 }
 
+$(function() {    		
+    $(document).ready(function() {
+        var rating = $('.stars').val();
+        $('.span').html('<span class="stars">'+parseFloat($('stars').val())+'</span>');
+        console.log('stars');
+        $('span.stars').stars();
+    });    		
+    $(document).ready();
+});
+
+$.fn.stars = function() {
+    return $(this).each(function() {
+        $(this).html($('<span />').width(Math.max(0, (Math.min(5, parseFloat($(this).html())))) * 16));
+    });
+}
 
 
 
