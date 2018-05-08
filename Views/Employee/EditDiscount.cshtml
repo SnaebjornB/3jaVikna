@@ -2,8 +2,9 @@
 
 
 <div id="siteBody">
-    <h2></h2>
-    <form method="get" action="EditDiscount">
+    <div>
+        <h2></h2>
+        <form method="get" action="EditDiscount">
             <br>
             <br>
             <label for="searchTitle">Title</label>
@@ -17,16 +18,33 @@
 
             <label for="searchCategory">Category</label>
             <select name="searchCategory">
-                <option value="" selected>All</option>
-                <option value="Dystopian">Dystopian</option>
+                <option value="">All</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Children's literature">Children's literature</option>
+                <option value="Classic">Classics</option>
+                <option value="Comic">Comic</option>
                 <option value="Cosmology">Cosmology</option>
+                <option value="Crime">Crime</option>
+                <option value="Dystopian">Dystopian</option>
+                <option value="Education">Education</option>
+                <option value="Fable">Fable</option>
+                <option value="Fairy tale">Fairy tale</option>
                 <option value="Fantasy">Fantasy</option>
                 <option value="Fiction">Fiction</option>
-                <option value="Classic">Classic</option>
-                <option value="Science Fiction">Science Fiction</option>
+                <option value="Folklore">Folklore</option>
+                <option value="Historical fiction">Historical fiction</option>
                 <option value="Horror">Horror</option>
+                <option value="Humor">Humor</option>
+                <option value="Legend">Legend</option>
+                <option value="Magical realism">Magical realism</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Mythology">Mythology</option>
+                <option value="Romance">Romance</option>
+                <option value="Science fiction">Science fiction</option>
+                <option value="Short story">Short story</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Western">Wester</option>
             </select>
-
             <label for="orderBy">Filter by</label>
             <select name="orderBy">
                 <option value="ascendingTitle" selected>Title Ascending</option>
@@ -34,31 +52,33 @@
                 <option value="ascendingPrice">Price Ascending</option>
                 <option value="descendingPrice">Price Descending</option>
             </select>
-            <input type="submit" value="EditDiscount">
+            <input type="submit" value="Search">
         </form>
     </div>
-    <form asp-action="ApplyNewDiscount" asp-controller="Employee">
-        <div id="searchDiv">     
-            <br><br>
-            @{
-                var counter = 0;
-            }
-            @foreach(var book in Model)
-            {
-                    <div class="searchBook">
-                    <input type="hidden" name="books[@counter].ID" value="@book.ID"/>
-                        <img src ="@book.image" alt="@book.title" width="170" height="170">
-                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
-                        <p>@book.author</p>
-                        <p>@book.category</p>
-                    <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
-                    </div>
-                    counter++;
-            }
-        </div>
-        <label for="discount">Discount to apply (%)</label>
-        <input type="number" name="discount">
-        <br>
-        <input type="submit" class="button" value="Apply discount to these books"/>
-    </form>
-
+    <div>
+        <form asp-action="ApplyNewDiscount" asp-controller="Employee">
+            <div id="searchDiv">     
+                <br><br>
+                @{
+                    var counter = 0;
+                }
+                @foreach(var book in Model)
+                {
+                        <div class="searchBook">
+                        <input type="hidden" name="books[@counter].ID" value="@book.ID"/>
+                            <img src ="@book.image" alt="@book.title" width="170" height="170">
+                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
+                            <p>@book.author</p>
+                            <p>@book.category</p>
+                        <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
+                        </div>
+                        counter++;
+                }
+            </div>
+            <label for="discount">Discount to apply (%)</label>
+            <input type="number" name="discount">
+            <br>
+            <input type="submit" class="button" value="Apply discount to these books"/>
+        </form>
+    </div>
+</div>
