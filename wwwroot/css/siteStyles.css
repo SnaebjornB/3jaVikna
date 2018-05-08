@@ -44,8 +44,12 @@ body{
 .searchAlign{
 
     padding-top: 35px;
-    padding-left: 40%;
+    padding-left: 29%;
+    font-size: 19px;
+    border: none;
 }
+
+
 .loginAlign{
     padding-right: 150px;
     margin-top:-40px;

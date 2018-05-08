@@ -7,9 +7,7 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/siteStyles.css" />
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-    <script type="text/javascript" src="~/js/site.js"></script>
+
     
 
         <!--
@@ -26,8 +24,8 @@
                 </div>
                 <div class="searchAlign">
                     <form asp-controller="Book" asp-action="Search" method="POST">
-                        <input type="text" class="from-control"/>
-                        <input type="submit" value="searchTitle" class="btn btn-primary"/>
+                        <input type="text" placeholder="Search.." class="from-control" style="width: 550px; height: 35px;"/>
+                        <input type="submit" value="Search" class="btn btn-secondary" style="width: 90px; height: 34px; font-size: 16px;"/>
                     </form>
                 </div>
                 <div class="loginAlign">
@@ -85,7 +83,9 @@
             </div>
         </div>
     </div>
-    
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
     
     
 </body>
