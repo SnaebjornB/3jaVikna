@@ -10,7 +10,7 @@
 
 @if(SignInManager.IsSignedIn(User))
 {
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right userOptions">
         <li>
             @{
                 if(this.User.IsInRole("Employee")) {
