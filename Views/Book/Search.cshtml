@@ -45,9 +45,13 @@
                 <div class="searchBook">
                     <img src ="@book.image" alt="@book.title" width="170" height="170">
                     <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
-                    <p>@book.author</p>
-                    <p>@book.category</p>
-                   <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
+                    <p>Author: @book.author</p>
+                    <p>Category: @book.category</p>
+                    <p>Rating: @book.rating</p>
+                    <p>Price: @book.price</p>
+                    <div class="button-holder">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
+                   </div>
                 </div>
         }
         
