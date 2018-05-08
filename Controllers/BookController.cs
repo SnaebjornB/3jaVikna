@@ -10,6 +10,7 @@ using BookCave.Models.InputModels;
 using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
@@ -59,6 +60,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Review(int? id)
         {
             if (id == null)
@@ -68,8 +70,10 @@ namespace BookCave.Controllers
 
             return View();
         }
-
+        
+        
         [HttpPost]
+        [Authorize]
         public IActionResult Review(int? id, ReviewInput newReview)
         {
             if (id == null)
