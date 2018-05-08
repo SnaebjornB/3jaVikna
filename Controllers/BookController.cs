@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
 using BookCave.Models.InputModels;
+using Microsoft.AspNetCore.Identity;
+using BookCave.Models.EntityModels;
+using System.Security.Claims;
 
 namespace BookCave.Controllers
 {
     public class BookController : Controller
     {
         private BookServices _bookService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public BookController()
+        public BookController(UserManager<ApplicationUser> userManager)
         {
             _bookService = new BookServices();
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -79,8 +84,16 @@ namespace BookCave.Controllers
 
             if (ModelState.IsValid)
             {
-                _bookService.AddReview(id, newReview);
+                //Fáum hvaða user sé að skrifa review
+                ClaimsPrincipal currentUser = this.User;
+                string userID = _userManager.GetUserId(currentUser);
+                var userName = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+
+                //Ef user-inn er til
+                _bookService.AddReview(id, newReview, userID, userName);
                 return RedirectToAction("Search");
+                //ef það er gestur að skrifa review
+
             }
             
             return View();

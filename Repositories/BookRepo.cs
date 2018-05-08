@@ -164,32 +164,62 @@ namespace BookCave.Repositories
             return dbCheck;
         }
 
-        public void AddReview(int? id, ReviewInput newReview)
+        public void AddReview(int? id, ReviewInput newReview, string userID, string userName)
         {
-            //Sér til þess að fylgst er með hvort bók sé breytt
-            _db.Books.Attach(bookEntity);
+            //Athuga hvort notandinn hafi áður skrifað review
+            //Ef notandin var búinn að skrifa umsögn er skrifað yfir hana annars er umsögninni bætt á listann Reviews
+            bool dbCheck = true;
+            double differenceBetweenRatings = 0;
 
-            //Upplýsingar um bókina úr database vistaðar í bookEntity
-            bookEntity = (from b in _db.Books
+            try{
+                //_db.Reviews.Attach(reviewEntity);
+                
+                reviewEntity = (from r in _db.Reviews
+                                where r.userID == userID && r.BookID == id.GetValueOrDefault()
+                                select r).Single();
+                
+                differenceBetweenRatings = -reviewEntity.rating + newReview.rating;
+
+                reviewEntity.review = newReview.review;
+                reviewEntity.rating = newReview.rating;
+                _db.SaveChanges();
+            }
+            catch (Exception){
+                reviewEntity.review = newReview.review;
+                reviewEntity.rating = newReview.rating;
+                reviewEntity.username = userName; //Nafnið sem sótt var í controllernum vistað í reviewEntity.username
+                reviewEntity.BookID = id.GetValueOrDefault();
+                reviewEntity.userID = userID;
+                _db.Reviews.Add(reviewEntity);
+                _db.SaveChanges();
+                    
+                dbCheck = false;
+            }
+
+            //Upplýsingum um bók breytt
+            if(dbCheck){
+                //Ef review er yfirskrifað
+                bookEntity = (from b in _db.Books
+                                where b.ID == id.GetValueOrDefault()
+                                select b).SingleOrDefault();
+                
+                //Upplýsingum um rating bókarinnar breytt
+                bookEntity.rating = bookEntity.rating + differenceBetweenRatings;
+
+                _db.SaveChanges();
+            }else{
+                //Ef review er nýtt
+                bookEntity = (from b in _db.Books
                                 where b.ID == id.GetValueOrDefault()
                                 select b).SingleOrDefault();
 
-            //Nýja rating-inu bætt við bookEntity
-            bookEntity.rating = bookEntity.rating + newReview.rating;
-            //Total number of ratings í bookEntity hækkað um 1
-            bookEntity.noOfRatings = bookEntity.noOfRatings + 1;
-            
-            
+                //Upplýsingum um rating bókarinnar breytt
+                bookEntity.rating = bookEntity.rating + newReview.rating;
+                bookEntity.noOfRatings = bookEntity.noOfRatings + 1;
 
-            //Review-ið vistað í reviewEntity
-            reviewEntity.review = newReview.review;
-            reviewEntity.rating = newReview.rating;
-            reviewEntity.username = "Implement username here";
-            reviewEntity.BookID = id.GetValueOrDefault(); //int? breytt í int
-            _db.Reviews.Add(reviewEntity);
-
-            //reviewEntity og bookEntity vistað í gagnagrunninum
-            _db.SaveChanges();
+                _db.SaveChanges();
+            }
+             
         }
 
         public BookView GetBookDetail(int? id)
