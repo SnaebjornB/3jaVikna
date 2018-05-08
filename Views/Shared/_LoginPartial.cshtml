@@ -11,6 +11,7 @@
 @if(SignInManager.IsSignedIn(User))
 {
     <ul class="nav navbar-nav navbar-right userOptions">
+    <!-- Useroptions should be here -->
         <li>
             @{
                 if(this.User.IsInRole("Employee")) {
