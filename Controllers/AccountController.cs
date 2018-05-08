@@ -256,5 +256,10 @@ namespace BookCave.Controllers
             _accountService.DeleteAddress(id, userId);
             return RedirectToAction("EditAddresses");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

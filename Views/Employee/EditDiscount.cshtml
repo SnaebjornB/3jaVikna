@@ -1,0 +1,64 @@
+@model List<BookCave.Models.ViewModels.BookView>
+
+
+<div id="siteBody">
+    <h2></h2>
+    <form method="get" action="EditDiscount">
+            <br>
+            <br>
+            <label for="searchTitle">Title</label>
+            <input type="text" name="searchTitle">
+
+            <label for="searchAuthor">Author</label>
+            <input type="text" name="searchAuthor">
+
+            <label for="searchISBN">ISBN</label>
+            <input type="text" name="searchISBN">
+
+            <label for="searchCategory">Category</label>
+            <select name="searchCategory">
+                <option value="" selected>All</option>
+                <option value="Dystopian">Dystopian</option>
+                <option value="Cosmology">Cosmology</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Classic">Classic</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Horror">Horror</option>
+            </select>
+
+            <label for="orderBy">Filter by</label>
+            <select name="orderBy">
+                <option value="ascendingTitle" selected>Title Ascending</option>
+                <option value="descendingTitle">Title Descending</option>
+                <option value="ascendingPrice">Price Ascending</option>
+                <option value="descendingPrice">Price Descending</option>
+            </select>
+            <input type="submit" value="EditDiscount">
+        </form>
+    </div>
+    <form asp-action="ApplyNewDiscount" asp-controller="Employee">
+        <div id="searchDiv">     
+            <br><br>
+            @{
+                var counter = 0;
+            }
+            @foreach(var book in Model)
+            {
+                    <div class="searchBook">
+                    <input type="hidden" name="books[@counter].ID" value="@book.ID"/>
+                        <img src ="@book.image" alt="@book.title" width="170" height="170">
+                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
+                        <p>@book.author</p>
+                        <p>@book.category</p>
+                    <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
+                    </div>
+                    counter++;
+            }
+        </div>
+        <label for="discount">Discount to apply (%)</label>
+        <input type="number" name="discount">
+        <br>
+        <input type="submit" class="button" value="Apply discount to these books"/>
+    </form>
+

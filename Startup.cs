@@ -20,6 +20,36 @@ namespace BookCave
             Configuration = configuration;
         }
 
+       /* private async Task CreateRoles(IServiceProvider services)
+        {
+            var RoleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+            string[] roleNames = { "User", "Employee" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                var roleExists = await RoleManager.RoleExistsAsync(roleName);
+                if(!roleExists)
+                {
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            var employee = new ApplicationUser
+            {
+                UserName = "employee@email.com",
+                Email = "employee@email.com",
+            };
+            
+            var createEmployee = await UserManager.CreateAsync(employee, "Passw0rd");
+            if(createEmployee.Succeeded)
+            {
+                await UserManager.AddToRoleAsync(employee, "Employee");
+            }
+        
+        }*/
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -51,7 +81,7 @@ namespace BookCave
                 options.LoginPath = "/Account/Login";
                 //If the AccessDeniedPath isn't set, ASP.NET Core defaults
                 //the path to /Account/AccessDenied.
-                options.AccessDeniedPath = "/Access/AccessDenied";
+                options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
 
@@ -59,7 +89,7 @@ namespace BookCave
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env/*, IServiceProvider services*/)
         {
             if (env.IsDevelopment())
             {
@@ -79,6 +109,7 @@ namespace BookCave
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //CreateRoles(services).Wait();
         }
     }
 }
