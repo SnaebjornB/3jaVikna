@@ -16,23 +16,29 @@
         <tbody>
             @foreach(var book in Model.books)
             {
-                <tr>
-                    <td>@book.bookName</td>
-                    <td><button class="btn btn-xs active btn-danger" onclick="decreaseQuantity(@book.bookID)">-</button> </td>
-                    <td>@book.quantity</td>
-                    <td><button class="btn btn-xs active btn-success">+</button></td>
-                    <td>$ @book.price</td>
-                    <td><button class="btn btn-sm active btn-danger">X</button></td>
-                </tr>
-            }
+                <div>
+                    <tr class="basketList"  id="@book.ID">
+                        <td>@book.bookName</td>
+                        <td><input type="button" class="btn btn-xs active btn-danger" onclick="decreaseQuantity(@book.bookID)" value="-"/></td>
+                        <td><span id="@book.bookID">@book.quantity</span></td>
+                        <td><input type="button" class="btn btn-xs active btn-success" onclick="increseQuantity(@book.bookID)" value="+"/></td>
+                        <td>$ @book.price</td>
+                        <td><input type="button" class="btn btn-sm active btn-danger" onclick="removeFromBasket(@book.bookID, @book.ID)" value="X"/></td>
+                    </tr>
+                </div>
+             }
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>Total price:</td>
-                <td>$ @Model.totalPrice</td>
+                <td class="basketList">$ @Model.totalPrice</td>
             </tr>
+            <tr></tr>
         </tbody>
     </table>
+    <input type="button" class="btn btn-xl btn-success active" onclick="" value="Checkout" />
+    <input type="button" class="btn btn-xl btn-danger active" onclick="clearBasket()" value="Clear basket" />
+    <a asp-action="Basket" asp-controller="Order"><input type="button" class="btn btn-xl btn-success active" value="Refresh" /></a>
 </div>

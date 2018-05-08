@@ -1,4 +1,78 @@
-﻿// Write your JavaScript code.
+﻿function decreaseQuantity(bookID) {
+    console.log(bookID);
+    var spanID = '#' + bookID;
+    var temp = $(spanID).text();
+    parseInt(temp);
+
+    if(temp <= 1){
+
+    }else{
+        temp--;
+        console.log(temp);
+        $(spanID).text(temp);
+        
+        var data = {
+            bookID: bookID
+        };
+        $.ajax({
+            url: '../../Order/deleteItemFromBasket',
+            data : data,
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            success: function () {
+                 console.log('success');
+            }
+        });
+    }
+    
+}
+
+function increseQuantity(bookID){
+    console.log(bookID);
+    console.log(bookID);
+    var spanID = '#' + bookID;
+    var temp = $(spanID).text();
+    parseInt(temp);
+
+    temp++;
+    console.log(temp);
+    $(spanID).text(temp);
+
+    addToBasket(bookID);
+    
+}
+
+function clearBasket(){
+    $.ajax({
+        url: '../../Order/clearBasket',
+        type: 'POST',
+        success: function () {
+            $(".basketList").css( "display", "none" );
+            console.log('success');
+        }
+    });
+}
+
+function removeFromBasket(bookID, ID){
+    var data = {
+        bookID: bookID
+    };
+    console.log(ID);
+    var rowID = "#" + ID;
+    console.log(rowID);
+    $.ajax({
+        url: '../../Order/clearBookCopies',
+        data : data,
+        type: 'POST',
+        dataType: 'json',
+        success: function () {
+            $(rowID).css( "display", "none" );
+            console.log('success');
+        }
+    });
+}
+
 function check(input) {
     if (input.value != document.getElementById('password').value) {
         input.setCustomValidity('Password Must be Matching.');
@@ -24,9 +98,7 @@ function addToBasket(BookID) {
     });
 }
 
-function decreaseQuantity(bookID) {
-    console.log(bookID);
-}
+
 
 
 /*$(document).ready(function (){    Fuck this shit I'm out!

@@ -31,6 +31,29 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
+        public void deleteItemFromBasket(int bookID, string customerID)
+        {
+            var item = (from o in _db.OrderItems
+                        where o.bookID == bookID && o.customerID == customerID
+                        select o).FirstOrDefault();
+
+            _db.Remove(item);
+            _db.SaveChanges();
+        }
+
+        public void clearBasket(string customerID)
+        {
+            var item = (from o in _db.OrderItems
+                        where o.customerID == customerID
+                        select o).ToList();
+
+            foreach (var book in item)
+            {
+                _db.Remove(book);
+            }
+            _db.SaveChanges();
+        }
+
         public OrderBasketView getBasket(string customerID)
         {
             var item = (from i in _db.OrderItems
@@ -40,6 +63,8 @@ namespace BookCave.Repositories
 
             foreach (var oneItem in item)
             {
+                bool isInBasket = false;
+
                 if(orderbasketview.books.Count() == 0)
                 {
                     orderbasketview.books.Add(oneItem);
@@ -51,12 +76,13 @@ namespace BookCave.Repositories
                         if(oneItem.bookID == alreadyInBasket.bookID)
                         {
                             alreadyInBasket.quantity++;
-                        }
-                        else
-                        {
-                            orderbasketview.books.Add(oneItem);
+                            isInBasket = true;
                             break;
                         }
+                    }
+
+                    if(!isInBasket){
+                        orderbasketview.books.Add(oneItem);
                     }
                 }
             }
@@ -66,6 +92,19 @@ namespace BookCave.Repositories
                 }
 
             return orderbasketview;
+        }
+
+        public void clearBookCopies(int bookID, string customerID)
+        {
+            var item = (from o in _db.OrderItems
+                        where o.bookID == bookID && o.customerID == customerID
+                        select o).ToList();
+
+            foreach (var copy in item)
+            {
+                _db.Remove(copy);
+            }
+            _db.SaveChanges();
         }
         /*public BookEntity getItem(int bookID)
         {
