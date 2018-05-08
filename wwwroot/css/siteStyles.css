@@ -201,6 +201,9 @@ body{
     padding: 20px;
 }
 .searchBook{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border: solid black 2px;
     padding: 5px;
     margin: 15px;
@@ -212,13 +215,8 @@ body{
     text-align: left;
 }
 .searchBook img{
-<<<<<<< HEAD
     width: 90%;
     height: 50%;
-=======
-    padding: 0% 10% 0%;
-    max-width: 100%;
->>>>>>> 41ceca43765c024ad12cc496e0465b3b8f4a3246
 }
 
 .button-holder{
@@ -229,7 +227,64 @@ body{
 .titleDiv{
     overflow-wrap: break-word
 }
+/*Discount index*/
 
+#discountHolder{
+    width: 95%;
+    margin: auto;
+    margin-left: 5%;
+    
+}
+.discountBook{
+    padding: 15px;
+    width: 45%;
+    border: solid black 2px;
+    border-radius: 5px;
+    height: 270px;
+    background-color: white;
+    margin: 15px;
+    float: left;
+}
+.discountBookCover{
+    width: 150px;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    float: left;
+}
+.discountBookCover img{
+    max-width: 100%
+}
+.discountBookCover h3{
+    margin-top: -15px;
+}
+
+
+
+/*Review*/
+.reviewalign{
+    margin-right:40%;
+    margin-left: 40%;
+    margin-top: 20px;
+}
+
+.review-form{
+    margin-top: 100px;
+    text-align: left;
+}
+
+.rating{
+    text-align: left;
+}
+.profilePic{
+    max-height: 200px;
+}
+.addressTable {
+    position: absolute;
+    left: 35%;
+    width: 40%;
+    text-align: left;
+}
 
 /*star radio buttons*/
 .rating {
@@ -279,30 +334,4 @@ body{
     position:relative;
     top:2px;
     left:2px;
-}
-
-
-/*Review*/
-.reviewalign{
-    margin-right:40%;
-    margin-left: 40%;
-    margin-top: 20px;
-}
-
-.review-form{
-    margin-top: 100px;
-    text-align: left;
-}
-
-.rating{
-    text-align: left;
-}
-.profilePic{
-    max-height: 200px;
-}
-.addressTable {
-    position: absolute;
-    left: 35%;
-    width: 40%;
-    text-align: left;
 }
