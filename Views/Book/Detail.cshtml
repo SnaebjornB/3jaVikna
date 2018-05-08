@@ -13,8 +13,16 @@
         <h4>Description</h4>
         <p>@Model.description</p> 
         <br>
-
-        <a class="btn btn-primary" id="detailsAddToBasketBtn" onclick="addToBasket(@Model.ID)" name="@Model.ID" >Add to basket</a>
+        @{
+             if(this.User.IsInRole("Employee"))
+             {
+                 <a class="btn btn-primary" asp-action="EditBook" asp-controller="Employee" asp-route-id="@Model.ID">Edit this book</a>
+             }
+             else
+             {
+                 <a class="btn btn-primary" id="detailsAddToBasketBtn" onclick="addToBasket(@Model.ID)" name="@Model.ID" >Add to basket</a>
+             }
+        }
         <br>
     </div>
     <div class="bookDetailsDesc pushDown">

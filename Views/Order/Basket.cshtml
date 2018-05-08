@@ -2,6 +2,7 @@
 
 <div class="container">
     <h1>Your Basket</h1>
+    <form method="POST" asp-action="Billing" asp-controller="Order">
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -38,7 +39,8 @@
             <tr></tr>
         </tbody>
     </table>
-    <input type="button" class="btn btn-xl btn-success active" onclick="" value="Checkout" />
+    <input type="submit" class="btn btn-xl btn-success active" value="Checkout"/>
     <input type="button" class="btn btn-xl btn-danger active" onclick="clearBasket()" value="Clear basket" />
-    <a asp-action="Basket" asp-controller="Order"><input type="button" class="btn btn-xl btn-success active" value="Refresh" /></a>
+    <a asp-action="Basket" asp-controller="Order"><input type="button" class="btn btn-xl btn-success active" value="Refresh" /></a>   
+    </form> 
 </div>

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -7,9 +9,11 @@ namespace BookCave.Services
     public class OrderService
     {
         public OrderRepo orderRepo;
+        private readonly AccountRepo _accountRepo;
         public OrderService()
         {
             orderRepo = new OrderRepo();
+            _accountRepo = new AccountRepo();
         }
         
          public void addToBasket(int bookID, string customerID)
@@ -36,18 +40,29 @@ namespace BookCave.Services
         {
             orderRepo.clearBookCopies(bookID, customerID);
         }
-        /*public OrderItemEntity getItem(int bookID, int quantity)
-        {
-            var book = new BookEntity();
-            book = orderRepo.getItem(bookID);
-            var newItem = new OrderItemEntity();
-            newItem.quantity = quantity;
-            newItem.price = book.price;
-            newItem.bookName = book.title;
-            newItem.bookID = bookID;
-            newItem.bookAuthor = book.author;
 
-            return newItem;
-        }*/
+        internal List<string> GetAddresses(string userID)
+        {
+            var addressStrings = new List<string>();
+            var addresses = _accountRepo.GetAddresses(userID);
+            foreach(var addr in addresses)
+            {
+                addressStrings.Add(addr.streetName.ToString() + " " + addr.houseNumber.ToString());
+            }
+            return addressStrings;
+        }
+        /*public OrderItemEntity getItem(int bookID, int quantity)
+{
+   var book = new BookEntity();
+   book = orderRepo.getItem(bookID);
+   var newItem = new OrderItemEntity();
+   newItem.quantity = quantity;
+   newItem.price = book.price;
+   newItem.bookName = book.title;
+   newItem.bookID = bookID;
+   newItem.bookAuthor = book.author;
+
+   return newItem;
+}*/
     }
 }

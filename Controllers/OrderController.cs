@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.InputModels;
+using System.Collections.Generic;
 
 namespace BookCave.Controllers
 {
@@ -87,6 +88,32 @@ namespace BookCave.Controllers
             }
             
             return true;
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult Billing()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string userID = _userManager.GetUserId(currentUser);
+            var basket = orderService.getBasket(userID);
+            if(!string.IsNullOrEmpty(userID))
+            {
+                var addressStrings = orderService.GetAddresses(userID);
+                var bask = new BillingModelView{
+                                totalPrice = basket.totalPrice,
+                                books = basket.books,
+                                addresses = addressStrings
+                            };
+                if(bask.books != null)
+                {
+                    return View(bask);
+                }
+                else
+                {
+                    return RedirectToAction("Basket");
+                } 
+            }
+            return RedirectToAction("Login", "Account");
         }
     }
 }

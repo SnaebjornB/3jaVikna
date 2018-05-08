@@ -1,0 +1,65 @@
+@model BookCave.Models.ViewModels.BillingModelView
+
+<div class="container">
+    <h1>Your Basket</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div>
+                @foreach(var book in Model.books)
+                {
+                    <tr class="basketList">
+                        <td>@book.bookName</td>
+                        <td>@book.quantity</td>
+                    </tr>
+                }
+            </div>
+        </tbody>
+    </table>
+    <h2>Total price: $@Model.totalPrice</h2>
+
+    <h2>Shipping address</h2>
+    @{
+        if(Model.addresses != null)
+        {   
+            <label for="shippingAddress">Use existing address</label>
+            <select name="shippingAddress" id="shippingAddress">
+                @foreach (var item in Model.addresses)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+            <p>...or</p>
+        }
+        else
+        {
+            <p>You don't have any addresses listed</p>
+        }
+        <a class="btn btn-xl btn-success active" asp-action="AddAddress" asp-controller="Account">Add a new address</a>
+    }
+   <!-- <br>
+    @{
+        if(Model.cards != null)
+        {   
+            <label for="CreditCard">Use existing address</label>
+            <select name="CreditCard" id="CreditCard">
+                @foreach (var item in Model.cards)
+                {
+                    <option value="@item">Card ending in @item.lastDigits</option>
+                }
+            </select>
+            <p>...or</p>
+        }
+        else
+        {
+            <p>You don't have any cards listed</p>
+        }
+        <a class="btn btn-xl btn-success active" asp-action="AddAddress" asp-controller="Account">Add a new address</a>
+    }-->
+    
+</div>
