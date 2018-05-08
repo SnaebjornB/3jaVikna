@@ -37,10 +37,12 @@
                     <li><a asp-controller="Book" asp-action="Top10">Top 10</a></li>
                     <li><a asp-controller="Book" asp-action="DiscountedBooks">Special Offers</a></li>
                     <li><a href="#">Shop By Category</a></li>
+                    
                 </ul>
+                <div class="fillerSpace"></div>
+                @await Html.PartialAsync("_CartPartial")
                 
             </div>
-            @await Html.PartialAsync("_CartPartial")
         </div>
             
         <div id="siteBody">

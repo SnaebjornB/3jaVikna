@@ -11,16 +11,17 @@
             @{
                 if(this.User.IsInRole("Employee")) {
                     <form asp-action="AddBook" asp-controller="Employee">
-                        <button type="submit" class="btn btn-link navbar-btn navbar-link">Add a new book</button>            
+                        <button type="submit" class="btn-link navbar-btn navbar-link">Add a new book</button>            
                     </form>
                     <form asp-action="EditDiscount" asp-controller="Employee">
-                        <button type="submit" class="btn btn-link navbar-btn navbar-link">Edit discounts</button>            
+                        <button type="submit" class="btn-link navbar-btn">Edit discounts</button>            
                     </form>          
                 } 
                 else 
                 {
                     <form asp-action="Basket" asp-controller="Order" method="get">
-                        <button type="submit" class="btn btn-link navbar-btn navbar-link">Basket</button>            
+                        <img src="~/images/cart_icon.png" alt="cart icon" id=cartIcon>
+                        <button type="submit" class="btn-link navbar-btn">Basket</button>            
                     </form>  
                 }
             }

@@ -38,8 +38,27 @@ body{
     padding: 14px 16px;
     text-decoration: none;
 }
-#siteHeaderBottom li a:hover:not(.active) {
+#siteHeaderBottom li a:hover:not(.active),
+                  button:hover:not(.active) {
     background-color: #111;
+}
+#siteHeaderBottom button {
+    margin-top: -10px;
+    display: block;
+    color: white;
+    padding: 14px 16px 10px 16px;
+    text-decoration: none;
+}
+.fillerSpace{
+    width: 55%;
+    height: 20px;
+    float:left;
+}
+#cartIcon{
+    float:left; 
+    margin-left:10px; 
+    width:42px; 
+    height:45px
 }
 .searchAlign{
 
@@ -50,20 +69,47 @@ body{
 }
 
 .loginAlign{
-    padding-right: 100px;
-    margin-top:-40px;
+    padding-right: 5%;
+    margin-top:-70px;
 }
 .loginAlign a:hover{
     color: black;
 }
 .userOptions{
-    width:200px; 
-    height:50px; 
+    width:25%; 
+    height:90px; 
     background-color:#ececea;
     border: solid black 1px;
     border-radius: 10px;
+    list-style-type: none;
 }
-
+.buttonOption{
+	display: block;
+    width: 95%;
+    height: 30px;
+    margin: 2.5%;
+    padding-top: -1%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    border-radius: 10px;
+    text-align: center;
+    border: solid;
+    background-color: #286090;
+    border-color: #122b40;
+    color: white;
+}
+/*
+	.blueButton{
+    background-color: #286090;
+    border-color: #122b40;
+    color: white;
+}
+	.redButton{
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: white;
+}
+*/
 
 /*Styles for footer*/
 #siteFooter{
