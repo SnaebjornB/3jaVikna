@@ -14,19 +14,19 @@
             </tr>
         </thead>
         <tbody>
-            <div>
-                @foreach(var book in Model.books)
-                {
-                    <tr class="basketList" id="@book.ID">
+            @foreach(var book in Model.books)
+            {
+                <div>
+                    <tr class="basketList"  id="@book.ID">
                         <td>@book.bookName</td>
                         <td><input type="button" class="btn btn-xs active btn-danger" onclick="decreaseQuantity(@book.bookID)" value="-"/></td>
                         <td><span id="@book.bookID">@book.quantity</span></td>
                         <td><input type="button" class="btn btn-xs active btn-success" onclick="increseQuantity(@book.bookID)" value="+"/></td>
                         <td>$ @book.price</td>
-                        <td><input type="button" class="btn btn-sm active btn-danger" onclick="removeFromBasket(@book.bookID, '@book.bookName')" value="X"/></td>
+                        <td><input type="button" class="btn btn-sm active btn-danger" onclick="removeFromBasket(@book.bookID, @book.ID)" value="X"/></td>
                     </tr>
-                }
-            </div>
+                </div>
+             }
             <tr>
                 <td></td>
                 <td></td>
@@ -40,6 +40,5 @@
     </table>
     <input type="button" class="btn btn-xl btn-success active" onclick="" value="Checkout" />
     <input type="button" class="btn btn-xl btn-danger active" onclick="clearBasket()" value="Clear basket" />
-    <input type="button" class="btn btn-xl btn-success active" onclick="" value="Refresh" />
-    
+    <a asp-action="Basket" asp-controller="Order"><input type="button" class="btn btn-xl btn-success active" value="Refresh" /></a>
 </div>

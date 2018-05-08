@@ -54,19 +54,21 @@ function clearBasket(){
     });
 }
 
-function removeFromBasket(bookID, bookName){
+function removeFromBasket(bookID, ID){
     var data = {
         bookID: bookID
     };
-    var rowID = '#' + bookName;
+    console.log(ID);
+    var rowID = "#" + ID;
+    console.log(rowID);
     $.ajax({
         url: '../../Order/clearBookCopies',
         data : data,
         type: 'POST',
         dataType: 'json',
         success: function () {
+            $(rowID).css( "display", "none" );
             console.log('success');
-            $("rowID").css( "display", "none" );
         }
     });
 }
