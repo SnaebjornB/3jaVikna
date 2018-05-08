@@ -1,27 +1,38 @@
 @model BookCave.Models.ViewModels.OrderBasketView
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Basket</title>
-</head>
-<body>
-    <div>
-        <form action='Basket' method="post">
-        <input type="number" name="BookID" id="BookID">
-        <input type="number" name="quantity" id="quantity">
-        <input type="submit" value="buy books">
-        </form>
-    </div>
-
-    @foreach(var book in Model.books)
-    {
-        <p>@book.bookName</p>
-        <p>@book.bookAuthor</p>
-    }
-    @Model.totalPrice
-</body>
-</html>
+<div class="container">
+    <h1>Your Basket</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th></th>
+                <th>Quantity</th>
+                <th></th>
+                <th>Price per unit</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var book in Model.books)
+            {
+                <tr>
+                    <td>@book.bookName</td>
+                    <td><button class="btn btn-xs active btn-danger" onclick="decreaseQuantity(@book.bookID)">-</button> </td>
+                    <td>@book.quantity</td>
+                    <td><button class="btn btn-xs active btn-success">+</button></td>
+                    <td>$ @book.price</td>
+                    <td><button class="btn btn-sm active btn-danger">X</button></td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total price:</td>
+                <td>$ @Model.totalPrice</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

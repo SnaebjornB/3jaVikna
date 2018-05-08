@@ -212,8 +212,13 @@ body{
     text-align: left;
 }
 .searchBook img{
+<<<<<<< HEAD
     width: 90%;
     height: 50%;
+=======
+    padding: 0% 10% 0%;
+    max-width: 100%;
+>>>>>>> 41ceca43765c024ad12cc496e0465b3b8f4a3246
 }
 
 .button-holder{
@@ -290,5 +295,14 @@ body{
 }
 
 .rating{
+    text-align: left;
+}
+.profilePic{
+    max-height: 200px;
+}
+.addressTable {
+    position: absolute;
+    left: 35%;
+    width: 40%;
     text-align: left;
 }

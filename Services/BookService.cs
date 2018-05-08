@@ -79,5 +79,8 @@ namespace BookCave.Services
         {
             _bookRepo.AddReview(id, newReview);
         }
+        public List<BookView> GetBooksByAuthor(string author){
+            return _bookRepo.GetBooksByAuthor(author);
+        }
     }
 }

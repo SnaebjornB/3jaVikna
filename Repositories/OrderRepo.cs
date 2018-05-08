@@ -2,6 +2,7 @@ using BookCave.Models.EntityModels;
 using BookCave.Data;
 using System.Linq;
 using BookCave.Models.ViewModels;
+using System.Collections.Generic;
 
 namespace BookCave.Repositories
 {
@@ -39,9 +40,30 @@ namespace BookCave.Repositories
 
             foreach (var oneItem in item)
             {
-                orderbasketview.totalPrice += oneItem.price * oneItem.quantity;
-                orderbasketview.books.Add(oneItem);
+                if(orderbasketview.books.Count() == 0)
+                {
+                    orderbasketview.books.Add(oneItem);
+                }
+                else
+                {
+                    foreach (var alreadyInBasket in orderbasketview.books)
+                    {
+                        if(oneItem.bookID == alreadyInBasket.bookID)
+                        {
+                            alreadyInBasket.quantity++;
+                        }
+                        else
+                        {
+                            orderbasketview.books.Add(oneItem);
+                            break;
+                        }
+                    }
+                }
             }
+            foreach (var basketItem in orderbasketview.books)
+                {
+                    orderbasketview.totalPrice += basketItem.price * basketItem.quantity;
+                }
 
             return orderbasketview;
         }

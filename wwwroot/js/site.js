@@ -23,6 +23,12 @@ function addToBasket(BookID) {
             }
     });
 }
+
+function decreaseQuantity(bookID) {
+    console.log(bookID);
+}
+
+
 /*$(document).ready(function (){    Fuck this shit I'm out!
     function doesEmailExist(event) {
         event.PreventDefault();

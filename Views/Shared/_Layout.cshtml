@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/siteStyles.css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
     
 
         <!--
@@ -34,7 +37,7 @@
             <div id="siteHeaderBottom">
                 <ul>
                     <li><a asp-controller="Book" asp-action="Top10">Top 10</a></li>
-                    <li><a href="#">Special Offers</a></li>
+                    <li><a asp-controller="Book" asp-action="DiscountedBooks">Special Offers</a></li>
                     <li><a href="#">Shop By Category</a></li>
                 </ul>
             </div>
@@ -83,10 +86,7 @@
         </div>
     </div>
     
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-    <script type="text/javascript" src="~/js/site.js"></script>
     
-    </script>
+    
 </body>
 </html>
