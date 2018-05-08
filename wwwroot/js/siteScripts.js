@@ -1,17 +1,15 @@
 
-$('.carousel[data-type="multi"] .item').each(function() {
-	var next = $(this).next();
-	if (!next.length) {
-		next = $(this).siblings(':first');
-	}
-	next.children(':first-child').clone().appendTo($(this));
+var itemCount = 0;
 
-	for (var i = 0; i < 2; i++) {
-		next = next.next();
-		if (!next.length) {
-			next = $(this).siblings(':first');
-		}
+$('.add').click(function (){
+  itemCount ++;
+  $('#itemCount').html(itemCount).css('display', 'block');
+}); 
 
-		next.children(':first-child').clone().appendTo($(this));
-	}
-});
+$('.clear').click(function() {
+  itemCount = 0;
+  $('#itemCount').html('').css('display', 'none');
+  $('#cartItems').html('');
+}); 
+
+/*Doesnt work*/

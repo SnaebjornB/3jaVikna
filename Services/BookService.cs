@@ -101,9 +101,9 @@ namespace BookCave.Services
             return bookDetail;
         }
 
-        public void AddReview(int? id, ReviewInput newReview)
+        public void AddReview(int? id, ReviewInput newReview, string userID, string userName)
         {
-            _bookRepo.AddReview(id, newReview);
+            _bookRepo.AddReview(id, newReview, userID, userName);
         }
         public List<BookView> GetBooksByAuthor(string author){
             return _bookRepo.GetBooksByAuthor(author);

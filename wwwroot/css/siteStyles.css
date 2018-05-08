@@ -49,14 +49,21 @@ body{
     border: none;
 }
 
-
 .loginAlign{
-    padding-right: 150px;
+    padding-right: 100px;
     margin-top:-40px;
 }
 .loginAlign a:hover{
     color: black;
 }
+.userOptions{
+    width:200px; 
+    height:50px; 
+    background-color:#ececea;
+    border: solid black 1px;
+    border-radius: 10px;
+}
+
 
 /*Styles for footer*/
 #siteFooter{
@@ -123,6 +130,9 @@ body{
     text-align:center;
     overflow-y:hidden;
     
+}
+.hide{
+    visibility: none;
 }
 /*Main index*/
 .bookItemSlider{
@@ -357,3 +367,4 @@ body{
     top:2px;
     left:2px;
 }
+
