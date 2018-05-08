@@ -7,9 +7,9 @@
         <div class="discountBook">
             <div class="discountBookCover">
                 <h3><b>@book.discount% off</b></h3>
-                <img src ="@book.image" alt="@book.title" width="170" height="200">
+                <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><img src ="@book.image" alt="@book.title" width="170" height="200"></a>
             </div>
-            <p style="text-align: center; font-size: 16px; font-weight: bold;">@book.title</p>
+            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p style="text-align: center; font-size: 16px; font-weight: bold;">@book.title</p></a>
             <p>Author: @book.author</p>
             <p>Genre: @book.category</p>
             <p>Rating: @book.rating</p>
