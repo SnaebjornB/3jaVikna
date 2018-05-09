@@ -1,51 +1,24 @@
-﻿
+﻿@model List<BookCave.Models.ViewModels.BookView>
     <h1>Test area!</h1>
     <!--
-        https://www.jqueryscript.net/slider/Responsive-Multi-slide-Carousel-Plugin-jQuery-Multislider.html
+      Carousel virknin var fengin héðan  https://www.jqueryscript.net/slider/Responsive-Multi-slide-Carousel-Plugin-jQuery-Multislider.html
     -->
     <div class="container">
         <div id="mixedSlider">
                 <div class="MS-content">
-                    <div class="item">
-                        <div class="imgTitle">
-                            <h2 class="blogTitle">Animals</h2>
-                            <img src="https://placeimg.com/500/300/animals" alt="" />
+                    @foreach(var book in Model)
+                    {
+                        <div class="item">                      
+                            <div class="imgTitle">
+                                <h2 class="blogTitle">@book.title</h2>
+                                <img src ="@book.image" alt="@book.title" width="170" height="170">
+                            </div>
+                            <p>Author: @book.author</p>
+                            <p>Rating: @book.rating</p>
+                            <p>Price: @book.price</p>
+                            <a href="#">Add to basket</a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-                        <a href="#">Read More</a>
-                    </div>
-                    <div class="item">
-                        <div class="imgTitle">
-                            <h2 class="blogTitle">Arch</h2>
-                            <img src="https://placeimg.com/500/300/arch" alt="" />
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-                        <a href="#">Read More</a>
-                    </div>
-                    <div class="item">
-                        <div class="imgTitle">
-                            <h2 class="blogTitle">Nature</h2>
-                            <img src="https://placeimg.com/500/300/nature" alt="" />
-                        </div>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-                        <a href="#">Read More</a>
-                    </div>
-                    <div class="item">
-                        <div class="imgTitle">
-                            <h2 class="blogTitle">People</h2>
-                            <img src="https://placeimg.com/500/300/people" alt="" />
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-                        <a href="#">Read More</a>
-                    </div>
-                    <div class="item">
-                        <div class="imgTitle">
-                            <h2 class="blogTitle">Tech</h2>
-                            <img src="https://placeimg.com/500/300/tech" alt="" />
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-                        <a href="#">Read More</a>
-                    </div>       
+                    }
                 </div>
                 <div class="MS-controls">
                     <button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
@@ -54,127 +27,3 @@
             </div>
         </div>
     </div>
-    <h1>Test area!</h1>
-    <br>
-    <br>
-    <h2>New releases</h2>
-    <div class="bookItemSlider">
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p style="text-align: center; font-size: 16px; font-weight: bold;">Alice in wonderland</p>
-            <p>Author: Lewis Carroll</p>
-            <p>Genre: Fantasy</p>
-            <p>Rating: 4,5</p>
-            <p>Price: 8,5 $</p>
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: Hickory Dickory Dash</p>
-            <p>Author: Tony Wilson </p>
-            <p>Genre: Children</p>
-            <p>Rating: 5</p>
-            <p>Price: 5,8 $</p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        
-    </div>
-    <div>
-        <h2>Popular books</h2>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p>  
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        
-    </div>
-    <div class="bottomPadding">
-        <h2>Special deal</h2>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        
-    </div>  
-
