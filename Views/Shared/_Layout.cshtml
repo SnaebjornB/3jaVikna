@@ -22,12 +22,12 @@
     <div id="siteContainer">
         <div id="siteHeader">
             <div id="siteHeaderTop">
-                <div>
-                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" class="nav navbar-nav navbar-left" style="width:113px; height:100px"></a>
+                <div class="headerLogoImg">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" class="nav navbar-nav navbar-left"></a>
                 </div>
                 <div class="searchAlign">
                     <form asp-controller="Book" asp-action="Search" method="POST">
-                        <input type="text" placeholder="Search.." class="from-control" style="width: 40%; height: 35px;"/>
+                        <input type="text" placeholder="Search.." class="from-control" style="width: 40%; height: 35px; border-radius: 6px;"/>
                         <input type="submit" value="Search" class="btn btn-secondary" style="width: 90px; height: 34px; font-size: 16px;"/>
                     </form>
                 </div>

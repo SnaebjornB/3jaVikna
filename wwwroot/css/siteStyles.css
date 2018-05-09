@@ -15,7 +15,7 @@ body{
 /*Styles for header*/
 #siteHeader{
     height: 125px;
-    background: maroon;
+    background: #C0b283;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -51,6 +51,9 @@ body{
     color: white;
     padding: 14px 16px 10px 16px;
     text-decoration: none;
+}
+.headerLogoImg{
+    width: 10%;  
 }
 .fillerSpace{
     width: 55%;
