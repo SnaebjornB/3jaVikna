@@ -114,38 +114,43 @@ $.fn.stars = function() {
     });
 }
 
-
-
-/*$(document).ready(function (){    Fuck this shit I'm out!
-    function doesEmailExist(event) {
-        event.PreventDefault();
-        var email = $('#email').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
+$( document ).ready(function(){
+    console.log('ready');
+    
+    $("#forgottenPassBtn").click(function(){
+        var temp = $('#emailInput').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
+        var email = {
+            email: temp
+        };
+        console.log(email);
         console.log("stuff"); 
-        if(email != undefined) {
+        
             $.ajax({
                 url: 'DoesEmailExist',
-                method: 'POST',
-                async: false,
-                data: {email : email},
-                dataType: 'bool',
-                succcess: function (data) {
-                    var emailStatusMessage = $('emailStatusMessage');
-                    if(!data) {
-                        emailStatusMessage.text('There is no account associated with that email');
-                        emailStatusMessage.css('color','red');
-                    }
-                    else {
-                        emailStatusMessage.text('A new password has been sent to ' + email);
-                        emailStatusMessage.css('color','green');
-                    }
+                method: 'GET',
+                //async: false,
+                data: email,
+                dataType: 'json',
+                success: function (data) {
+                    console.log('hello');
+                    handleEmailData(data);
+                    
                 },
-                error : function(err) {
+                error: function(err) {
                     alert("error");
                 }
             })
+    })
+    function handleEmailData(data){
+        var emailStatusMessage = $('#emailStatusMessage');
+        console.log('hæhæ');
+        if(data == null) {
+            emailStatusMessage.text('There is no account associated with that email');
+            emailStatusMessage.css('color','red');
         }
         else {
-            console.log("shit");
+            emailStatusMessage.text('A new password has been sent to your email!');
+            emailStatusMessage.css('color','green');
         }
     }
-})*/
+})
