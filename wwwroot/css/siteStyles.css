@@ -455,7 +455,7 @@ span.stars span {
 
 /*Carousel style*/
 .container { 
-    margin:150px auto;
+    margin:50px auto;
 }
 #mixedSlider {
     position: relative;
@@ -467,7 +467,7 @@ span.stars span {
   }
   #mixedSlider .MS-content .item {
     display: inline-block;
-    width: 33.3333%;
+    width: 20%;
     position: relative;
     vertical-align: top;
     overflow: hidden;
