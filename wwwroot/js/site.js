@@ -1,5 +1,4 @@
 ﻿function decreaseQuantity(bookID) {
-    console.log(bookID);
     var spanID = '#' + bookID;
     var temp = $(spanID).text();
     parseInt(temp);
@@ -8,7 +7,6 @@
 
     }else{
         temp--;
-        console.log(temp);
         $(spanID).text(temp);
         
         var data = {
@@ -21,7 +19,6 @@
             type: 'POST',
             dataType: 'json',
             success: function () {
-                 console.log('success');
             }
         });
     }
@@ -29,14 +26,11 @@
 }
 
 function increseQuantity(bookID){
-    console.log(bookID);
-    console.log(bookID);
     var spanID = '#' + bookID;
     var temp = $(spanID).text();
     parseInt(temp);
 
     temp++;
-    console.log(temp);
     $(spanID).text(temp);
 
     addToBasket(bookID);
@@ -49,7 +43,6 @@ function clearBasket(){
         type: 'POST',
         success: function () {
             $(".basketList").css( "display", "none" );
-            console.log('success');
         }
     });
 }
@@ -68,7 +61,6 @@ function removeFromBasket(bookID, ID){
         dataType: 'json',
         success: function () {
             $(rowID).css( "display", "none" );
-            console.log('success');
         }
     });
 }
@@ -82,7 +74,6 @@ function check(input) {
 } 
 
 function addToBasket(BookID) {
-    console.log(BookID);
     var data = {
         bookID: BookID 
     };
@@ -93,7 +84,6 @@ function addToBasket(BookID) {
             type: 'POST',
             dataType: 'json',
             success: function () {
-                 console.log('success');
             }
     });
 }
@@ -102,50 +92,47 @@ $(function() {
     $(document).ready(function() {
         var rating = $('.stars').val();
         $('.span').html('<span class="stars">'+parseFloat($('stars').val())+'</span>');
-        console.log('stars');
         $('span.stars').stars();
-    });    		
-    $(document).ready();
+    });    
+
+    $.fn.stars = function() {
+        return $(this).each(function() {
+            $(this).html($('<span />').width(Math.max(0, (Math.min(5, parseFloat($(this).html())))) * 16));
+        });
+    }
 });
 
-$.fn.stars = function() {
-    return $(this).each(function() {
-        $(this).html($('<span />').width(Math.max(0, (Math.min(5, parseFloat($(this).html())))) * 16));
-    });
-}
 
 
-
-/*$(document).ready(function (){    Fuck this shit I'm out!
-    function doesEmailExist(event) {
-        event.PreventDefault();
-        var email = $('#email').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
-        console.log("stuff"); 
-        if(email != undefined) {
-            $.ajax({
-                url: 'DoesEmailExist',
-                method: 'POST',
-                async: false,
-                data: {email : email},
-                dataType: 'bool',
-                succcess: function (data) {
-                    var emailStatusMessage = $('emailStatusMessage');
-                    if(!data) {
-                        emailStatusMessage.text('There is no account associated with that email');
-                        emailStatusMessage.css('color','red');
-                    }
-                    else {
-                        emailStatusMessage.text('A new password has been sent to ' + email);
-                        emailStatusMessage.css('color','green');
-                    }
-                },
-                error : function(err) {
-                    alert("error");
-                }
-            })
+$( document ).ready(function(){
+    
+    $("#forgottenPassBtn").click(function(){
+        var temp = $('#emailInput').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
+        var email = {
+            email: temp
+        };
+        $.ajax({
+            url: 'DoesEmailExist',
+            method: 'GET',
+            data: email,
+            dataType: 'json',
+            success: function (data) {
+                handleEmailData(data);
+            },
+            error: function(err) {
+                alert("error");
+            }
+        })
+    })
+    function handleEmailData(data){
+        var emailStatusMessage = $('#emailStatusMessage');
+        if(data == null) {
+            emailStatusMessage.text('There is no account associated with that email');
+            emailStatusMessage.css('color','red');
         }
         else {
-            console.log("shit");
+            emailStatusMessage.text('A new password has been sent to your email!');
+            emailStatusMessage.css('color','green');
         }
     }
-})*/
+})

@@ -1,122 +1,90 @@
-﻿
-    <h2>New releases</h2>
-    <div class="bookItemSlider">
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p style="text-align: center; font-size: 16px; font-weight: bold;">Alice in wonderland</p>
-            <p>Author: Lewis Carroll</p>
-            <p>Genre: Fantasy</p>
-            <p>Rating: 4,5</p>
-            <p>Price: 8,5 $</p>
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: Hickory Dickory Dash</p>
-            <p>Author: Tony Wilson </p>
-            <p>Genre: Children</p>
-            <p>Rating: 5</p>
-            <p>Price: 5,8 $</p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        
-    </div>
-    <div>
-        <h2>Popular books</h2>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p>  
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        
-    </div>
-    <div class="bottomPadding">
-        <h2>Special deal</h2>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        <div class="book-item marginPush">
-            <img src ="./images/shark.jpg" alt="" width="170" height="170">
-            <p>Title: </p>
-            <p>Author: </p>
-            <p>Genre: </p>
-            <p>Rating: </p>
-            <p>Price: </p> 
-            <button type="button" class="btn btn-primary btn-sm">Add to basket</button>
-        </div>
-        
-    </div>  
+﻿@model List<BookCave.Models.ViewModels.BookView>
+    <!--
+      Carousel virknin var fengin héðan  https://www.jqueryscript.net/slider/Responsive-Multi-slide-Carousel-Plugin-jQuery-Multislider.html
+    -->
+<div class="sidenav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+</div>
 
+
+    <div class="container">
+        <h2>Newest releases</h2>
+        <div id="mixedSlider1">
+            <div class="MS-content">
+                @foreach(var book in Model)
+                {
+                    <div class="item">                      
+                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><div class="imgTitle">
+                            <h4 class="blogTitle" style="text-align:center">@book.title</h4>
+                            <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
+                        </div></a>
+                        <p>@book.author</p>
+                        <p>Rating: @book.rating</p>
+                        <!--<span class="stars details-stars">@book.rating</span>-->
+                        <p>Price: @book.price</p>
+                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+                    </div>
+
+                }
+            </div>
+            <div class="MS-controls">
+                <button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                <button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>    
+    <div class="container">
+        <h2>Popular books</h2>
+        <div id="mixedSlider2">
+            <div class="MS-content">
+                @foreach(var book in Model)
+                {
+                    <div class="item">                      
+                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><div class="imgTitle">
+                            <h4 class="blogTitle" style="text-align:center">@book.title</h4>
+                            <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
+                        </div></a>
+                        <p>@book.author</p>
+                        <p>Rating: @book.rating</p>
+                        <!--<span class="stars details-stars">@book.rating</span>-->
+                        <p>Price: @book.price</p>
+                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+                    </div>
+                }
+            </div>
+            <div class="MS-controls">
+                <button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                <button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>    
+    <div class="container">
+        <h2>Special offers</h2>
+        <div id="mixedSlider3">
+            <div class="MS-content">
+                @foreach(var book in Model)
+                {
+                    <div class="item">                      
+                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><div class="imgTitle">
+                            <h4 class="blogTitle" style="text-align:center">@book.title</h4>
+                            <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
+                        </div></a>
+                        <p>@book.author</p>
+                        <p>Rating: @book.rating</p>
+                        <!--<span class="stars details-stars">@book.rating</span>-->
+                        <p>Price: @book.price</p>
+                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+                    </div>
+                }
+            </div>
+            <div class="MS-controls">
+                <button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                <button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>

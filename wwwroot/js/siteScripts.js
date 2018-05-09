@@ -13,3 +13,4 @@ $('.clear').click(function() {
 }); 
 
 /*Doesnt work*/
+

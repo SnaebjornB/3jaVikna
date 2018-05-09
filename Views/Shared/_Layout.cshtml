@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/siteStyles.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
     
 
@@ -19,12 +22,12 @@
     <div id="siteContainer">
         <div id="siteHeader">
             <div id="siteHeaderTop">
-                <div>
-                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" class="nav navbar-nav navbar-left" style="width:113px; height:100px"></a>
+                <div class="headerLogoImg">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" class="nav navbar-nav navbar-left"></a>
                 </div>
                 <div class="searchAlign">
                     <form asp-controller="Book" asp-action="Search" method="POST">
-                        <input type="text" placeholder="Search.." class="from-control" style="width: 40%; height: 35px;"/>
+                        <input type="text" placeholder="Search.." class="from-control" style="width: 40%; height: 35px; border-radius: 6px;"/>
                         <input type="submit" value="Search" class="btn btn-secondary" style="width: 90px; height: 34px; font-size: 16px;"/>
                     </form>
                 </div>
@@ -34,12 +37,12 @@
             </div>
             <div id="siteHeaderBottom">
                 <ul>
-                    <li><a asp-controller="Book" asp-action="Top10">Top 10</a></li>
-                    <li><a asp-controller="Book" asp-action="DiscountedBooks">Special Offers</a></li>
-                    <li><a href="#">Shop By Category</a></li>
+                    <li><a asp-controller="Book" asp-action="Top10"><h4>Top 10</h4></a></li>
+                    <li><a asp-controller="Book" asp-action="DiscountedBooks"><h4>Special Offers</h4></a></li>
+                    <li><a href="#"><h4>Shop By Category</h4></a></li>
                     
                 </ul>
-                <div class="fillerSpace"></div>
+                <!--<div class="fillerSpace"></div> -->
                 @await Html.PartialAsync("_CartPartial")
                 
             </div>
@@ -90,7 +93,39 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     <script type="text/javascript" src="~/js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+    <script type="text/javascript" src="~/js/multislider.js"></script>
+    <script>
+        $('#mixedSlider1').multislider({
+            duration: 450,
+            interval: 0
+        });
+        $('#mixedSlider2').multislider({
+            duration: 450,
+            interval: 0
+        });
+        $('#mixedSlider3').multislider({
+            duration: 450,
+            interval: 0
+        });
+    </script>
     
     
 </body>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </html>
