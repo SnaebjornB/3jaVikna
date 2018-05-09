@@ -55,14 +55,20 @@ body{
 .headerLogoImg{
     width: 10%;  
 }
+
 .fillerSpace{
     width: 55%;
     height: 20px;
     float:left;
+    margin-right: 18%;
+}
+#cartStyle{
+    position: fixed;
+    right: 0;
 }
 #cartIcon{
-    float:left; 
-    margin-left:10px; 
+    float:right; 
+    margin-left:50px; 
     width:42px; 
     height:45px
 }
