@@ -9,11 +9,9 @@ namespace BookCave.Services
     public class OrderService
     {
         public OrderRepo orderRepo;
-        private readonly AccountRepo _accountRepo;
         public OrderService()
         {
             orderRepo = new OrderRepo();
-            _accountRepo = new AccountRepo();
         }
         
          public void addToBasket(int bookID, string customerID)
@@ -41,16 +39,6 @@ namespace BookCave.Services
             orderRepo.clearBookCopies(bookID, customerID);
         }
 
-        internal List<string> GetAddresses(string userID)
-        {
-            var addressStrings = new List<string>();
-            var addresses = _accountRepo.GetAddresses(userID);
-            foreach(var addr in addresses)
-            {
-                addressStrings.Add(addr.streetName.ToString() + " " + addr.houseNumber.ToString());
-            }
-            return addressStrings;
-        }
         /*public OrderItemEntity getItem(int bookID, int quantity)
 {
    var book = new BookEntity();

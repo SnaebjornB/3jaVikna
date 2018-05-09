@@ -9,6 +9,10 @@
             <input type="submit" value="Edit Profile">
         </form>
 
+        <form asp-action="OrderHistory" method="GET">
+            <input type="submit" value="My order history">
+        </form>
+
         <h2>Addresses </h2>
         @foreach(var address in Model.addresses)
         {

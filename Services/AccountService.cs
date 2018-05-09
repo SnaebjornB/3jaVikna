@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -43,6 +44,10 @@ namespace BookCave.Services
         {
             return _accountRepo.GetAddressById(id);
         }
+        public AddressViewModel GetViewAddressById(int id)
+        {
+            return _accountRepo.GetViewAddressById(id);
+        }
         public void UpdateAddress(EditAddressViewModel model)
         {
             _accountRepo.UpdateAddress(model);
@@ -55,6 +60,42 @@ namespace BookCave.Services
         public void DeleteAddress(int id, string userID)
         {
             _accountRepo.DeleteAddress(id, userID);
+        }
+
+        internal void AddCard(CCardInfoViewModel newCCard, string id)
+        {
+            _accountRepo.AddCard(newCCard, id);
+        }
+
+        internal CCardInfoViewModel GetCardById(int cardID)
+        {
+            return _accountRepo.GetCardById(cardID);
+        }
+
+        internal List<CCardInfoViewModel> GetCards(string userID)
+        {
+            return _accountRepo.GetCards(userID);
+        }
+
+        internal void SaveCurrentOrder(ReviewViewModel reviewModel, List<ReviewBookViewModel> books, string id)
+        {
+            _accountRepo.SaveCurrentOrder(reviewModel, id);
+            _accountRepo.SaveCurrentOrderBooks(books, id);
+        }
+
+        internal void ConfirmCurrentOrder(string userID)
+        {
+            _accountRepo.ConfirmCurrentOrder(userID);
+        }
+
+        internal List<OrderHistoryViewModel> GetOrderHistory(string userId)
+        {
+            var orders = _accountRepo.GetOrderHistory(userId);
+            foreach(var order in orders)
+            {
+                order.books = _accountRepo.GetOrderHistoryBooksByTimeStamp(order.timeStamp, userId);
+            }
+            return orders;
         }
     }
 }

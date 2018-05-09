@@ -1,0 +1,45 @@
+@model BookCave.Models.ViewModels.ReviewStepViewModel
+
+<h1>Review your order</h1>
+<br>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div>
+            @foreach(var book in Model.books)
+            {
+                <tr class="basketList">
+                    <td>@book.bookName</td>
+                    <td>@book.quantity</td>
+                </tr>
+            }
+        </div>
+    </tbody>
+</table>
+<div>
+    <p>Deliver to: @Model.address</p>
+</div>
+<div>
+    <h3>Total amount: $@Model.totalPrice</h3>
+    @{
+        if(Model.payPal == false)
+        {
+            
+            <p>Pay with a card ending in @Model.card</p>
+        }
+        else
+        {
+            <p>Pay with PayPal</p>
+        }
+    }
+
+    <a asp-action="Confirm" asp-controller="Order" class="btn btn-xl btn-success">Confirm order</a>
+    <a asp-action="Basket" asp-controller="Order" class="btn btn-xl btn-neutral">Change something</a>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-xl btn-danger">Cancel order</a>
+    
+</div>

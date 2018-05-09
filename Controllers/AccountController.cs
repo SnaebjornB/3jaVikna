@@ -256,6 +256,13 @@ namespace BookCave.Controllers
             _accountService.DeleteAddress(id, userId);
             return RedirectToAction("EditAddresses");
         }
+        [Authorize]
+        public IActionResult OrderHistory()
+        {
+            var userId = GetCurrentUserId();
+            var history = _accountService.GetOrderHistory(userId);
+            return View(history);
+        }
 
         public IActionResult AccessDenied()
         {

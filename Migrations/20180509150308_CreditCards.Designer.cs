@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180509150308_CreditCards")]
+    partial class CreditCards
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,24 +105,6 @@ namespace BookCave.Migrations
                     b.ToTable("Cards");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.OrderHistoryEntity", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("address");
-
-                    b.Property<string>("timeStamp");
-
-                    b.Property<double>("totalPrice");
-
-                    b.Property<string>("userID");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("OrderHistory");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.OrderItemEntity", b =>
                 {
                     b.Property<int>("ID")
@@ -162,74 +145,6 @@ namespace BookCave.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Reviews");
-                });
-
-            modelBuilder.Entity("BookCave.Models.ViewModels.OrderHistoryBookViewModel", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("author");
-
-                    b.Property<int>("bookID");
-
-                    b.Property<string>("orderHistoryID");
-
-                    b.Property<double>("price");
-
-                    b.Property<int>("quantity");
-
-                    b.Property<string>("title");
-
-                    b.Property<string>("userID");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("OrderHistoryBooks");
-                });
-
-            modelBuilder.Entity("BookCave.Models.ViewModels.ReviewBookViewModel", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("bookAuthor");
-
-                    b.Property<int>("bookID");
-
-                    b.Property<string>("bookName");
-
-                    b.Property<double>("price");
-
-                    b.Property<int>("quantity");
-
-                    b.Property<string>("userID");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CurrentOrderBooks");
-                });
-
-            modelBuilder.Entity("BookCave.Models.ViewModels.ReviewViewModel", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("address");
-
-                    b.Property<string>("card");
-
-                    b.Property<bool>("paid");
-
-                    b.Property<bool>("payPal");
-
-                    b.Property<double>("totalPrice");
-
-                    b.Property<string>("userID");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CurrentOrder");
                 });
 #pragma warning restore 612, 618
         }
