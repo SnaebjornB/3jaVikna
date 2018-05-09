@@ -48,6 +48,13 @@ namespace BookCave.Services
 
             return searchResult;
         }
+
+        public List<BookView> GetAllBooks()
+        {
+            var allBooks = _bookRepo.GetAllBooks();
+            return allBooks;
+        }
+
         [Authorize(Roles="Employee")]
         internal void UpdateBook(BookInputModel book)
         {
