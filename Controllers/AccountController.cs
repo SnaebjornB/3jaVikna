@@ -107,15 +107,15 @@ namespace BookCave.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public async Task<bool> DoesEmailExist(string email)
+        [HttpGet]
+        public async Task<ApplicationUser> DoesEmailExist(string email)
         {
             var userExists = await _userManager.FindByNameAsync(email);
-            if(userExists != null)
+            if(userExists == null)
             {
-                return false;
+                return null;
             }
-            return true;
+            return userExists;
         }
 
         [Authorize]
