@@ -52,6 +52,33 @@ namespace BookCave.Repositories
 
             return searchResult;
         }
+
+        public List<BookView> GetAllBooks()
+        {
+            var allBooks = (from b in _db.Books
+                            select new BookView{
+                                    ID = b.ID,
+                                    author = b.author,
+                                    ISBN = b.ISBN,
+                                    title = b.title,
+                                    year = b.year,
+                                    numberOfPages = b.numberOfPages,
+                                    rating = b.rating,
+                                    description = b.description,
+                                    country = b.country,
+                                    language = b.language,
+                                    publisher = b.publisher,
+                                    price = b.price,
+                                    category = b.category,
+                                    noOfSoldUnits = b.noOfSoldUnits,
+                                    noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    discount = b.discount,
+                                    image = b.image
+                                }).ToList();
+
+            return allBooks;
+        }
+
         [Authorize(Roles="Employee")]
         internal void UpdateBook(BookInputModel book)
         {
