@@ -2,6 +2,14 @@
     <!--
       Carousel virknin var fengin héðan  https://www.jqueryscript.net/slider/Responsive-Multi-slide-Carousel-Plugin-jQuery-Multislider.html
     -->
+<div class="sidenav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+</div>
+
+
     <div class="container">
         <h2>Newest releases</h2>
         <div id="mixedSlider1">
@@ -17,8 +25,9 @@
                         <p>Rating: @book.rating</p>
                         <!--<span class="stars details-stars">@book.rating</span>-->
                         <p>Price: @book.price</p>
-                        <a href="#">Add to basket</a>
+                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
                     </div>
+
                 }
             </div>
             <div class="MS-controls">
@@ -42,7 +51,7 @@
                         <p>Rating: @book.rating</p>
                         <!--<span class="stars details-stars">@book.rating</span>-->
                         <p>Price: @book.price</p>
-                        <a href="#">Add to basket</a>
+                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
                     </div>
                 }
             </div>
@@ -67,7 +76,7 @@
                         <p>Rating: @book.rating</p>
                         <!--<span class="stars details-stars">@book.rating</span>-->
                         <p>Price: @book.price</p>
-                        <a href="#">Add to basket</a>
+                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
                     </div>
                 }
             </div>
