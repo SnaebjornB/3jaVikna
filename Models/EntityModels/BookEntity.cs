@@ -7,6 +7,7 @@ namespace BookCave.Models.EntityModels
         public string author { get; set; }
         public string ISBN { get; set; }
         public string title { get; set; }
+        public string shortTitle { get; set; }
         public int year { get; set; }
         public int numberOfPages { get; set; }
         public double rating { get; set; }
