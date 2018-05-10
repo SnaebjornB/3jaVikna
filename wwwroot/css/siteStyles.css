@@ -29,7 +29,7 @@ body{
     overflow: hidden;
     margin: 0px;
     padding: 0px;
-    height: auto;
+    height: 40%;
     background-color: rgb(59, 59, 59);
 }
 #siteHeaderBottom li {
@@ -38,7 +38,7 @@ body{
 #siteHeaderBottom li a {
     display: block;
     color: white;
-    padding: 14px 16px;
+    padding: 4px 16px;
     text-decoration: none;
 }
 #siteHeaderBottom li a:hover:not(.active),
@@ -64,7 +64,7 @@ body{
 }
 
 #cartIcon{ 
-    margin: -20px 15px 0px 50px;
+    margin: -16px 15px 0px 50px;
     width:42px; 
     height:45px;
     position: fixed;
