@@ -302,11 +302,21 @@ body{
     margin: 0px 50px;
     width: auto;
     text-align: left;
-    float: left;
 }
 .bookDetailsReview{
-    float: right;
-    margin-right: 25%;
+    border: #6c7c7c solid 1px;
+    margin: 0px 50px;
+    padding: 10px;
+    width: 700px;
+    float: left;
+    text-align: left;
+}
+.review-text-box {
+    border-bottom: #666 solid 1px;
+    padding-bottom: 7px;
+}
+.review-name {
+    padding: 1px;
 }
 .pushDown{
     margin-top: 50px;
@@ -434,7 +444,7 @@ span.stars, span.stars span {
 }
 
 span.details-stars {
-    left: 24.5%;
+    float: left;
 }
 
 span.stars span {
