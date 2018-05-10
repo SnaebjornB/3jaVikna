@@ -1,21 +1,23 @@
 @model List<BookCave.Models.ViewModels.BookView>
 
     <h2></h2>
-    <form method="get" action="Search">
+    <form method="get" action="Search" class="form-group">
         <fieldset>
-            <legend>Search</legend>
 
             <label for="searchTitle">Title</label>
-            <input type="text" name="searchTitle">
+            <input type="text" name="searchTitle" class="search-bar">
 
             <label for="searchAuthor">Author</label>
-            <input type="text" name="searchAuthor">
+            <input type="text" name="searchAuthor" class="search-bar">
 
             <label for="searchISBN">ISBN</label>
-            <input type="text" name="searchISBN">
+            <input type="text" name="searchISBN" class="search-bar">
+
+            <input type="submit" value="Search" class="btn btn-primary btn-md">
+            <br>
 
             <label for="searchCategory">Category</label>
-            <select name="searchCategory">
+            <select name="searchCategory" class="search-bar">
                 <option value="">All</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Children's literature">Children's literature</option>
@@ -45,18 +47,15 @@
             </select>
 
             <label for="searchYear">Year</label>
-            <input type="number" min="1000" max="2020" step="1" value="0" name="searchYear"/>
+            <input type="number" step="1" value="0" name="searchYear" class="search-bar"/>
 
             <label for="orderBy">Filter by</label>
-            <select name="orderBy">
+            <select name="orderBy" class="search-bar">
                 <option value="ascendingTitle" selected>Title Ascending</option>
                 <option value="descendingTitle">Title Descending</option>
                 <option value="ascendingPrice">Price Ascending</option>
                 <option value="descendingPrice">Price Descending</option>
             </select>
-
-            
-            <input type="submit" value="Search">
         </fieldset>
     </form>
 
