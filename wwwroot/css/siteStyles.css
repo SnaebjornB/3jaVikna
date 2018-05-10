@@ -307,8 +307,8 @@ body{
     background-color: white;
 }
 .searchBook img{
-    width: 90%;
-    height: 50%;
+    width:150px;
+    height: 190px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -460,7 +460,7 @@ span.stars span {
     left:2px;
 }
 
-/*Carousel styles 1*/
+/*Carousel styles*/
 .container { 
     margin: 50px auto;
 }

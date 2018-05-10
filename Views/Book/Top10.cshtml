@@ -7,8 +7,10 @@
                 <div class="bookDisp">
                         <h3 style="float:left; margin-top:-4px; margin-right: 20px"><b>@counter</b></h3>
                         <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><img src="@book.image" alt="@book.title"></a>
-                        <p>Title: <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">@book.title</a></p>
-                        <p>Author: @book.author</p>
+                        <h4>Title: <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">@book.title</a></h4>
+                        <h4>Author: @book.author</h4>
+                        <span class="stars details-stars" style="margin-left:270px">@book.rating</span>
+                        <h4>Price: @book.price $</h4>
                         <br>
                 </div>
                 counter++;
