@@ -83,21 +83,28 @@ body{
 #userCartOrSettings li button:hover:not(.active){
   background-color: #111;
 }
-/*
-#cartIcon{ 
-    margin: -16px 15px 0px 50px;
-    width:42px; 
-    height:45px;
-    position: fixed;
-    right: 0;
-}
-*/
+
 .searchAlign{
 
     padding-top: 35px;
     padding-left: 29%;
     font-size: 19px;
     border: none;
+}
+.searchInput{
+    width: 35%; 
+    height: 35px; 
+    border-radius: 6px;
+}
+.searchButton{
+    width: 90px; 
+    height: 34px; 
+    font-size: 16px;
+}
+.searchButtonAdv{
+    width: 135px; 
+    height: 34px; 
+    font-size: 16px;
 }
 
 .loginAlign{
@@ -108,7 +115,7 @@ body{
     color: black;
 }
 .userOptions{
-    width:25%; 
+    width:15%; 
     height:90px; 
     background-color:#ececea;
     border: solid black 1px;
@@ -778,9 +785,21 @@ span.stars span {
     z-index: 2;
     width: 40px;
     height: 40px;
+    margin-left:-5px;
     border-radius: 50%;
     background: red;
     color: white;
     text-align: center;
     padding: 5px;
   }
+  .orderTable{
+    margin: 0px auto 15px;
+    border-bottom: solid black 1px;
+}
+.orderTable th{
+    margin-bottom: 5px;
+    border-bottom: solid black 1px;
+}
+.orderTable tr th,td{
+    padding: 5px 30px;
+}
