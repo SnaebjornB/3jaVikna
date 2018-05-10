@@ -1,13 +1,15 @@
  @model BookCave.Models.ViewModels.RegisterViewModel
-<head>
-    <script type="text/javascript" src="~/js/site.js"></script>
-</head>
+
 <div class="siteBody">
     <h1>Sign up</h1>
+    <div class="text-danger">@ViewData["ErrorMessage"]</div>
     <form asp-action="Register" asp-controller="Account" class="form-horizontal">
+        <sub>Fields marked with an asterisk (*) are required</sub>
+        <br>
+        <br>
         <div class="form-group">
             <label>
-                Email <br><input type="email" autofocus="autofocus" asp-for="Email" class="form-control" placeholder="Enter your email"/>
+                Email* <br><input type="email" autofocus="autofocus" asp-for="Email" class="form-control" placeholder="Enter your email"/>
             </label>
             <br>
             <span asp-validation-for="Email" class="text-danger"></span>
@@ -15,7 +17,7 @@
         </div>
         <div class="form-group">
             <label>
-                First Name <br><input type="text" asp-for="FirstName" class="form-control" placeholder="Enter your first name"/>
+                First Name* <br><input type="text" asp-for="FirstName" class="form-control" placeholder="Enter your first name"/>
             </label>
             <br>
             <span asp-validation-for="FirstName" class="text-danger"></span>
@@ -23,7 +25,7 @@
         </div>
         <div class="form-group">
             <label>
-                Last Name <br><input type="text" asp-for="LastName" class="form-control" placeholder="Enter your last name"/>
+                Last Name* <br><input type="text" asp-for="LastName" class="form-control" placeholder="Enter your last name"/>
             </label>
             <br>
             <span asp-validation-for="LastName" class="text-danger"></span>
@@ -31,16 +33,20 @@
         </div>
         <div class="form-group">  
             <label>          
-                Password <br><input type="password" asp-for="Password" class="form-control" placeholder="Enter your password" id="password"/>
+                Password* <br><input type="password" asp-for="Password" class="form-control" placeholder="Enter your password" id="password"/>
             </label>
+            <br>
+            <sub>Password must contain at least 8 characters, at least 1 capital letter and 1 number</sub>
             <br>
             <span asp-validation-for="Password" class="text-danger"></span>
             <br>
         </div>
         <div class="form-group">   
             <label>         
-                Confirm your password <br><input type="password" class="form-control" placeholder="Confirm your password" oninput="check(this)"/>
-            </label>
+                Confirm your password* <br><input type="password" asp-for="confirmPassword" class="form-control" placeholder="Confirm your password" oninput="check(this)"/>
+            </label> <!-- TJEKKA JS -->
+            <br>
+            <span asp-validation-for="confirmPassword" class="text-danger"></span>
             <br>
         </div>
         <div class="form-group">

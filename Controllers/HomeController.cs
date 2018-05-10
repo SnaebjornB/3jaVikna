@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace BookCave.Controllers
 {
@@ -46,6 +47,14 @@ namespace BookCave.Controllers
 
         public IActionResult Error()
         {
+            var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            if(exceptionFeature != null)
+            {
+                string path = exceptionFeature.Path;
+                Exception ex = exceptionFeature.Error;
+            }
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

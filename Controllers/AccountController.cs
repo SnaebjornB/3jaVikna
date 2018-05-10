@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -23,17 +24,32 @@ namespace BookCave.Controllers
             _userManager = userManager;
             _accountService = new AccountService();
         }
-
+        [Authorize]
         public string GetCurrentUserId()
         {
             ClaimsPrincipal currentUser = this.User;
             string id = _userManager.GetUserId(currentUser);
-            return id;
+            if(!string.IsNullOrEmpty(id))
+            {
+                return id;
+            }
+            else
+            {
+                throw new Exception("userID not found");
+            }
         }
 
         public IActionResult Register()
         {
-            return View();
+            ClaimsPrincipal currentUser = this.User;
+            if(_signInManager.IsSignedIn(currentUser))
+            {
+                return RedirectToAction("Profile");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
@@ -42,7 +58,7 @@ namespace BookCave.Controllers
         {
             if(!ModelState.IsValid)
             {
-                ViewData["ErrorMessage"] = "Something is wrong with the RegisterViewModel";
+                ViewData["ErrorMessage"] = "Something went wrong. Please make sure all the fields are filled out correctly and try again";
                 return View();
             }
             var user = new ApplicationUser
@@ -52,13 +68,32 @@ namespace BookCave.Controllers
                 image = "https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_1280.png", //Er undir Creative Commons
                 favBook = ""
             };
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if(result.Succeeded) 
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if(existingUser != null)
             {
-                await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
-                await _signInManager.SignInAsync(user, false);
+                ViewData["ErrorMessage"] = "There is already an account with that email";
+            }
+            else
+            {
+                if(model.Password == model.confirmPassword)
+                {
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if(result.Succeeded) 
+                    {
+                        await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+                        await _signInManager.SignInAsync(user, false);
 
-                return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewData["ErrorMessage"] = "Your password does not meet the requirements";
+                    }
+                }    
+                else
+                {
+                    ViewData["ErrorMessage"] = "Your passwords don't match";
+                }
             }
             return View();
         }
@@ -82,7 +117,7 @@ namespace BookCave.Controllers
         {
             if(!ModelState.IsValid)
             {
-                ViewData["ErrorMessage"] = "Something is wrong with the LoginViewModel";
+                ViewData["ErrorMessage"] = "Something is wrong went wrong, please try again";
                 return View();
             }
 
@@ -91,6 +126,7 @@ namespace BookCave.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            ViewData["ErrorMessage"] = "Email or password is not correct.";
             return View();
         }
 

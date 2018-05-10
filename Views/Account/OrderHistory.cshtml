@@ -20,7 +20,7 @@
                     @foreach(var book in order.books)
                     {
                         <tr>
-                            <td><a  asp-action="Details" asp-controller="Book" asp-route-id="@book.bookID">@book.title</a></td>
+                            <td><a  asp-action="Detail" asp-controller="Book" asp-route-id="@book.bookID">@book.title</a></td>
                             <td>@book.author</td>
                             <td>@book.quantity</td>
                             <td>@book.price</td>

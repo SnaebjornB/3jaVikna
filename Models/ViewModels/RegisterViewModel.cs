@@ -15,5 +15,8 @@ namespace BookCave.Models.ViewModels
         public string LastName { get; set; }
         [Required(ErrorMessage = "Enter a valid password.")]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Confirm your password.")]
+        [NotMapped]
+        public string confirmPassword { get; set; }
     }
 }
