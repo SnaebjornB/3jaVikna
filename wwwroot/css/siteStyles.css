@@ -318,6 +318,15 @@ body{
 .review-name {
     padding: 1px;
 }
+.details-stars {
+    left: 35%;
+}
+.index-stars {
+    left: 31%;
+}
+.top10-stars{
+    left: 25%;
+}
 .pushDown{
     margin-top: 50px;
 }
@@ -726,7 +735,7 @@ span.stars span {
     z-index: 2;
     width: 40px;
     height: 40px;
-    border-radius: 20%;
+    border-radius: 50%;
     background: red;
     color: white;
     text-align: center;
