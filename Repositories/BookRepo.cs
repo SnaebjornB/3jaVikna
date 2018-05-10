@@ -70,16 +70,19 @@ namespace BookCave.Repositories
                                     title = b.title,
                                     year = b.year,
                                     numberOfPages = b.numberOfPages,
-                                    rating = b.rating,
                                     description = b.description,
                                     country = b.country,
                                     language = b.language,
                                     publisher = b.publisher,
-                                    price = b.price,
                                     category = b.category,
                                     noOfSoldUnits = b.noOfSoldUnits,
                                     noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    //price og discount margfaldað saman til að fá raunverðið
+                                    price = b.price * b.discount,
                                     discount = b.discount,
+                                    //Þarf að deila rating með noOfRatings til að fá average rating
+                                    rating = b.rating / b.noOfRatings,
+                                    noOfRatings = b.noOfRatings,
                                     image = b.image
                                 }).ToList();
 
