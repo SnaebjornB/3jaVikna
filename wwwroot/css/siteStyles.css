@@ -730,4 +730,5 @@ span.stars span {
     background: red;
     color: white;
     text-align: center;
+    padding: 5px;
   }
