@@ -14,8 +14,8 @@
             <p>Genre: @book.category</p>
             <span class="stars details-stars">@book.rating</span>
             <br>
-            <p>Price: @book.price</p>
-            <button type="button" class="btn btn-success btn-sm">Add to basket</button>
+            <p>Price: $@book.price</p>
+            <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
         </div>
     }
 </div>
