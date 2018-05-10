@@ -56,6 +56,36 @@ namespace BookCave.Repositories
             return searchResult;
         }
 
+        public List<BookView> GetSearchResultFromDBForBar(string searchWord)
+        {
+            var searchResult = (from b in _db.Books
+                                where (String.IsNullOrEmpty(searchWord) || b.title.ToLower().Contains(searchWord.ToLower()) 
+                                        || b.author.ToLower().Contains(searchWord.ToLower())
+                                        || b.ISBN.ToLower().Contains(searchWord.ToLower())
+                                        || b.category.ToLower().Contains(searchWord.ToLower()))
+                                select new BookView{
+                                    ID = b.ID,
+                                    author = b.author,
+                                    ISBN = b.ISBN,
+                                    title = b.title,
+                                    year = b.year,
+                                    numberOfPages = b.numberOfPages,
+                                    rating = b.rating,
+                                    description = b.description,
+                                    country = b.country,
+                                    language = b.language,
+                                    publisher = b.publisher,
+                                    price = b.price,
+                                    category = b.category,
+                                    noOfSoldUnits = b.noOfSoldUnits,
+                                    noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    discount = b.discount,
+                                    image = b.image
+                                }).ToList();
+
+            return searchResult;
+        }
+
         public List<BookView> GetAllBooks()
         {
             var allBooks = (from b in _db.Books
