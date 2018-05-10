@@ -89,6 +89,7 @@ namespace BookCave.Repositories
         {
             var books = (from b in _db.OrderHistoryBooks
                         where timeStamp == b.orderHistoryID && userId == b.userID
+                        orderby b.ID descending
                         select new OrderHistoryBookViewModel{
                             bookID = b.bookID,
                             price = b.price,
@@ -163,19 +164,12 @@ namespace BookCave.Repositories
             var oldUnpaid = (from o in _db.CurrentOrder
                         where id == o.userID
                         select o).FirstOrDefault();
-            if(oldUnpaid == null)
+            if(oldUnpaid != null)
             {
                 _db.Remove(oldUnpaid);
-                _db.Add(reviewModel);
-                _db.SaveChanges();
             }
-            else
-            {
-                oldUnpaid.address = reviewModel.address;
-                oldUnpaid.card = reviewModel.card;
-                oldUnpaid.payPal = reviewModel.payPal;
-                _db.SaveChanges();
-            }
+            _db.Add(reviewModel);
+            _db.SaveChanges();
         }
 
         internal List<CCardInfoViewModel> GetCards(string userID)
