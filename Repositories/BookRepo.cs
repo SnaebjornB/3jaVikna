@@ -37,16 +37,52 @@ namespace BookCave.Repositories
                                     title = b.title,
                                     year = b.year,
                                     numberOfPages = b.numberOfPages,
-                                    rating = b.rating,
                                     description = b.description,
                                     country = b.country,
                                     language = b.language,
                                     publisher = b.publisher,
-                                    price = b.price,
                                     category = b.category,
                                     noOfSoldUnits = b.noOfSoldUnits,
                                     noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    //price og discount margfaldað saman til að fá raunverðið
+                                    price = b.price * b.discount,
                                     discount = b.discount,
+                                    //Þarf að deila rating með noOfRatings til að fá average rating
+                                    rating = b.rating / b.noOfRatings,
+                                    noOfRatings = b.noOfRatings,
+                                    image = b.image
+                                }).ToList();
+
+            return searchResult;
+        }
+
+        public List<BookView> GetSearchResultFromDBForBar(string searchWord)
+        {
+            var searchResult = (from b in _db.Books
+                                where (String.IsNullOrEmpty(searchWord) || b.title.ToLower().Contains(searchWord.ToLower()) 
+                                        || b.author.ToLower().Contains(searchWord.ToLower())
+                                        || b.ISBN.ToLower().Contains(searchWord.ToLower())
+                                        || b.category.ToLower().Contains(searchWord.ToLower()))
+                                select new BookView{
+                                    ID = b.ID,
+                                    author = b.author,
+                                    ISBN = b.ISBN,
+                                    title = b.title,
+                                    year = b.year,
+                                    numberOfPages = b.numberOfPages,
+                                    description = b.description,
+                                    country = b.country,
+                                    language = b.language,
+                                    publisher = b.publisher,
+                                    category = b.category,
+                                    noOfSoldUnits = b.noOfSoldUnits,
+                                    noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    //price og discount margfaldað saman til að fá raunverðið
+                                    price = b.price * b.discount,
+                                    discount = b.discount,
+                                    //Þarf að deila rating með noOfRatings til að fá average rating
+                                    rating = b.rating / b.noOfRatings,
+                                    noOfRatings = b.noOfRatings,
                                     image = b.image
                                 }).ToList();
 
@@ -63,16 +99,19 @@ namespace BookCave.Repositories
                                     title = b.title,
                                     year = b.year,
                                     numberOfPages = b.numberOfPages,
-                                    rating = b.rating,
                                     description = b.description,
                                     country = b.country,
                                     language = b.language,
                                     publisher = b.publisher,
-                                    price = b.price,
                                     category = b.category,
                                     noOfSoldUnits = b.noOfSoldUnits,
                                     noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                    //price og discount margfaldað saman til að fá raunverðið
+                                    price = b.price * b.discount,
                                     discount = b.discount,
+                                    //Þarf að deila rating með noOfRatings til að fá average rating
+                                    rating = b.rating / b.noOfRatings,
+                                    noOfRatings = b.noOfRatings,
                                     image = b.image
                                 }).ToList();
 
@@ -198,9 +237,7 @@ namespace BookCave.Repositories
             bool dbCheck = true;
             double differenceBetweenRatings = 0;
 
-            try{
-                //_db.Reviews.Attach(reviewEntity);
-                
+            try{                
                 reviewEntity = (from r in _db.Reviews
                                 where r.userID == userID && r.BookID == id.GetValueOrDefault()
                                 select r).Single();
@@ -214,7 +251,7 @@ namespace BookCave.Repositories
             catch (Exception){
                 reviewEntity.review = newReview.review;
                 reviewEntity.rating = newReview.rating;
-                reviewEntity.username = userName; //Nafnið sem sótt var í controllernum vistað í reviewEntity.username
+                reviewEntity.username = userName;
                 reviewEntity.BookID = id.GetValueOrDefault();
                 reviewEntity.userID = userID;
                 _db.Reviews.Add(reviewEntity);
@@ -223,9 +260,8 @@ namespace BookCave.Repositories
                 dbCheck = false;
             }
 
-            //Upplýsingum um bók breytt
             if(dbCheck){
-                //Ef review er yfirskrifað
+                //Ef review var yfirskrifað
                 bookEntity = (from b in _db.Books
                                 where b.ID == id.GetValueOrDefault()
                                 select b).SingleOrDefault();
@@ -275,7 +311,6 @@ namespace BookCave.Repositories
                                 //Þarf að deila rating með noOfRatings til að fá average rating
                                 rating = b.rating / b.noOfRatings,
                                 noOfRatings = b.noOfRatings,
-                                //Reviews = b.Reviews
                                 Reviews = (from book in _db.Books
                                             join reviews in _db.Reviews on book.ID equals reviews.BookID
                                             where reviews.BookID == id.GetValueOrDefault()
@@ -296,16 +331,19 @@ namespace BookCave.Repositories
                             title = b.title,
                             year = b.year,
                             numberOfPages = b.numberOfPages,
-                            rating = b.rating,
                             description = b.description,
                             country = b.country,
                             language = b.language,
                             publisher = b.publisher,
-                            price = b.price,
                             category = b.category,
                             noOfSoldUnits = b.noOfSoldUnits,
                             noOfCopiesAvailable = b.noOfCopiesAvailable,
+                            //price og discount margfaldað saman til að fá raunverðið
+                            price = b.price * b.discount,
                             discount = b.discount,
+                            //Þarf að deila rating með noOfRatings til að fá average rating
+                            rating = b.rating / b.noOfRatings,
+                            noOfRatings = b.noOfRatings,
                             image = b.image
                         }).Take(10).ToList();
            return top10;
@@ -321,15 +359,18 @@ namespace BookCave.Repositories
                                         title = b.title,
                                         year = b.year,
                                         numberOfPages = b.numberOfPages,
-                                        rating = b.rating * b.noOfRatings,
                                         description = b.description,
                                         country = b.country,
                                         language = b.language,
                                         publisher = b.publisher,
-                                        price = b.price * b.discount,
                                         category = b.category,
                                         noOfSoldUnits = b.noOfSoldUnits,
                                         noOfCopiesAvailable = b.noOfCopiesAvailable,
+                                        //price og discount margfaldað saman til að fá raunverðið
+                                        price = b.price * b.discount,
+                                        //Þarf að deila rating með noOfRatings til að fá average rating
+                                        rating = b.rating / b.noOfRatings,
+                                        noOfRatings = b.noOfRatings,
                                         discount = (1 - b.discount) * 100,
                                         image = b.image
                                     }).ToList();
@@ -344,8 +385,11 @@ namespace BookCave.Repositories
                                         ID = b.ID,
                                         author = b.author,
                                         title = b.title,
-                                        rating = b.rating * b.noOfRatings,
+                                        //price og discount margfaldað saman til að fá raunverðið
                                         price = b.price * b.discount,
+                                        //Þarf að deila rating með noOfRatings til að fá average rating
+                                        rating = b.rating / b.noOfRatings,
+                                        noOfRatings = b.noOfRatings,
                                         category = b.category,
                                         noOfCopiesAvailable = b.noOfCopiesAvailable,
                                         discount = (1 - b.discount) * 100,

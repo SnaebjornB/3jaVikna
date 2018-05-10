@@ -1,4 +1,5 @@
 using BookCave.Models.EntityModels;
+using BookCave.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookCave.Data
@@ -8,8 +9,12 @@ namespace BookCave.Data
         public DbSet<BookEntity> Books { get; set; }
         public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
-
         public DbSet<ReviewEntity> Reviews { get; set; }
+        public DbSet<CCardEntity> Cards { get; set; }
+        public DbSet<ReviewViewModel> CurrentOrder { get; set; }
+        public DbSet<ReviewBookViewModel> CurrentOrderBooks { get; set; }
+        public DbSet<OrderHistoryEntity> OrderHistory { get; set; } 
+        public DbSet<OrderHistoryBookViewModel> OrderHistoryBooks { get; set; }
         //Hér kemur allt sem fer í gagnagrunninn.
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

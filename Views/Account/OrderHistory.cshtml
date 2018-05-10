@@ -1,0 +1,37 @@
+@model List<BookCave.Models.ViewModels.OrderHistoryViewModel>
+
+<h1>Your order history</h1>
+
+<ul>
+    <li>
+        @foreach(var order in Model)
+        {
+            <h2>@order.timeStamp</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book title</th>
+                        <th>Author</th>
+                        <th>Quantity</th>
+                        <th>Price per book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var book in order.books)
+                    {
+                        <tr>
+                            <td><a  asp-action="Details" asp-controller="Book" asp-route-id="@book.bookID">@book.title</a></td>
+                            <td>@book.author</td>
+                            <td>@book.quantity</td>
+                            <td>@book.price</td>
+                        </tr>
+                    }
+                </tbody>    
+            </table>
+            <h3>Total price: @order.totalPrice</h3>
+        }
+    </li>
+</ul>
+<form asp-action="Profile" method="GET">
+    <input type="submit" value="Back to profile">
+</form>

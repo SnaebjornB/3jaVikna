@@ -4,7 +4,7 @@
     <div class="bookDetailsDesc">
         <img src="@Model.image" alt="@Model.title">
         <br>
-        <div><h3>Title: @Model.title </h3>
+        <div class="bookDetailsWithStars"><h3>Title: @Model.title </h3>
             <p>Author: @Model.author </p>
             <p>Price: @Model.price $</p> <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
             <span class="stars details-stars">@Model.rating</span><p> (no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->

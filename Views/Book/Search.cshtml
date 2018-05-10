@@ -1,9 +1,10 @@
 @model List<BookCave.Models.ViewModels.BookView>
 
-
-
     <h2></h2>
     <form method="get" action="Search">
+        <fieldset>
+            <legend>Search</legend>
+            
             <label for="searchTitle">Title</label>
             <input type="text" name="searchTitle">
 
@@ -43,6 +44,14 @@
                 <option value="Western">Wester</option>
             </select>
 
+            <label for="searchYear">Year</label>
+            <select name="searchYear">
+                <option value="ascendingTitle" selected>Title Ascending</option>
+                <option value="descendingTitle">Title Descending</option>
+                <option value="ascendingPrice">Price Ascending</option>
+                <option value="descendingPrice">Price Descending</option>
+            </select>
+
             <label for="orderBy">Filter by</label>
             <select name="orderBy">
                 <option value="ascendingTitle" selected>Title Ascending</option>
@@ -53,7 +62,8 @@
 
             
             <input type="submit" value="Search">
-        </form>
+        </fieldset>
+    </form>
 
     <div id="searchDiv">
         
