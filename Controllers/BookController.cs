@@ -11,12 +11,13 @@ using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
     public class BookController : Controller
     {
-        private BookServices _bookService;
+        private readonly BookServices _bookService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public BookController(UserManager<ApplicationUser> userManager)
@@ -57,7 +58,6 @@ namespace BookCave.Controllers
             }
 
             var bookDetail = _bookService.GetBookDetail(id);
-
             
             if(bookDetail == null){
                 return View("NotFound");
@@ -77,7 +77,6 @@ namespace BookCave.Controllers
 
             return View();
         }
-        
         
         [HttpPost]
         [Authorize]
@@ -104,7 +103,6 @@ namespace BookCave.Controllers
                 _bookService.AddReview(id, newReview, userID, userName);
                 return RedirectToAction("Search");
                 //ef það er gestur að skrifa review
-
             }
             
             return View();
@@ -112,15 +110,11 @@ namespace BookCave.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
@@ -135,7 +129,6 @@ namespace BookCave.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpGet]
         public IActionResult AuthorDetail(string author)
         {
             if(string.IsNullOrEmpty(author)){
@@ -143,14 +136,19 @@ namespace BookCave.Controllers
             }
 
             var bookDetail = _bookService.GetBooksByAuthor(author);
-
             
             if(bookDetail == null){
                 return View("NotFound");
             }
 
-            return View(bookDetail);
+            var Author = new AuthorDetailsViewModel{
+                author = author,
+                books = bookDetail
+            };
+
+            return View(Author);
         }
+
         [HttpGet]
         public IActionResult ShopByCategory(){
             return View();

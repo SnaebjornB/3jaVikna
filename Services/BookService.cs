@@ -20,7 +20,7 @@ namespace BookCave.Services
        public List<BookView> GetSearchResult(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
         {
             var searchResult = _bookRepo.GetSearchResultFromDB(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy, searchYear);
-            
+
             if(orderBy == "ascendingPrice")
             {
                 searchResult = (from b in searchResult
@@ -55,9 +55,7 @@ namespace BookCave.Services
             
             searchResult = (from b in searchResult
                             orderby b.title descending
-                            select b).ToList();
-            
-            
+                            select b).ToList();            
 
             return searchResult;
         }

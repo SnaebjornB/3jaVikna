@@ -8,14 +8,13 @@ namespace BookCave.Models.InputModels
         [Required(ErrorMessage="Input author name")]
         public string author { get; set; }
 
-        [Required(ErrorMessage="Input ISBN number (XXX-X-XX-XXXXXX-X)")]
-        [RegularExpression("[0-9]*[-| ][0-9]*[-| ][0-9]*[-| ][0-9]*[-| ][0-9]*")]
+        [RegularExpression("[0-9]*[-| ][0-9]*[-| ][0-9]*[-| ][0-9]*[-| ][0-9]*", ErrorMessage="Input ISBN number (XXX-X-XX-XXXXXX-X)")]
         public string ISBN { get; set; }
 
         [Required(ErrorMessage="Input book title")]
         public string title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Input short title")]
         [MaxLength(24)]
         public string shortTitle { get; set; }
 

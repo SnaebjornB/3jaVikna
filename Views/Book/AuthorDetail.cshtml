@@ -1,0 +1,20 @@
+@model BookCave.Models.ViewModels.AuthorDetailsViewModel
+
+<h1>Books by @Model.author</h1>
+<br>
+@foreach(var book in Model.books)
+{
+    <div class="searchBook">
+        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><img src ="@book.image" alt="@book.title" width="170" height="170"></a>
+        <div class="link-title">
+            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p><b>@book.title</b></p></a>
+        </div>
+            <p>Author: @book.author</p>
+            <p>Category: @book.category</p>
+            <span class="stars">@book.rating</span>
+            <p>Price: $@book.price</p>
+        <div class="button-holder">
+            <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+        </div>
+    </div>
+}
