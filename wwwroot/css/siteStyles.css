@@ -806,3 +806,8 @@ span.stars span {
 .orderTable tr th,td{
     padding: 5px 30px;
 }
+#discountBtn {
+    float: top;
+    position: relative;
+    justify-content: center;
+}

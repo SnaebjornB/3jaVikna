@@ -62,14 +62,17 @@
                 <option value="descendingPrice">Price Descending</option>
             </select>
         </fieldset>
-        <label for="discount">Discount to apply (%)</label>
-            <input type="number" name="discount">
-            <br>
-            <input type="submit" class="button" value="Apply discount to these books"/>
     </form>
     </div>
     <div>
         <form asp-action="ApplyNewDiscount" asp-controller="Employee">
+            <div id="discountBtn">
+                    
+                <label for="discount">Discount to apply (%)</label>
+                <input type="number" name="discount">
+                <br>
+                <input type="submit" class="button" value="Apply discount to these books"/>   
+            </div>
             <div id="searchDiv">     
                 <br><br>
                 @{
@@ -77,7 +80,7 @@
                 }
                 @foreach(var book in Model)
                 {
-                        <div class="searchBook">
+                    <div class="searchBook">
                         <input type="hidden" name="books[@counter].ID" value="@book.ID"/>
                             <img src ="@book.image" alt="@book.title" width="170" height="170">
                             <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p style="text-align: center;">@book.title</p></a>
@@ -85,14 +88,10 @@
                             <p>@book.category</p>
                             <p>Category: @book.category</p>
                             <p>Price: @book.price</p>
-                        <div class="button-holder">
-                            <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
-                        </div>
-                        </div>
-                        counter++;
+                    </div>
+                    counter++;
                 }
+                </form>
             </div>
-            
-        </form>
     </div>
 </div>
