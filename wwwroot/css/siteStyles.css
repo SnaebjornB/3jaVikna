@@ -641,3 +641,9 @@ span.stars span {
       right: -10px;
     }
   }
+  .categoryImg {
+    border-radius: 30%;
+    margin: 10px 10px;
+    height: 100px;
+    width: 120px;
+}
