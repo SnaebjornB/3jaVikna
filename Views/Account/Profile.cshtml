@@ -4,22 +4,31 @@
     <div>
         <img src="@Model.image" alt="Profile Picture" class="profilePic">
         <h1>@Model.name</h1>
-        <h2>My favorite book: @Model.favBook</h2>
-        <form asp-action="EditProfile" method="GET">
-            <input type="submit" value="Edit Profile">
-        </form>
-
-        <form asp-action="OrderHistory" method="GET">
-            <input type="submit" value="My order history">
-        </form>
-
-        <h2>Addresses </h2>
-        @foreach(var address in Model.addresses)
-        {
-            <h3>@address</h3>
+        @{
+            if(Model.favBook != null)
+            {
+                <h2>My favorite book: @Model.favBook</h2>
+            }
         }
-        <form asp-action="EditAddresses" method="GET">
-            <input type="submit" value="Edit Addresses">
-        </form>
+        
+        <br>
+        <h2>Addresses </h2>
+        @{
+            if(Model.addresses == null)
+            {
+                <p>you have no listed addresses</p>
+            }
+            else
+            {
+                @foreach(var address in Model.addresses)
+                {
+                    <h3>@address</h3>
+                }
+            }
+        }
+        
+        <a asp-action="EditProfile" asp-controller="Account" class="btn btn-default">Edit profile</a>
+        <a asp-action="EditAddresses" asp-controller="Account" class="btn btn-default">Edit addresses</a>
+        <a asp-action="OrderHistory" asp-controller="Account" class="btn btn-default">Order history</a>
     </div>
 </div>

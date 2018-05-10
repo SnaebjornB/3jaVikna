@@ -186,10 +186,10 @@ namespace BookCave.Repositories
             return result;
         }
 
-        public EditAddressViewModel GetAddressById(int id)
+        public EditAddressViewModel GetAddressById(int id, string userID)
         {
             var result = (from a in _db.Addresses
-                            where id == a.ID
+                            where id == a.ID && userID == a.userID
                             select new EditAddressViewModel
                             {
                                 city = a.city,
@@ -248,17 +248,14 @@ namespace BookCave.Repositories
         public void DeleteAddress(int id, string userId)
         {
             var address = (from a in _db.Addresses
-                            where id == a.ID
+                            where id == a.ID && userId == a.userID
                             select a).FirstOrDefault();
-            if(address.userID != userId)
-            {
-                throw new Exception("This address does not belong to you account");
-            }
-            else
+            if(address != null)
             {
                 _db.Remove(address);
                 _db.SaveChanges();
             }
+            throw new Exception("Address does not belong to this account or does not exist");
         }
     }
 }
