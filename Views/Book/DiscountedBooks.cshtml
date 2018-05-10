@@ -15,7 +15,14 @@
             <span class="stars discount-stars">@book.rating</span>
             <br>
             <p>Price: $@book.price</p>
-            <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
+            @if(this.User.IsInRole("Employee"))
+            {
+                <a class="btn btn-primary btn-sm" asp-action="EditBook" asp-controller="Employee" asp-route-id="@book.ID">Edit book</a>
+            }
+            else
+            {
+                <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
+            }
         </div>
     }
 </div>

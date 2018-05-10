@@ -11,7 +11,14 @@
                         <h4>Author: @book.author</h4>
                         <span class="stars top10-stars" style="margin-left:270px">@book.rating</span>
                         <h4>Price: $@book.price</h4>
-                        <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
+                        @if(this.User.IsInRole("Employee"))
+                        {
+                                <a class="btn btn-primary btn-sm" asp-action="EditBook" asp-controller="Employee" asp-route-id="@book.ID">Edit book</a>
+                        }
+                        else
+                        {
+                                <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>                    
+                        }
                         <br>
                 </div>
                 counter++;
