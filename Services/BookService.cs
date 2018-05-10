@@ -17,9 +17,9 @@ namespace BookCave.Services
             _bookRepo = new BookRepo();
         }
 
-       public List<BookView> GetSearchResult(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
+       public List<BookView> GetSearchResult(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
         {
-            var searchResult = _bookRepo.GetSearchResultFromDB(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy);
+            var searchResult = _bookRepo.GetSearchResultFromDB(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy, searchYear);
             
             if(orderBy == "ascendingPrice")
             {

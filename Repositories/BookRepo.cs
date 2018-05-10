@@ -23,13 +23,14 @@ namespace BookCave.Repositories
             bookEntity = new BookEntity();
         }
 
-        public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
+        public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
         {
             var searchResult = (from b in _db.Books
                                 where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
                                         && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
                                         && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
                                         && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
+                                        && (searchYear == 0 || b.year == searchYear)
                                 select new BookView{
                                     ID = b.ID,
                                     author = b.author,

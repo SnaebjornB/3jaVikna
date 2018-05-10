@@ -4,7 +4,7 @@
     <form method="get" action="Search">
         <fieldset>
             <legend>Search</legend>
-            
+
             <label for="searchTitle">Title</label>
             <input type="text" name="searchTitle">
 
@@ -45,12 +45,7 @@
             </select>
 
             <label for="searchYear">Year</label>
-            <select name="searchYear">
-                <option value="ascendingTitle" selected>Title Ascending</option>
-                <option value="descendingTitle">Title Descending</option>
-                <option value="ascendingPrice">Price Ascending</option>
-                <option value="descendingPrice">Price Descending</option>
-            </select>
+            <input type="number" min="1000" max="2020" step="1" value="0" name="searchYear"/>
 
             <label for="orderBy">Filter by</label>
             <select name="orderBy">
