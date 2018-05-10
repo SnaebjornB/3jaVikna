@@ -249,7 +249,13 @@ body{
     margin-right: 84%;
 }
 
-
+.bookDetailsWithStars form p input{
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 /*Top 10 index*/
 .movieTopList{
