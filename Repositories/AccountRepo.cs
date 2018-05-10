@@ -147,6 +147,7 @@ namespace BookCave.Repositories
                         orderHistoryID = orderHistoryObject.timeStamp
                     });
                 }
+                
                 _db.Remove(currentOrder);
                 _db.RemoveRange(currentOrderBooks);
                 _db.Add(orderHistoryObject);

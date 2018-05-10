@@ -16,35 +16,54 @@ namespace BookCave.Controllers
     public class OrderController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        public OrderService orderService;
+        private readonly OrderService _orderService;
         private readonly AccountService _accountService;
-        public OrderBasketView orderBasketView = new OrderBasketView();
+        public OrderBasketView orderBasketView;
         public OrderController(UserManager<ApplicationUser> userManager)
         {
-            orderService = new OrderService();
+            _orderService = new OrderService();
             _userManager = userManager;
             _accountService = new AccountService();
+            orderBasketView = new OrderBasketView();
+        }
 
+        public string GetCurrentUserId()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            string id = _userManager.GetUserId(currentUser);
+
+            if(!string.IsNullOrEmpty(id))
+            {
+                return id;
+            }
+            else
+            {
+                throw new Exception("userID not found");
+            }
         }
         
         [HttpGet]
         public IActionResult Basket()
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            orderBasketView = orderService.getBasket(userID);
+            string userID = GetCurrentUserId();
 
-            return View(orderBasketView);
+            if(!string.IsNullOrEmpty(userID))
+            {
+                orderBasketView = _orderService.getBasket(userID);
+                return View(orderBasketView);
+            }
+
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
         public bool addToBasket(int bookID)
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            if(userID != null)
+            string userID = GetCurrentUserId();
+
+            if(!string.IsNullOrEmpty(userID))
             {
-                orderService.addToBasket(bookID, userID);
+                _orderService.addToBasket(bookID, userID);
             }
             else
             {
@@ -57,11 +76,15 @@ namespace BookCave.Controllers
         [HttpPost]
         public bool deleteItemFromBasket(int bookID)
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            if(userID != null)
+            string userID = GetCurrentUserId();
+
+            if(!string.IsNullOrEmpty(userID))
             {
-                orderService.deleteItemFromBasket(bookID, userID);
+                _orderService.deleteItemFromBasket(bookID, userID);
+            }
+            else
+            {
+                return false;
             }
             
             return true;
@@ -70,34 +93,43 @@ namespace BookCave.Controllers
         [HttpPost]
         public bool clearBasket()
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            if(userID != null)
+            string userID = GetCurrentUserId();
+
+            if(!string.IsNullOrEmpty(userID))
             {
-                orderService.clearBasket(userID);
+                _orderService.clearBasket(userID);
+            }
+            else
+            {
+                return false;
             }
 
             return true;
         }
+
         [HttpPost]
         public bool clearBookCopies(int bookID)
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            if(userID != null)
+            string userID = GetCurrentUserId();
+
+            if(!string.IsNullOrEmpty(userID))
             {
-                orderService.clearBookCopies(bookID, userID);
+                _orderService.clearBookCopies(bookID, userID);
+            }
+            else
+            {
+                return false;
             }
             
             return true;
         }
+
         [HttpPost]
-        [Authorize]
         public IActionResult Billing()
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            var basket = orderService.getBasket(userID);
+            string userID = GetCurrentUserId();
+            var basket = _orderService.getBasket(userID);
+
             if(!string.IsNullOrEmpty(userID))
             {
                 var addressStrings = _accountService.GetAddresses(userID);
@@ -108,6 +140,7 @@ namespace BookCave.Controllers
                                 addresses = addressStrings,
                                 cards = Ccards
                             };
+
                 if(bask.books != null)
                 {
                     return View(bask);
@@ -117,16 +150,17 @@ namespace BookCave.Controllers
                     return RedirectToAction("Basket");
                 } 
             }
+
             return RedirectToAction("Login", "Account");
         }
-        [Authorize]
+
         [HttpPost]
         public IActionResult Review(BillingModelView model){
             var ReviewModel = new ReviewViewModel();
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            var basket = orderService.getBasket(userID);
+            string userID = GetCurrentUserId();
+            var basket = _orderService.getBasket(userID);
             var currentOrderBooks = new List<ReviewBookViewModel>();
+
             if(!string.IsNullOrEmpty(userID))
             {
                 foreach(var item in basket.books)
@@ -141,8 +175,10 @@ namespace BookCave.Controllers
                         price = item.price
                     });
                 }
+
                 ReviewModel.totalPrice = basket.totalPrice;
             }
+
             if(model.address == "newAddress")
             {
                 var newAddress = new EditAddressViewModel
@@ -154,7 +190,6 @@ namespace BookCave.Controllers
                     country = model.newCountry
                 };
                 _accountService.AddAddress(newAddress, userID);
-
                 ReviewModel.address = model.newStreetName + " " + model.newHouseNumber + ", "
                                     + model.newZip + " " + model.newCity + ", " + model.newCountry;
             }
@@ -164,33 +199,54 @@ namespace BookCave.Controllers
                 ReviewModel.address = tempAddress.streetName + " " + tempAddress.houseNumber + ", "
                                     + tempAddress.zip + " " + tempAddress.city + ", " + tempAddress.country;
             }
+
             if(model.cCard == "newCCard")
             {
-                var newCard = new CCardInfoViewModel
+                if(!string.IsNullOrEmpty(model.newNumber))
                 {
-                    number = model.newNumber,
-                    month = model.newMonth,
-                    year = model.newYear 
-                };
-                if(model.saveCCard == true)
-                {
-                    _accountService.AddCard(newCard, userID);
+                    var newCard = new CCardInfoViewModel
+                    {
+                        number = model.newNumber,
+                        month = model.newMonth,
+                        year = model.newYear 
+                    };
+
+                    if(model.saveCCard == true)
+                    {
+                        _accountService.AddCard(newCard, userID);
+                    }
+
+                    var card_number = newCard.number;
+                    var cardNumber = String.Format(card_number.Substring(card_number.Length-4));
+                    ReviewModel.card = cardNumber;
                 }
-                var card_number = newCard.number;
-                var cardNumber = String.Format(card_number.Substring(card_number.Length-4));
-                ReviewModel.card = cardNumber;
+                else
+                {
+                    ViewData["CardErrorMessage"] = "Please make sure all the fields are filled out correctly and try again";
+                    return RedirectToAction("Billing");
+                }
             }
             else if(model.cCard == "existingCCard")
             {
                 var tempCard = _accountService.GetCardById(model.cardID);
-                var card_number = tempCard.number;
-                var cardNumber = String.Format(card_number.Substring(card_number.Length-4));
-                ReviewModel.card = cardNumber;
+
+                if(tempCard != null)
+                {
+                    var card_number = tempCard.number;
+                    var cardNumber = String.Format(card_number.Substring(card_number.Length-4));
+                    ReviewModel.card = cardNumber;
+                }
+                else
+                {
+                    ViewData["ErrorMessage"] = "Something went wrong. Please make sure all the fields are filled out correctly and try again";
+                    return RedirectToAction("Billing");
+                }
             }
             else
             {
                 ReviewModel.payPal = true;
             }
+
             ReviewModel.userID = userID;
             _accountService.SaveCurrentOrder(ReviewModel, currentOrderBooks, userID);
 
@@ -204,25 +260,21 @@ namespace BookCave.Controllers
             
             return View(result);
         }
-        [Authorize]
 
         public IActionResult Confirm()
         {
-            ClaimsPrincipal currentUser = this.User;
-            string userID = _userManager.GetUserId(currentUser);
-            _accountService.ConfirmCurrentOrder(userID);
-            orderService.clearBasket(userID);
-            return View();
+            string userID = GetCurrentUserId();
+            if(!string.IsNullOrEmpty(userID))
+            {
+                _accountService.ConfirmCurrentOrder(userID);
+                _orderService.clearBasket(userID);
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
     }
 }
-                    /*public HttpResponseMessage addToBasket(int bookID, int quantity)
-                    {
-                        var tempItem = new OrderItemEntity();
-                        tempItem = orderService.getItem(bookID, quantity);
-                        orderBasketView.books.Add(tempItem);
-                        orderBasketView.totalPrice += tempItem.price * quantity;
-
-                        return View(orderBasketView);
-                    */
     
