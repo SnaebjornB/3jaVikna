@@ -22,8 +22,9 @@
                 </div>
                 <div class="searchAlign">
                     <form asp-controller="Book" asp-action="SearchBar" method="POST">
-                        <input type="text" name="searchWord" placeholder="Search.." class="from-control" style="width: 40%; height: 35px; border-radius: 6px;"/>
-                        <input type="submit" value="Search" class="btn btn-secondary" style="width: 90px; height: 34px; font-size: 16px;"/>
+                        <input type="text" name="searchWord" placeholder="Search.." class="from-control searchInput"/>
+                        <input type="submit" value="Search" class="btn btn-secondary searchButton"/>
+                        <a asp-controller="Book" asp-action="Search" class="btn btn-default searchButtonAdv">Advanced Search</a>
                     </form>
                 </div>
                 <div class="loginAlign">
