@@ -19,10 +19,10 @@
             type: 'POST',
             dataType: 'json',
             success: function () {
+                getBasketCount();
             }
         });
     }
-    
 }
 
 function increseQuantity(bookID){
@@ -43,6 +43,7 @@ function clearBasket(){
         type: 'POST',
         success: function () {
             $(".basketList").css( "display", "none" );
+            getBasketCount();
         }
     });
 }
@@ -61,6 +62,7 @@ function removeFromBasket(bookID, ID){
         dataType: 'json',
         success: function () {
             $(rowID).css( "display", "none" );
+            getBasketCount();
         }
     });
 }
@@ -84,8 +86,33 @@ function addToBasket(BookID) {
             type: 'POST',
             dataType: 'json',
             success: function () {
+                getBasketCount();
             }
     });
+}
+
+function getBasketCount(){
+    console.log('Johnny');
+    $.ajax({
+        url: '../../Order/basketCounter',
+        type: 'GET',
+        success: function (data) {
+            basketCounter(data);
+        }
+    })
+}
+
+function basketCounter(data){
+    console.log('Bravo');
+    var basketCount = data;
+    if (data == 0){
+        $("#basketCounter").css({
+            "visibility" : "hidden"});
+    }
+    else{
+    $("#basketCounter").text(basketCount);
+    }
+    
 }
 
 $(function() {    		
@@ -102,12 +129,10 @@ $(function() {
     }
 });
 
-
-
 $( document ).ready(function(){
     
     $("#forgottenPassBtn").click(function(){
-        var temp = $('#emailInput').val(); //KEMUR ALLTAF TIL BAKA SEM UNDEFINED...
+        var temp = $('#emailInput').val();
         var email = {
             email: temp
         };

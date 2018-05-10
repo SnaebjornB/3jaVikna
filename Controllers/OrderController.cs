@@ -275,6 +275,19 @@ namespace BookCave.Controllers
                 return RedirectToAction("Login", "Account");
             }
         }
+
+        public int basketCounter()
+        {
+            string userID = GetCurrentUserId();
+
+            if(!string.IsNullOrEmpty(userID))
+            {
+                int counter = _orderService.countBasket(userID);
+                return counter;
+            }
+
+            return 0;
+        }
     }
 }
     

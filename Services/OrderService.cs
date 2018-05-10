@@ -39,6 +39,18 @@ namespace BookCave.Services
             orderRepo.clearBookCopies(bookID, customerID);
         }
 
+        public int countBasket(string customerID)
+        {
+            OrderBasketView _orderbasketview = orderRepo.getBasket(customerID);
+            int counter = 0;
+
+            foreach (var item in _orderbasketview.books)
+            {
+                counter++;
+            }
+            return counter;
+        }
+
         /*public OrderItemEntity getItem(int bookID, int quantity)
 {
    var book = new BookEntity();

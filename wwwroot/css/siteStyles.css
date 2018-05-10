@@ -690,3 +690,12 @@ span.stars span {
 .grid-item a p {
     font-size: 15px;
 }
+#basketCounter {
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    text-align: center;
+  }
