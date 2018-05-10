@@ -106,13 +106,5 @@ namespace BookCave.Repositories
             }
             _db.SaveChanges();
         }
-        /*public BookEntity getItem(int bookID)
-        {
-            var item = (from b in _db.Books
-                        where b.ID == bookID
-                        select b).Single();
-
-            return item;
-        }*/
     }
 }
