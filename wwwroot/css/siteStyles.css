@@ -663,3 +663,30 @@ span.stars span {
       right: -10px;
     }
   }
+#categoryDiv figure {
+    max-height: 120px;
+    max-width: 140px;
+}
+  .categoryImg {
+    border-radius: 30%;
+    height: 100px;
+    width: 120px;
+}
+.imageWithText {
+    text-align: justify;
+    width: 120px;
+}
+.grid-container {
+    display: grid;
+}
+.grid-item {
+    height: 140px;
+    width: 140px;
+    border: none;
+    background: none;
+    text-align: center;
+
+}
+.grid-item a p {
+    font-size: 15px;
+}

@@ -1,33 +1,35 @@
 @model List<BookCave.Models.ViewModels.EditAddressViewModel>
 
 <div class="siteBody">
-<h1>Your Addresses</h1>
-<br>
-<a asp-action="AddAddress" asp-controller="Account">Add a new address</a>
-<table class="addressTable">
-    <thead>
-        <tr>
-            <th>Address</th>
-            <th>ZIP Code</th>
-            <th>City</th>
-            <th>Country</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model)
-        {
+    <h1>Your Addresses</h1>
+    <br>
+    <div class="text-danger">@ViewData["ErrorMessage"]</div>
+    <a asp-action="AddAddress" asp-controller="Account" class="btn btn-default">Add a new address</a>
+    <table class="addressTable">
+        <thead>
             <tr>
-                <td>@item.streetName @item.houseNumber</td>
-                <td>@item.zip</td>
-                <td>@item.city</td>
-                <td>@item.country</td>
-                <td>
-                    <a asp-action="EditAddress" asp-controller="Account" asp-route-id="@item.ID" class="btn-success">Edit</a>
-                    <a asp-action="DeleteAddress" asp-controller="Account" asp-route-id="@item.ID" class="btn-danger">Delete</a>
-                </td>
+                <th>Address</th>
+                <th>ZIP Code</th>
+                <th>City</th>
+                <th>Country</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.streetName @item.houseNumber</td>
+                    <td>@item.zip</td>
+                    <td>@item.city</td>
+                    <td>@item.country</td>
+                    <td>
+                        <a asp-action="EditAddress" asp-controller="Account" asp-route-id="@item.ID" class="btn-success">Edit</a>
+                        <a asp-action="DeleteAddress" asp-controller="Account" asp-route-id="@item.ID" class="btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Profile" asp-controller="Account" class="btn btn-default">Back to profile</a>
 </div>

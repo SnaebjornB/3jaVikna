@@ -23,18 +23,20 @@ namespace BookCave.Repositories
             bookEntity = new BookEntity();
         }
 
-        public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
+        public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
         {
             var searchResult = (from b in _db.Books
                                 where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
                                         && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
                                         && (String.IsNullOrEmpty(searchISBN) || b.ISBN.ToLower().Contains(searchISBN.ToLower()))
                                         && (String.IsNullOrEmpty(searchCategory) || b.category.ToLower().Contains(searchCategory.ToLower()))
+                                        && (searchYear == 0 || b.year == searchYear)
                                 select new BookView{
                                     ID = b.ID,
                                     author = b.author,
                                     ISBN = b.ISBN,
                                     title = b.title,
+                                    shortTitle = b.shortTitle,
                                     year = b.year,
                                     numberOfPages = b.numberOfPages,
                                     description = b.description,
@@ -68,6 +70,7 @@ namespace BookCave.Repositories
                                     author = b.author,
                                     ISBN = b.ISBN,
                                     title = b.title,
+                                    shortTitle = b.shortTitle,
                                     year = b.year,
                                     numberOfPages = b.numberOfPages,
                                     description = b.description,
@@ -97,6 +100,7 @@ namespace BookCave.Repositories
                                     author = b.author,
                                     ISBN = b.ISBN,
                                     title = b.title,
+                                    shortTitle = b.shortTitle,
                                     year = b.year,
                                     numberOfPages = b.numberOfPages,
                                     description = b.description,
@@ -170,6 +174,7 @@ namespace BookCave.Repositories
                         select new BookInputModel{
                             ID = b.ID,
                             title = b.title,
+                            shortTitle = b.shortTitle,
                             author = b.author,
                             category = b.category,
                             country = b.country,
@@ -191,6 +196,7 @@ namespace BookCave.Repositories
         {
             var newBook = new BookEntity{
                             title = book.title,
+                            shortTitle = book.shortTitle,
                             author = book.author,
                             category = book.category,
                             country = book.country,
@@ -296,6 +302,7 @@ namespace BookCave.Repositories
                                 author = b.author,
                                 ISBN = b.ISBN,
                                 title = b.title,
+                                shortTitle = b.shortTitle,
                                 year = b.year,
                                 numberOfPages = b.numberOfPages,
                                 description = b.description,
@@ -329,6 +336,7 @@ namespace BookCave.Repositories
                             author = b.author,
                             ISBN = b.ISBN,
                             title = b.title,
+                            shortTitle = b.shortTitle,
                             year = b.year,
                             numberOfPages = b.numberOfPages,
                             description = b.description,
@@ -357,6 +365,7 @@ namespace BookCave.Repositories
                                         author = b.author,
                                         ISBN = b.ISBN,
                                         title = b.title,
+                                        shortTitle = b.shortTitle,
                                         year = b.year,
                                         numberOfPages = b.numberOfPages,
                                         description = b.description,
@@ -385,6 +394,7 @@ namespace BookCave.Repositories
                                         ID = b.ID,
                                         author = b.author,
                                         title = b.title,
+                                        shortTitle = b.shortTitle,
                                         //price og discount margfaldað saman til að fá raunverðið
                                         price = b.price * b.discount,
                                         //Þarf að deila rating með noOfRatings til að fá average rating

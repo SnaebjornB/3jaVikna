@@ -40,9 +40,9 @@ namespace BookCave.Services
         {
             return _accountRepo.GetAddressesEdit(id);
         }
-        public EditAddressViewModel GetAddressById(int id)
+        public EditAddressViewModel GetAddressById(int id, string userID)
         {
-            return _accountRepo.GetAddressById(id);
+            return _accountRepo.GetAddressById(id, userID);
         }
         public AddressViewModel GetViewAddressById(int id)
         {

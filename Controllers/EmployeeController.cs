@@ -71,9 +71,9 @@ namespace BookCave.Controllers
                 return View(book);
             }
         }
-        public IActionResult EditDiscount(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy)
+        public IActionResult EditDiscount(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
         {
-            var searchResult = _bookService.GetSearchResult(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy);
+            var searchResult = _bookService.GetSearchResult(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy, searchYear);
             return View(searchResult);
         }
         public IActionResult ApplyNewDiscount(List<BookView> books, double discount)
