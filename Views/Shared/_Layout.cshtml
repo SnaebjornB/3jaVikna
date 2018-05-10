@@ -26,8 +26,8 @@
                     <a asp-controller="Home" asp-action="Index"><img src="~/images/bcLogo.png" alt="Book Cave logo" class="nav navbar-nav navbar-left"></a>
                 </div>
                 <div class="searchAlign">
-                    <form asp-controller="Book" asp-action="Search" method="POST">
-                        <input type="text" placeholder="Search.." class="from-control" style="width: 40%; height: 35px; border-radius: 6px;"/>
+                    <form asp-controller="Book" asp-action="SearchBar" method="POST">
+                        <input type="text" name="searchWord" placeholder="Search.." class="from-control" style="width: 40%; height: 35px; border-radius: 6px;"/>
                         <input type="submit" value="Search" class="btn btn-secondary" style="width: 90px; height: 34px; font-size: 16px;"/>
                     </form>
                 </div>
@@ -39,7 +39,7 @@
                 <ul>
                     <li><a asp-controller="Book" asp-action="Top10"><h4>Top 10</h4></a></li>
                     <li><a asp-controller="Book" asp-action="DiscountedBooks"><h4>Special Offers</h4></a></li>
-                    <li><a href="#"><h4>Shop By Category</h4></a></li>
+                    <li><a asp-controller="Book" asp-action="ShopByCategory"><h4>Shop By Category</h4></a></li>
                     
                 </ul>
                 <!--<div class="fillerSpace"></div> -->

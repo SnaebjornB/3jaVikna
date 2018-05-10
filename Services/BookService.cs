@@ -49,6 +49,19 @@ namespace BookCave.Services
             return searchResult;
         }
 
+        public List<BookView> GetSearchResultForBar(string searchWord)
+        {
+            var searchResult = _bookRepo.GetSearchResultFromDBForBar(searchWord);
+            
+            searchResult = (from b in searchResult
+                            orderby b.title descending
+                            select b).ToList();
+            
+            
+
+            return searchResult;
+        }
+
         public List<BookView> GetAllBooks()
         {
             var allBooks = _bookRepo.GetAllBooks();

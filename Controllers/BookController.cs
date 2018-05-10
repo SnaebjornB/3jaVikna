@@ -36,6 +36,13 @@ namespace BookCave.Controllers
             return View(searchResult);
         }
 
+        [HttpPost]
+        public IActionResult SearchBar(string searchWord)
+        {
+            var searchResult = _bookService.GetSearchResultForBar(searchWord);
+            return View("./Search", searchResult);
+        }
+
         public IActionResult Top10()
         {
             var top10BookList = _bookService.GetTop10HighestRated();
@@ -143,6 +150,10 @@ namespace BookCave.Controllers
             }
 
             return View(bookDetail);
+        }
+        [HttpGet]
+        public IActionResult ShopByCategory(){
+            return View();
         }
     }
 }
