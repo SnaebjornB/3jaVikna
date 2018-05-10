@@ -10,7 +10,7 @@
         <li>
             @{
                 if(this.User.IsInRole("Employee")) {
-                    <form asp-action="AddBook" asp-controller="Employee">
+                    <form asp-action="AddBook" asp-controller="Employee" method="GET">
                         <button type="submit" class="btn-link navbar-btn navbar-link">Add a new book</button>            
                     </form>
                     <form asp-action="EditDiscount" asp-controller="Employee">

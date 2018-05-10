@@ -21,6 +21,7 @@ namespace BookCave.Controllers
             _bookService = new BookServices();
         }
 
+        [HttpGet]
         public IActionResult AddBook()
         {
             return View();
