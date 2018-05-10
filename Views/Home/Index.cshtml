@@ -7,19 +7,20 @@
         <h2>Newest releases</h2>
         <div id="mixedSlider1">
             <div class="MS-content">
-                @foreach(var book in Model)
+                @for(int i = 1; i <= 12; i++)
                 {
-                    <div class="item">                      
-                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><div class="imgTitle">
-                            <h4 class="blogTitle" style="text-align:center">@book.title</h4>
-                            <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
-                        </div></a>
-                        <p>@book.author</p>
-                        <span class="stars index-stars">@book.rating</span>
-                        <p>Price: @book.price$</p>
-                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
-                    </div>
-
+                        <div class="item">                      
+                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@Model[i].ID">
+                            <div class="imgTitle">
+                                <h4 class="blogTitle" style="text-align:center">@Model[i].title</h4>
+                                <img src ="@Model[i].image" alt="@Model[i].title" style="max-height:250px; width:auto">
+                            </div></a>
+                            <p>@Model[i].author</p>
+                            <span class="stars index-stars">@Model[i].rating</span>
+                            <p>Price: @Model[i].price$</p>
+                            <button type="button" class="buyBookButton" onclick="addToBasket(@Model[i].ID)">Add to basket</button>
+                        </div>
+                    
                 }
             </div>
             <div class="MS-controls">
@@ -34,17 +35,20 @@
             <div class="MS-content">
                 @foreach(var book in Model)
                 {
-                    <div class="item">                      
-                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><div class="imgTitle">
-                            <h4 class="blogTitle" style="text-align:center">@book.title</h4>
-                            <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
-                        </div></a>
-                        <p>@book.author</p>
-                        <span class="stars index-stars">@book.rating</span>
-                        <p>Price: @book.price$</p>
-                        <br>
-                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
-                    </div>
+                    @if (book.rating > 4)
+                    {
+                        <div class="item">                      
+                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">
+                            <div class="imgTitle">
+                                <h4 class="blogTitle" style="text-align:center">@book.title</h4>
+                                <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
+                            </div></a>
+                            <p>@book.author</p>
+                            <span class="stars index-stars">@book.rating</span>
+                            <p>Price: @book.price$</p>
+                            <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+                        </div>
+                    }
                 }
             </div>
             <div class="MS-controls">
@@ -59,17 +63,20 @@
             <div class="MS-content">
                 @foreach(var book in Model)
                 {
-                    <div class="item">                      
-                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><div class="imgTitle">
-                            <h4 class="blogTitle" style="text-align:center">@book.title</h4>
-                            <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
-                        </div></a>
-                        <p>@book.author</p>
-                        <span class="stars index-stars">@book.rating</span>
-                        <p>Price: @book.price$</p>
-                        <br>
-                        <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
-                    </div>
+                    @if (book.discount < 1)
+                    {
+                        <div class="item">                      
+                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID">
+                            <div class="imgTitle">
+                                <h4 class="blogTitle" style="text-align:center">@book.title</h4>
+                                <img src ="@book.image" alt="@book.title" style="max-height:250px; width:auto">
+                            </div></a>
+                            <p>@book.author</p>
+                            <span class="stars index-stars">@book.rating</span>
+                            <p>Price: @book.price$</p>
+                            <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+                        </div>
+                    }
                 }
             </div>
             <div class="MS-controls">

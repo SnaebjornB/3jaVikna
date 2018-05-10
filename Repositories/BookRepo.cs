@@ -91,6 +91,7 @@ namespace BookCave.Repositories
         public List<BookView> GetAllBooks()
         {
             var allBooks = (from b in _db.Books
+                            orderby b.ID descending
                             select new BookView{
                                     ID = b.ID,
                                     author = b.author,
