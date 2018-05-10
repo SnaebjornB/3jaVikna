@@ -334,7 +334,10 @@ body{
     padding: 1px;
 }
 .details-stars {
-    left: 35%;
+    float: left;
+}
+.discount-stars{
+    left: 55%;
 }
 .index-stars {
     left: 31%;
