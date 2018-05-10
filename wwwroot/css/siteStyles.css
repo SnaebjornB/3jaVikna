@@ -311,6 +311,30 @@ body{
     float: left;
     text-align: left;
 }
+.bookDetailsReview{
+    border: #6c7c7c solid 1px;
+    margin: 0px 50px;
+    padding: 10px;
+    width: 700px;
+    float: left;
+    text-align: left;
+}
+.review-text-box {
+    border-bottom: #666 solid 1px;
+    padding-bottom: 7px;
+}
+.review-name {
+    padding: 1px;
+}
+.details-stars {
+    left: 35%;
+}
+.index-stars {
+    left: 31%;
+}
+.top10-stars{
+    left: 25%;
+}
 .review-text-box {
     border-bottom: #666 solid 1px;
     padding-bottom: 7px;
@@ -389,6 +413,25 @@ body{
 }
 .form-group{
     margin-top: 20px;
+}
+.form-group2{
+    padding: 40px;
+    margin: 20px;
+}
+.form-group3{
+    padding: 40px;
+    margin: 20px;
+}
+
+/*Add a book*/
+.form-horizontal{
+    display: inline-grid;
+}
+.form-group1{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 18px;
+    text-align: left;
 }
 /*Discount index*/
 
