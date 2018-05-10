@@ -86,6 +86,7 @@ function addToBasket(BookID) {
             type: 'POST',
             dataType: 'json',
             success: function () {
+                console.log('success');
                 getBasketCount();
             }
     });

@@ -46,7 +46,7 @@ namespace BookCave.Services
 
             foreach (var item in _orderbasketview.books)
             {
-                counter++;
+                counter += item.quantity;
             }
             return counter;
         }
