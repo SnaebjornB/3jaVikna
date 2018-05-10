@@ -13,18 +13,14 @@ namespace BookCave.Repositories
     {
         
         private DataContext _db;
-        private ReviewEntity reviewEntity;
-        private BookEntity bookEntity;
 
         public BookRepo()
         {
             _db = new DataContext();
-            reviewEntity = new ReviewEntity();
-            bookEntity = new BookEntity();
         }
 
         public List<BookView> GetSearchResultFromDB(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
-        {
+        { 
             var searchResult = (from b in _db.Books
                                 where (String.IsNullOrEmpty(searchTitle) || b.title.ToLower().Contains(searchTitle.ToLower())) 
                                         && (String.IsNullOrEmpty(searchAuthor) || b.author.ToLower().Contains(searchAuthor.ToLower()))
@@ -149,15 +145,18 @@ namespace BookCave.Repositories
                 throw new Exception("BookInputModel is empty");
             }
         }
+
         [Authorize(Roles="Employee")]
         internal void EditDiscount(List<BookView> books, double discount)
         {
             var dbBooks = new List<BookEntity>();
+
             foreach(var book in books)
             {
                 var temp = (from b in _db.Books
                             where book.ID == b.ID
                             select b).FirstOrDefault();
+
                 temp.discount = discount;
                 dbBooks.Add(temp);
             }
@@ -166,6 +165,7 @@ namespace BookCave.Repositories
                 _db.SaveChanges();
             }
         }
+
         [Authorize(Roles="Employee")]
         internal object GetBookToEdit(int id)
         {
@@ -224,12 +224,14 @@ namespace BookCave.Repositories
             bool dbCheck = true;
             //Er bókin í database?
 
-            try{
+            try
+            {
                 var bookCheck = (from b in _db.Books
                                 where b.ID == id.GetValueOrDefault()
                                 select b).Single();
             }
-            catch (Exception){
+            catch (Exception)
+            {
                 dbCheck = false;
             }
 
@@ -242,8 +244,11 @@ namespace BookCave.Repositories
             //Ef notandin var búinn að skrifa umsögn er skrifað yfir hana annars er umsögninni bætt á listann Reviews
             bool dbCheck = true;
             double differenceBetweenRatings = 0;
+            var reviewEntity = new ReviewEntity();
+            var bookEntity = new BookEntity();
 
-            try{                
+            try
+            {                
                 reviewEntity = (from r in _db.Reviews
                                 where r.userID == userID && r.BookID == id.GetValueOrDefault()
                                 select r).Single();
@@ -254,7 +259,8 @@ namespace BookCave.Repositories
                 reviewEntity.rating = newReview.rating;
                 _db.SaveChanges();
             }
-            catch (Exception){
+            catch (Exception)
+            {
                 reviewEntity.review = newReview.review;
                 reviewEntity.rating = newReview.rating;
                 reviewEntity.username = userName;
@@ -276,7 +282,9 @@ namespace BookCave.Repositories
                 bookEntity.rating = bookEntity.rating + differenceBetweenRatings;
 
                 _db.SaveChanges();
-            }else{
+            }
+            else
+            {
                 //Ef review er nýtt
                 bookEntity = (from b in _db.Books
                                 where b.ID == id.GetValueOrDefault()
@@ -288,7 +296,6 @@ namespace BookCave.Repositories
 
                 _db.SaveChanges();
             }
-             
         }
 
         public BookView GetBookDetail(int? id)
