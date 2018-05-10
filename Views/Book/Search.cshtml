@@ -67,19 +67,27 @@
         <br><br>
         @foreach(var book in Model)
         {
-                <div class="searchBook">
-                    <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><img src ="@book.image" alt="@book.title" width="170" height="170"></a>
-                    <div class="link-title">
-                        <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p><b>@book.title</b></p></a>
-                    </div>
-                    <p>Author: @book.author</p>
-                    <p>Category: @book.category</p>
-                    <span class="stars">@book.rating</span>
-                    <p>Price: $@book.price</p>
-                    <div class="button-holder">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
-                   </div>
+            <div class="searchBook">
+                <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><img src ="@book.image" alt="@book.title" width="170" height="170"></a>
+                <div class="link-title">
+                    <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p><b>@book.title</b></p></a>
                 </div>
+                <p>Author: @book.author</p>
+                <p>Category: @book.category</p>
+                <span class="stars">@book.rating</span>
+                <p>Price: $@book.price</p>
+                <div class="button-holder">
+                    @if(this.User.IsInRole("Employee"))
+                    {
+                        <a class="btn btn-primary btn-sm" asp-action="EditBook" asp-controller="Employee" asp-route-id="@book.ID">Edit book</a>
+
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>                    
+                    }
+               </div>
+            </div>
         }
         
     </div>
