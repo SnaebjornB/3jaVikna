@@ -46,8 +46,11 @@
                 <option value="Western">Wester</option>
             </select>
 
-            <label for="searchYear">Year</label>
-            <input type="number" step="1" value="0" name="searchYear" class="search-bar"/>
+            <label for="searchYearFrom">From</label>
+            <input type="number" min="0" max="2019" step="1" value="0" name="searchYearFrom"/>
+
+            <label for="searchYearTo">To</label>
+            <input type="number" min="0" max="2019" step="1" value="2019" name="searchYearTo"/>
 
             <label for="orderBy">Filter by</label>
             <select name="orderBy" class="search-bar">
