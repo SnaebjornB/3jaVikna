@@ -107,11 +107,11 @@ function basketCounter(data){
     console.log('Bravo');
     var basketCount = data;
     if (data == 0){
-        $("#basketCounter").css({
-            "visibility" : "hidden"});
+        $("#basketCounter").toggle(false);
     }
     else{
     $("#basketCounter").text(basketCount);
+    $("#basketCounter").toggle(true);
     }
     
 }

@@ -17,6 +17,7 @@
                             </div></a>
                             <p>@Model[i].author</p>
                             <span class="stars index-stars">@Model[i].rating</span>
+<<<<<<< HEAD
                             <p>Price: @Model[i].price$</p>
                             @{
                                 if(this.User.IsInRole("Employee"))
@@ -28,6 +29,10 @@
                                     <button type="button" class="buyBookButton" onclick="addToBasket(@Model[i].ID)">Add to basket</button>
                                 }
                             }
+=======
+                            <p>Price: $@Model[i].price</p>
+                            <button type="button" class="buyBookButton" onclick="addToBasket(@Model[i].ID)">Add to basket</button>
+>>>>>>> f8109ee12d8a1cb2a91c07c3b3089e6ad882dde0
                         </div>
                     
                 }
@@ -54,6 +59,7 @@
                             </div></a>
                             <p>@book.author</p>
                             <span class="stars index-stars">@book.rating</span>
+<<<<<<< HEAD
                             <p>Price: @book.price$</p>
                             @if(this.User.IsInRole("Employee"))
                             {
@@ -63,6 +69,10 @@
                             {
                                 <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
                             }
+=======
+                            <p>Price: $@book.price</p>
+                            <button type="button" class="buyBookButton" onclick="addToBasket(@book.ID)">Add to basket</button>
+>>>>>>> f8109ee12d8a1cb2a91c07c3b3089e6ad882dde0
                         </div>
                     }
                 }
