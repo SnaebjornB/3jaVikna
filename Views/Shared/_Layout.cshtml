@@ -30,16 +30,18 @@
                     @await Html.PartialAsync("_LoginPartial")
                 </div>
             </div>
-            <div id="siteHeaderBottom">
-                <ul>
-                    <li><a asp-controller="Book" asp-action="Top10"><h4>Top 10</h4></a></li>
-                    <li><a asp-controller="Book" asp-action="DiscountedBooks"><h4>Special Offers</h4></a></li>
-                    <li><a asp-controller="Book" asp-action="ShopByCategory"><h4>Shop By Category</h4></a></li>
-                    
-                </ul>
-                <!--<div class="fillerSpace"></div> -->
-                @await Html.PartialAsync("_CartPartial")
-                
+            <div style="clear:both">
+                <div id="siteHeaderBottom">
+                    <ul>
+                        <li><a asp-controller="Book" asp-action="Top10"><h4>Top 10</h4></a></li>
+                        <li><a asp-controller="Book" asp-action="DiscountedBooks"><h4>Special Offers</h4></a></li>
+                        <li><a asp-controller="Book" asp-action="ShopByCategory"><h4>Shop By Category</h4></a></li>
+                        
+                    </ul>
+                </div>
+                <div id="userCartOrSettings">
+                        @await Html.PartialAsync("_CartPartial")
+                </div>
             </div>
         </div>
             
