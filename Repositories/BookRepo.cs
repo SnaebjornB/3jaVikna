@@ -46,7 +46,7 @@ namespace BookCave.Repositories
                                     price = b.price * b.discount,
                                     discount = b.discount,
                                     //Þarf að deila rating með noOfRatings til að fá average rating
-                                    rating = b.rating / b.noOfRatings,
+                                    rating = b.rating / (b.noOfRatings + 0.0000001),
                                     noOfRatings = b.noOfRatings,
                                     image = b.image
                                 }).ToList();
@@ -80,7 +80,7 @@ namespace BookCave.Repositories
                                     price = b.price * b.discount,
                                     discount = b.discount,
                                     //Þarf að deila rating með noOfRatings til að fá average rating
-                                    rating = b.rating / b.noOfRatings,
+                                    rating = b.rating / (b.noOfRatings + 0.0000001),
                                     noOfRatings = b.noOfRatings,
                                     image = b.image
                                 }).ToList();
@@ -110,7 +110,7 @@ namespace BookCave.Repositories
                                     price = b.price * b.discount,
                                     discount = b.discount,
                                     //Þarf að deila rating með noOfRatings til að fá average rating
-                                    rating = b.rating / b.noOfRatings,
+                                    rating = b.rating / (b.noOfRatings + 0.0000001),
                                     noOfRatings = b.noOfRatings,
                                     image = b.image
                                 }).ToList();
@@ -210,7 +210,7 @@ namespace BookCave.Repositories
                             price = book.price,
                             image = book.image,
                             rating = 0,
-                            noOfRatings = 1,
+                            noOfRatings = 0,
                             noOfSoldUnits = 0,
                             discount = 1
                         };
@@ -323,7 +323,7 @@ namespace BookCave.Repositories
                                 price = b.price * b.discount,
                                 discount = b.discount,
                                 //Þarf að deila rating með noOfRatings til að fá average rating
-                                rating = b.rating / b.noOfRatings,
+                                rating = b.rating / (b.noOfRatings + 0.0000001),
                                 noOfRatings = b.noOfRatings,
                                 Reviews = (from book in _db.Books
                                             join reviews in _db.Reviews on book.ID equals reviews.BookID
@@ -357,7 +357,7 @@ namespace BookCave.Repositories
                             price = b.price * b.discount,
                             discount = b.discount,
                             //Þarf að deila rating með noOfRatings til að fá average rating
-                            rating = b.rating / b.noOfRatings,
+                            rating = b.rating / (b.noOfRatings + 0.0000001),
                             noOfRatings = b.noOfRatings,
                             image = b.image
                         }).Take(10).ToList();
@@ -385,7 +385,7 @@ namespace BookCave.Repositories
                                         //price og discount margfaldað saman til að fá raunverðið
                                         price = b.price * b.discount,
                                         //Þarf að deila rating með noOfRatings til að fá average rating
-                                        rating = b.rating / b.noOfRatings,
+                                        rating = b.rating / (b.noOfRatings + 0.0000001),
                                         noOfRatings = b.noOfRatings,
                                         discount = (1 - b.discount) * 100,
                                         image = b.image
@@ -405,7 +405,7 @@ namespace BookCave.Repositories
                                         //price og discount margfaldað saman til að fá raunverðið
                                         price = b.price * b.discount,
                                         //Þarf að deila rating með noOfRatings til að fá average rating
-                                        rating = b.rating / b.noOfRatings,
+                                        rating = b.rating / (b.noOfRatings + 0.0000001),
                                         noOfRatings = b.noOfRatings,
                                         category = b.category,
                                         noOfCopiesAvailable = b.noOfCopiesAvailable,
