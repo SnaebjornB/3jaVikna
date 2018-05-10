@@ -31,9 +31,9 @@ namespace BookCave.Controllers
             return View();
         }
 
-        public IActionResult Search(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYear)
+        public IActionResult Search(string searchTitle, string searchAuthor, string searchISBN, string searchCategory, string orderBy, int searchYearFrom, int searchYearTo)
         {
-            var searchResult = _bookService.GetSearchResult(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy, searchYear);
+            var searchResult = _bookService.GetSearchResult(searchTitle, searchAuthor, searchISBN, searchCategory, orderBy, searchYearFrom, searchYearTo);
             return View(searchResult);
         }
 
