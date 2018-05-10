@@ -319,7 +319,7 @@ body{
     padding: 1px;
 }
 .details-stars {
-    left: 35%;
+    float: left;
 }
 .index-stars {
     left: 31%;
