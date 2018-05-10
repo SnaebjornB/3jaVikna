@@ -88,6 +88,9 @@ function addToBasket(BookID) {
             success: function () {
                 console.log('success');
                 getBasketCount();
+            },
+            error: function() {
+                window.location.href = "http://localhost:5000/Account/Login";
             }
     });
 }
