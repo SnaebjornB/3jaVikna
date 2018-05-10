@@ -83,21 +83,28 @@ body{
 #userCartOrSettings li button:hover:not(.active){
   background-color: #111;
 }
-/*
-#cartIcon{ 
-    margin: -16px 15px 0px 50px;
-    width:42px; 
-    height:45px;
-    position: fixed;
-    right: 0;
-}
-*/
+
 .searchAlign{
 
     padding-top: 35px;
     padding-left: 29%;
     font-size: 19px;
     border: none;
+}
+.searchInput{
+    width: 35%; 
+    height: 35px; 
+    border-radius: 6px;
+}
+.searchButton{
+    width: 90px; 
+    height: 34px; 
+    font-size: 16px;
+}
+.searchButtonAdv{
+    width: 135px; 
+    height: 34px; 
+    font-size: 16px;
 }
 
 .loginAlign{
@@ -108,7 +115,7 @@ body{
     color: black;
 }
 .userOptions{
-    width:25%; 
+    width:15%; 
     height:90px; 
     background-color:#ececea;
     border: solid black 1px;
@@ -311,6 +318,30 @@ body{
     float: left;
     text-align: left;
 }
+.bookDetailsReview{
+    border: #6c7c7c solid 1px;
+    margin: 0px 50px;
+    padding: 10px;
+    width: 700px;
+    float: left;
+    text-align: left;
+}
+.review-text-box {
+    border-bottom: #666 solid 1px;
+    padding-bottom: 7px;
+}
+.review-name {
+    padding: 1px;
+}
+.details-stars {
+    left: 35%;
+}
+.index-stars {
+    left: 31%;
+}
+.top10-stars{
+    left: 25%;
+}
 .review-text-box {
     border-bottom: #666 solid 1px;
     padding-bottom: 7px;
@@ -389,6 +420,25 @@ body{
 }
 .form-group{
     margin-top: 20px;
+}
+.form-group2{
+    padding: 40px;
+    margin: 20px;
+}
+.form-group3{
+    padding: 40px;
+    margin: 20px;
+}
+
+/*Add a book*/
+.form-horizontal{
+    display: inline-grid;
+}
+.form-group1{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 18px;
+    text-align: left;
 }
 /*Discount index*/
 
@@ -735,9 +785,21 @@ span.stars span {
     z-index: 2;
     width: 40px;
     height: 40px;
+    margin-left:-5px;
     border-radius: 50%;
     background: red;
     color: white;
     text-align: center;
     padding: 5px;
   }
+  .orderTable{
+    margin: 0px auto 15px;
+    border-bottom: solid black 1px;
+}
+.orderTable th{
+    margin-bottom: 5px;
+    border-bottom: solid black 1px;
+}
+.orderTable tr th,td{
+    padding: 5px 30px;
+}
