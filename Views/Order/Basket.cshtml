@@ -39,10 +39,16 @@
             <tr></tr>
         </tbody>
     </table>
+<<<<<<< HEAD
     <a class="refreshPrice" asp-action="Basket" asp-controller="Order">Update total price</a>
     <input type="submit" class="btn btn-xl btn-success refreshPrice" value="Checkout"/>
     <input type="button" class="btn btn-xl btn-danger refreshPrice" onclick="clearBasket()" value="Clear basket" />
     
+=======
+    <input type="submit" class="btn btn-xl btn-success active" value="Checkout"/>
+    <input type="button" class="btn btn-xl btn-danger active" onclick="clearBasket()" value="Clear basket" />
+    <a asp-action="Basket" asp-controller="Order">Refresh</a>
+>>>>>>> e8c080c4058d85894551314e561f160a06b9b93e
     
     </form> 
 </div>
