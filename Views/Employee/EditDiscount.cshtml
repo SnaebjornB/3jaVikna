@@ -3,21 +3,23 @@
 
 <div id="siteBody">
     <div>
-        <h2></h2>
-        <form method="get" action="EditDiscount">
-            <br>
-            <br>
+   <form method="get" action="EditDiscount" class="form-group3">
+        <fieldset>
+
             <label for="searchTitle">Title</label>
-            <input type="text" name="searchTitle">
+            <input type="text" name="searchTitle" class="search-bar">
 
             <label for="searchAuthor">Author</label>
-            <input type="text" name="searchAuthor">
+            <input type="text" name="searchAuthor" class="search-bar">
 
             <label for="searchISBN">ISBN</label>
-            <input type="text" name="searchISBN">
+            <input type="text" name="searchISBN" class="search-bar">
+
+            <input type="submit" value="Search" class="btn btn-primary btn-md">
+            <br>
 
             <label for="searchCategory">Category</label>
-            <select name="searchCategory">
+            <select name="searchCategory" class="search-bar">
                 <option value="">All</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Children's literature">Children's literature</option>
@@ -45,15 +47,26 @@
                 <option value="Thriller">Thriller</option>
                 <option value="Western">Wester</option>
             </select>
+
+            <label for="searchYearFrom">From</label>
+            <input type="number" min="0" max="2019" step="1" value="0" name="searchYearFrom" class="search-bar"/>
+
+            <label for="searchYearTo">To</label>
+            <input type="number" min="0" max="2019" step="1" value="2019" name="searchYearTo" class="search-bar"/>
+
             <label for="orderBy">Filter by</label>
-            <select name="orderBy">
+            <select name="orderBy" class="search-bar">
                 <option value="ascendingTitle" selected>Title Ascending</option>
                 <option value="descendingTitle">Title Descending</option>
                 <option value="ascendingPrice">Price Ascending</option>
                 <option value="descendingPrice">Price Descending</option>
             </select>
-            <input type="submit" value="Search">
-        </form>
+        </fieldset>
+        <label for="discount">Discount to apply (%)</label>
+            <input type="number" name="discount">
+            <br>
+            <input type="submit" class="button" value="Apply discount to these books"/>
+    </form>
     </div>
     <div>
         <form asp-action="ApplyNewDiscount" asp-controller="Employee">
@@ -67,18 +80,19 @@
                         <div class="searchBook">
                         <input type="hidden" name="books[@counter].ID" value="@book.ID"/>
                             <img src ="@book.image" alt="@book.title" width="170" height="170">
-                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p>@book.title</p></a>
+                            <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p style="text-align: center;">@book.title</p></a>
                             <p>@book.author</p>
                             <p>@book.category</p>
-                        <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
+                            <p>Category: @book.category</p>
+                            <p>Price: @book.price</p>
+                        <div class="button-holder">
+                            <button type="button" class="btn btn-primary btn-sm">Apply discount</button>
+                        </div>
                         </div>
                         counter++;
                 }
             </div>
-            <label for="discount">Discount to apply (%)</label>
-            <input type="number" name="discount">
-            <br>
-            <input type="submit" class="button" value="Apply discount to these books"/>
+            
         </form>
     </div>
 </div>

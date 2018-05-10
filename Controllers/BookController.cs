@@ -99,10 +99,8 @@ namespace BookCave.Controllers
                 string userID = _userManager.GetUserId(currentUser);
                 var userName = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
 
-                //Ef user-inn er til
                 _bookService.AddReview(id, newReview, userID, userName);
-                return RedirectToAction("Search");
-                //ef það er gestur að skrifa review
+                return RedirectToAction("Detail", new {id});
             }
             
             return View();

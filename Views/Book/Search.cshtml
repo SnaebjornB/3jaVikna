@@ -1,7 +1,7 @@
 @model List<BookCave.Models.ViewModels.BookView>
 
     <h2></h2>
-    <form method="get" action="Search" class="form-group">
+    <form method="get" action="Search" class="form-group2">
         <fieldset>
 
             <label for="searchTitle">Title</label>
@@ -47,10 +47,10 @@
             </select>
 
             <label for="searchYearFrom">From</label>
-            <input type="number" min="0" max="2019" step="1" value="0" name="searchYearFrom"/>
+            <input type="number" min="0" max="2019" step="1" value="0" name="searchYearFrom" class="search-bar"/>
 
             <label for="searchYearTo">To</label>
-            <input type="number" min="0" max="2019" step="1" value="2019" name="searchYearTo"/>
+            <input type="number" min="0" max="2019" step="1" value="2019" name="searchYearTo" class="search-bar"/>
 
             <label for="orderBy">Filter by</label>
             <select name="orderBy" class="search-bar">

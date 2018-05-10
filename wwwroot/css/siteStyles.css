@@ -302,11 +302,54 @@ body{
     margin: 0px 50px;
     width: auto;
     text-align: left;
-    float: left;
 }
 .bookDetailsReview{
-    float: right;
-    margin-right: 25%;
+    border: #6c7c7c solid 1px;
+    margin: 0px 50px;
+    padding: 10px;
+    width: 700px;
+    float: left;
+    text-align: left;
+}
+.bookDetailsReview{
+    border: #6c7c7c solid 1px;
+    margin: 0px 50px;
+    padding: 10px;
+    width: 700px;
+    float: left;
+    text-align: left;
+}
+.review-text-box {
+    border-bottom: #666 solid 1px;
+    padding-bottom: 7px;
+}
+.review-name {
+    padding: 1px;
+}
+.details-stars {
+    left: 35%;
+}
+.index-stars {
+    left: 31%;
+}
+.top10-stars{
+    left: 25%;
+}
+.review-text-box {
+    border-bottom: #666 solid 1px;
+    padding-bottom: 7px;
+}
+.review-name {
+    padding: 1px;
+}
+.details-stars {
+    left: 35%;
+}
+.index-stars {
+    left: 31%;
+}
+.top10-stars{
+    left: 25%;
 }
 .pushDown{
     margin-top: 50px;
@@ -371,6 +414,25 @@ body{
 .form-group{
     margin-top: 20px;
 }
+.form-group2{
+    padding: 40px;
+    margin: 20px;
+}
+.form-group3{
+    padding: 40px;
+    margin: 20px;
+}
+
+/*Add a book*/
+.form-horizontal{
+    display: inline-grid;
+}
+.form-group1{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 18px;
+    text-align: left;
+}
 /*Discount index*/
 
 #discountHolder{
@@ -434,7 +496,7 @@ span.stars, span.stars span {
 }
 
 span.details-stars {
-    left: 24.5%;
+    float: left;
 }
 
 span.stars span {
@@ -716,8 +778,9 @@ span.stars span {
     z-index: 2;
     width: 40px;
     height: 40px;
-    border-radius: 20%;
+    border-radius: 50%;
     background: red;
     color: white;
     text-align: center;
+    padding: 5px;
   }
