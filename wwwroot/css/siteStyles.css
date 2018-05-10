@@ -334,7 +334,10 @@ body{
     padding: 1px;
 }
 .details-stars {
-    left: 35%;
+    float: left;
+}
+.discount-stars{
+    left: 55%;
 }
 .index-stars {
     left: 31%;
@@ -350,7 +353,7 @@ body{
     padding: 1px;
 }
 .details-stars {
-    left: 35%;
+    float: left;
 }
 .index-stars {
     left: 31%;
@@ -802,4 +805,9 @@ span.stars span {
 }
 .orderTable tr th,td{
     padding: 5px 30px;
+}
+#discountBtn {
+    float: top;
+    position: relative;
+    justify-content: center;
 }

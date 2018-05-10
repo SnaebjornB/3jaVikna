@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace BookCave.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="User")]
     public class OrderController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

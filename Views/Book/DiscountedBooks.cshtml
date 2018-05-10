@@ -12,7 +12,7 @@
             <a asp-action="Detail" asp-controller="Book" asp-route-id="@book.ID"><p style="text-align: center; font-size: 16px; font-weight: bold;">@book.title</p></a>
             <p>Author: @book.author</p>
             <p>Genre: @book.category</p>
-            <span class="stars details-stars">@book.rating</span>
+            <span class="stars discount-stars">@book.rating</span>
             <br>
             <p>Price: $@book.price</p>
             <button type="button" class="btn btn-primary btn-sm" onclick="addToBasket(@book.ID)" id="searchAddToBasketBtn">Add to basket</button>
