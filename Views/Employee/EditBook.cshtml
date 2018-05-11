@@ -4,28 +4,28 @@
 <h1>Edit @Model.title</h1>
 <input type="hidden" autofocus="autofocus" asp-for="ID" class="form-control"/>
 <form asp-action="EditBook" asp-controller="Employee" class="form-horizontal">
-    <div class="form-group">
+    <div class="form-group1">
         <label>
             Book title <br><input type="text" autofocus="autofocus" asp-for="title" class="form-control"/>
         </label>
         <span asp-validation-for="title" class="text-danger"></span>
         <br>
     </div>
-        <div class="form-group">
+        <div class="form-group1">
         <label>
             Short book title <br><input type="text" asp-for="shortTitle" class="form-control"/>
         </label>
         <span asp-validation-for="shortTitle" class="text-danger"></span>
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Author <br><input type="text" asp-for="author" class="form-control"/>
         </label>  
         <span asp-validation-for="author" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Genre <br>
             <select name="category">
@@ -60,21 +60,21 @@
         <span asp-validation-for="category" class="text-danger"></span>         
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Publisher <br><input type="text" asp-for="publisher" class="form-control"/>
         </label> 
         <span asp-validation-for="publisher" class="text-danger"></span>           
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Language <br><input type="text" asp-for="language" class="form-control"/>
         </label>   
         <span asp-validation-for="language" class="text-danger"></span>         
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Country <br>
             <select name="country">
@@ -321,49 +321,49 @@
         <span asp-validation-for="country" class="text-danger"></span>         
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Year <br><input type="number" asp-for="year" class="form-control"/>
         </label>  
         <span asp-validation-for="year" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Number of pages <br><input type="number" asp-for="numberOfPages" class="form-control"/>
         </label>  
         <span asp-validation-for="numberOfPages" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             ISBN <br><input type="text" asp-for="ISBN" class="form-control"/>
         </label>  
         <span asp-validation-for="ISBN" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Description <br><textarea asp-for="description" class="form-control"></textarea>
         </label>  
         <span asp-validation-for="description" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Price <br>$<input type="number" asp-for="price" class="form-control"/>
         </label>  
         <span asp-validation-for="price" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Cover Image URL <br><input type="text" asp-for="image" class="form-control"/>
         </label>  
         <span asp-validation-for="image" class="text-danger"></span>          
         <br>
     </div>
-    <div class="form-group">  
+    <div class="form-group1">  
         <label>          
             Number of copies available <br><input type="number" asp-for="noOfCopiesAvailable" class="form-control"/>
         </label>  
