@@ -26,7 +26,18 @@ namespace BookCave.Services
 
         public OrderBasketView getBasket(string customerID)
         {
-            return orderRepo.getBasket(customerID);
+            OrderBasketView _orderbasketview = new OrderBasketView();
+
+            _orderbasketview = orderRepo.getBasket(customerID);
+
+            foreach (var book in _orderbasketview.books)
+            {
+                book.price = Math.Round(book.price, 2);
+            }
+
+            Math.Round(_orderbasketview.totalPrice, 2);
+
+            return _orderbasketview;
         }
 
         public void clearBasket(string customerID)

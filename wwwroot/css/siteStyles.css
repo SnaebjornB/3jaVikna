@@ -318,13 +318,10 @@ body{
     float: left;
     text-align: left;
 }
-.bookDetailsReview{
-    border: #6c7c7c solid 1px;
-    margin: 0px 50px;
-    padding: 10px;
-    width: 700px;
-    float: left;
+.bookDetailsDetails {
+    width: auto;
     text-align: left;
+    margin-left: 100px;
 }
 .review-text-box {
     border-bottom: #666 solid 1px;
@@ -362,7 +359,7 @@ body{
     left: 25%;
 }
 .pushDown{
-    margin-top: 50px;
+    margin-top: 80px;
 }
 /*Search index*/
 #searchDiv{
@@ -816,4 +813,10 @@ span.stars span {
     position: relative;
     margin-right: 30px;
     margin-left: 5px;
+}
+.underline {
+    text-decoration: underline;
+}
+.bold {
+    font-weight: bold;
 }

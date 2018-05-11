@@ -25,7 +25,7 @@ namespace BookCave.Repositories
             orderItemEntity.bookID = item.ID;
             orderItemEntity.bookName = item.title;
             orderItemEntity.customerID = customerID;
-            orderItemEntity.price = item.price;
+            orderItemEntity.price = item.price * item.discount;
 
             _db.Add(orderItemEntity);
             _db.SaveChanges();

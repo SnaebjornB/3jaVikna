@@ -4,20 +4,19 @@
     <div class="bookDetailsDesc">
         <img src="@Model.image" alt="@Model.title">
         <br>
-        <div class="bookDetailsWithStars"><h3>Title: @Model.title </h3>
+        <div class="bookDetailsWithStars"><h3 class="bold"> @Model.title </h3>
             <form asp-action="AuthorDetail">
                 <input type="hidden" value="@Model.author" name="author">
                 <p>Author: <input type="submit" value="@Model.author"></p>            
             </form>
-            <strong>Price: $@Model.price</strong>
-            <br>
-            <br>
+            <h4 class="bold">Price: $@Model.price</h4>
              <!--Búið er að margfalda saman price og discount í repo-inu og vista í price. Raunverðið sést því hér -->
             <span class="stars details-stars">@Model.rating</span>
             <p>   (no of ratings @Model.noOfRatings)</p> <!--Búið er að deila heildarsummunni rating með noOfRatings í repo-inu og vista í rating. Einkunn myndarinnar sést því hér -->
+            <br/>
         </div>
 
-        <h4>Description</h4>
+        <h4 class="bold">Description</h4>
         <p>@Model.description</p> 
         <br>
         @{
@@ -31,20 +30,21 @@
              }
         }
         <br>
-    </div>
-    <div class="bookDetailsDesc pushDown">
-        <h4>Product Details</h4>
-        <p><b>Number of pages:</b> @Model.numberOfPages</p>
-        <p><b>Publication year:</b> @Model.year</p>
-        <p><b>Publisher:</b> @Model.publisher</p>
-        <p><b>Publication country:</b> @Model.country</p> 
-        <p><b>Language:</b> @Model.language</p>
-        <p><b>Genre:</b> @Model.category </p>
-        <p><b>ISBN number:</b> @Model.ISBN </p>
-        <br>
+    
+        <div class="bookDetailsDetails pushDown">
+            <h4 class="bold">Product Details:</h4>
+            <p><b>Number of pages:</b> @Model.numberOfPages</p>
+            <p><b>Publication year:</b> @Model.year</p>
+            <p><b>Publisher:</b> @Model.publisher</p>
+            <p><b>Publication country:</b> @Model.country</p> 
+            <p><b>Language:</b> @Model.language</p>
+            <p><b>Genre:</b> @Model.category </p>
+            <p><b>ISBN number:</b> @Model.ISBN </p>
+            <br>
+        </div>
     </div>
     <div class="bookDetailsReview pushDown">
-        <h4>Reviews</h4>
+        <h4 class="bold">Reviews</h4>
         @for(int i = 0; i < @Model.Reviews.Count; i++)
         {
             if(Model.Reviews[i].review != null)

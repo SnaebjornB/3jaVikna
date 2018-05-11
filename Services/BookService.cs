@@ -46,6 +46,11 @@ namespace BookCave.Services
                                 select b).ToList();
             }
 
+            foreach (var book in searchResult)
+            {
+                book.price = Math.Round(book.price, 2);
+            }
+
             return searchResult;
         }
 
@@ -55,7 +60,12 @@ namespace BookCave.Services
             
             searchResult = (from b in searchResult
                             orderby b.title descending
-                            select b).ToList();            
+                            select b).ToList();     
+
+            foreach (var book in searchResult)
+            {
+                book.price = Math.Round(book.price, 2);
+            }       
 
             return searchResult;
         }
@@ -63,6 +73,12 @@ namespace BookCave.Services
         public List<BookView> GetAllBooks()
         {
             var allBooks = _bookRepo.GetAllBooks();
+
+            foreach (var book in allBooks)
+            {
+                book.price = Math.Round(book.price, 2);
+            }
+
             return allBooks;
         }
 
@@ -87,6 +103,11 @@ namespace BookCave.Services
         public List<BookView> GetTop10HighestRated()
         {
             var top10Books = _bookRepo.GetTop10BooksFromDB();
+
+            foreach (var book in top10Books)
+            {
+                book.price =  Math.Round(book.price, 2);
+            }
             return top10Books;
         }
 
@@ -96,6 +117,11 @@ namespace BookCave.Services
             discountedBooks = (from b in discountedBooks
                                 orderby b.title
                                 select b).ToList();
+            foreach (var book in discountedBooks)
+            {
+                book.price =  Math.Round(book.price, 2);
+            }
+
             return discountedBooks;
         }
         [Authorize(Roles="Employee")]
@@ -116,6 +142,8 @@ namespace BookCave.Services
         public BookView GetBookDetail(int? id)
         {
             var bookDetail = _bookRepo.GetBookDetail(id);
+
+            bookDetail.price = Math.Round(bookDetail.price,2);
             return bookDetail;
         }
 
