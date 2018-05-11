@@ -137,6 +137,12 @@ namespace BookCave.Controllers
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if(result.Succeeded)
             {
+                if(!this.User.IsInRole("Employee") && !this.User.IsInRole("User"))
+                {
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    await _userManager.AddToRoleAsync(user, "User");
+                }
+
                 return RedirectToAction("Index", "Home");
             }
 
