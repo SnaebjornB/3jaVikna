@@ -139,12 +139,12 @@ body{
 
 /*Styles for footer*/
 #siteFooter{
-    position: absolute;
     width: 100%;
-    height: auto;
+    height: 400px;
+    left: 0;
+    bottom: 0;
     overflow: hidden;
     color: white;
-    /*position: absolute;*/
     background:rgb(59, 59, 59);
 }
 #siteFooterEmpty{
@@ -189,7 +189,7 @@ body{
 
 /*Styles, ID's and classes for main body*/
 #siteBody{  
-    padding: 150px 0px 100px;  
+    padding: 150px 0px 250px;  
     margin: 0px auto;
     width: 100%;
     background-color: #ececea;
@@ -312,7 +312,7 @@ body{
 }
 .bookDetailsReview{
     border: #6c7c7c solid 1px;
-    margin: 0px 50px;
+    margin: 0px 75px;
     padding: 10px;
     width: 700px;
     float: left;
@@ -320,8 +320,9 @@ body{
 }
 .bookDetailsDetails {
     width: auto;
+    clear: both;
     text-align: left;
-    margin-left: 100px;
+    margin-left:25px;
 }
 .review-text-box {
     border-bottom: #666 solid 1px;
