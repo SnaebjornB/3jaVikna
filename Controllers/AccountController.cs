@@ -112,7 +112,11 @@ namespace BookCave.Controllers
 
             if(_signInManager.IsSignedIn(currentUser))
             {
-                return RedirectToAction("Profile");
+                if(this.User.IsInRole("User"))
+                {
+                    return RedirectToAction("Profile");
+                }
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -166,7 +170,7 @@ namespace BookCave.Controllers
             return userExists;
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public async Task<IActionResult> Profile()
         {
             ClaimsPrincipal currentUser = this.User;
@@ -186,7 +190,7 @@ namespace BookCave.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public async Task<IActionResult> EditProfile()
         {
             string id = GetCurrentUserId();
@@ -215,7 +219,7 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles="User")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProfile(EditUserViewModel model)
         {
@@ -248,7 +252,7 @@ namespace BookCave.Controllers
             return View(model); 
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult EditAddresses()
         {
             string id = GetCurrentUserId();
@@ -264,7 +268,7 @@ namespace BookCave.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult EditAddress(int id)
         {
             string userID = GetCurrentUserId();
@@ -278,7 +282,7 @@ namespace BookCave.Controllers
             return View(address);
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditAddress(EditAddressViewModel model)
@@ -294,7 +298,7 @@ namespace BookCave.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult AddAddress()
         {
             return View();
@@ -324,7 +328,7 @@ namespace BookCave.Controllers
             return RedirectToAction("Login");
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult DeleteAddress(int id)
         {
             string userId = GetCurrentUserId();
@@ -341,7 +345,7 @@ namespace BookCave.Controllers
             return RedirectToAction("EditAddresses");
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult OrderHistory()
         {
             var userId = GetCurrentUserId();
