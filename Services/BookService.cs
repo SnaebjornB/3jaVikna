@@ -123,6 +123,11 @@ namespace BookCave.Services
         {
             _bookRepo.AddReview(id, newReview, userID, userName);
         }
+
+        internal void AddJobApplication(JobApplicationInput newApplication)
+        {
+            _bookRepo.AddJobApplication(newApplication);
+        }
         public List<BookView> GetBooksByAuthor(string author){
             return _bookRepo.GetBooksByAuthor(author);
         }

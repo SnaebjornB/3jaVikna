@@ -220,6 +220,21 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
+        internal void AddJobApplication(JobApplicationInput newApplication)
+        {
+            var application = new JobApplicationEntity{
+                                name = newApplication.name,
+                                email = newApplication.email,
+                                phone = newApplication.phone,
+                                position = newApplication.position,
+                                startDate = newApplication.startDate,
+                                employmentStatus = newApplication.employmentStatus,
+                                resumeURL = newApplication.resumeURL
+                            };
+            _db.JobApplications.Add(application);
+            _db.SaveChanges();
+        }
+
         public bool IsBookInDatabase(int? id)
         {
             bool dbCheck = true;

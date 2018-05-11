@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
 using Microsoft.AspNetCore.Diagnostics;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Controllers
 {
@@ -42,6 +43,26 @@ namespace BookCave.Controllers
 
         public IActionResult WeDeliver()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Apply()
+        {            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Apply(JobApplicationInput newApplication)
+        {
+            if (ModelState.IsValid)
+            {
+                //vistum application í database
+                _bookService.AddJobApplication(newApplication);
+                
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 

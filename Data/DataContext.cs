@@ -1,4 +1,5 @@
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,8 @@ namespace BookCave.Data
         public DbSet<ReviewBookViewModel> CurrentOrderBooks { get; set; }
         public DbSet<OrderHistoryEntity> OrderHistory { get; set; } 
         public DbSet<OrderHistoryBookViewModel> OrderHistoryBooks { get; set; }
+
+        public DbSet<JobApplicationEntity> JobApplications { get; set; }
         //Hér kemur allt sem fer í gagnagrunninn.
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
