@@ -58,8 +58,13 @@
             }
             
         }
-        <h4>Write a review</h4>
-        <a asp-controller="Book" asp-action="Review" class="btn btn-primary" asp-route-id="@Model.ID">Review this book</a>
+        @{
+            if(!this.User.IsInRole("Employee"))
+            {
+                <h4>Write a review</h4>
+                <a asp-controller="Book" asp-action="Review" class="btn btn-primary" asp-route-id="@Model.ID">Review this book</a>
+            }
+        }
         <br>
     </div>
     <!--

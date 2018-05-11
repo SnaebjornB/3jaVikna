@@ -62,7 +62,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult Review(int? id)
         {
             if (id == null)
@@ -74,7 +74,7 @@ namespace BookCave.Controllers
         }
         
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult Review(int? id, ReviewInput newReview)
         {
             if (id == null)
