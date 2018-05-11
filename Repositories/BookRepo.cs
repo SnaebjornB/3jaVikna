@@ -239,7 +239,6 @@ namespace BookCave.Repositories
         {
             bool dbCheck = true;
             //Er bókin í database?
-
             try
             {
                 var bookCheck = (from b in _db.Books
@@ -353,7 +352,7 @@ namespace BookCave.Repositories
         public List<BookView> GetTop10BooksFromDB()
         {
            var top10 = (from b in _db.Books
-                        orderby b.rating descending
+                        orderby b.rating / (b.noOfRatings + 0.0000001) descending
                         select new BookView{
                             ID = b.ID,
                             author = b.author,
