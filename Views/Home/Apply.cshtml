@@ -4,65 +4,54 @@
     <fieldset>
         <legend>Job application</legend>
 
-            <label>
-            Name <input type="text" autofocus="autofocus" asp-for="name" class="form-control"/>
-            </label>
-            <span asp-validation-for="name" class="text-danger"></span>
-            <br>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" autofocus="autofocus" asp-for="name" class="search-bar"/><br>
+            <span asp-validation-for="name" class="text-danger"></span><br>
+            
 
-            <label>
-            Email <input type="text" asp-for="email" class="form-control"/>
-            </label>
-            <span asp-validation-for="email" class="text-danger"></span>
-            <br>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" asp-for="email" class="search-bar"/><br>
+            <span asp-validation-for="email" class="text-danger"></span><br>
 
-            <label>
-            Phone <input type="text" asp-for="phone" class="form-control"/>
-            </label>
-            <span asp-validation-for="phone" class="text-danger"></span>
-            <br>
+            <label for="phone">Phone</label><br>
+            <input type="text" name="phone" asp-for="phone" class="search-bar"/><br>
+            <span asp-validation-for="phone" class="text-danger"></span><br>
 
-            <label>
-            Position
-            <br>
-            <select name="position">
+            <label for="position">Position</label><br>
+            <select name="position" class="search-bar">
                 <option value="" selected></option>
                 <option value="generalApplication">General application</option>
                 <option value="boss">Boss</option>
                 <option value="peasant">Peasant</option>
             </select>
-            </label>
-            <span asp-validation-for="position" class="text-danger"></span>
             <br>
+            <span asp-validation-for="position" class="text-danger"></span><br>
+            
 
-            <label>
-            Current employment status
-            <br>
-            <select name="employmentStatus">
+        
+            <label for="employmentStatus">Employment status</label><br>
+            <select name="employmentStatus" class="search-bar">
                 <option value="" selected></option>
                 <option value="employed">Employed</option>
                 <option value="unemployed">Unemployed</option>
                 <option value="selfEmployed">Self-employed</option>
                 <option value="student">Student</option>
             </select>
-            </label>
-            <span asp-validation-for="employmentStatus" class="text-danger"></span>
             <br>
+            <span asp-validation-for="employmentStatus" class="text-danger"></span><br>
+
+            <label for="resumeURL">Resume url</label><br>
+            <input type="text" asp-for="resumeURL" class="search-bar"/><br>
+            <span asp-validation-for="resumeURL" class="text-danger"></span><br>
 
             <label>
-            Resume url <input type="text" asp-for="resumeURL" class="form-control"/>
-            </label>
-            <span asp-validation-for="resumeURL" class="text-danger"></span>
-            <br>
-
-            <label>
-            When can you start working?<input type="date" asp-for="startDate" class="form-control"/>
+            When can you start working? <br> <input type="date" asp-for="startDate" class="form-control"/><br>
             </label>
             <span asp-validation-for="startDate" class="text-danger"></span>
             <br>
             <br>
 
-            <input type="submit" value="Submit review"  class="btn btn-success btn-sm">
+            <input type="submit" value="Submit application"  class="btn btn-success btn-sm">
 
     </fieldset>
 </form> 

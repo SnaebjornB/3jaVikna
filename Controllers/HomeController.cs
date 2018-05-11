@@ -60,12 +60,17 @@ namespace BookCave.Controllers
                 //vistum application í database
                 _bookService.AddJobApplication(newApplication);
                 
-                return RedirectToAction("Index");
+                return RedirectToAction("ApplicationConformation");
             }
 
             return View();
         }
 
+        public IActionResult ApplicationConformation()
+        {            
+            return View();
+        }
+        
         public IActionResult Error()
         {
             var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
