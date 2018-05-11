@@ -17,7 +17,7 @@
                             </div></a>
                             <p>@Model[i].author</p>
                             <span class="stars index-stars">@Model[i].rating</span>
-                            <p>Price: @Model[i].price$</p>
+                            <p>Price: $@Model[i].price</p>
                             @{
                                 if(this.User.IsInRole("Employee"))
                                 {
@@ -54,7 +54,7 @@
                             </div></a>
                             <p>@book.author</p>
                             <span class="stars index-stars">@book.rating</span>
-                            <p>Price: @book.price$</p>
+                            <p>Price: $@book.price</p>
                             @if(this.User.IsInRole("Employee"))
                             {
                                 <a class="buyBookButton" asp-action="EditBook" asp-controller="Employee" asp-route-id="@book.ID">Edit book</a>
@@ -89,7 +89,7 @@
                             </div></a>
                             <p>@book.author</p>
                             <span class="stars index-stars">@book.rating</span>
-                            <p>Price: @book.price$</p>
+                            <p>Price: $@book.price</p>
                             @if(this.User.IsInRole("Employee"))
                             {
                                 <a class="buyBookButton" asp-action="EditBook" asp-controller="Employee" asp-route-id="@book.ID">Edit book</a>
