@@ -35,7 +35,7 @@ namespace BookCave.Services
                 book.price = Math.Round(book.price, 2);
             }
 
-            Math.Round(_orderbasketview.totalPrice, 2);
+            _orderbasketview.totalPrice = Math.Round(_orderbasketview.totalPrice, 2);
 
             return _orderbasketview;
         }
